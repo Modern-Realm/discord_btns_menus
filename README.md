@@ -34,7 +34,7 @@ Python 3.6 or higher is required !
 ```
 
 <p style="font-weight: bold;"><span style="color: red;">Note: </span>
-Make sure to install <a href="">
+Make sure to install <a href="https://pypi.org/project/py-cord/">
 <u> py-cord</u></a> package
 </p>
 
