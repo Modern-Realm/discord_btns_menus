@@ -27,16 +27,34 @@ Python 3.6 or higher is required !
   python3 -m pip install -U pycord-btns-menus
 
 # Windows
-    # Method-1:
-      py -3 -m pip install -U pycord-btns-menus
-    # Method-2:
-      pip install pycord-btns-menus
+  # Method-1:
+    py -3 -m pip install -U pycord-btns-menus
+  # Method-2:
+    pip install pycord-btns-menus
 ```
 
 <p style="font-weight: bold;"><span style="color: red;">Note: </span>
 Make sure to install <a href="https://pypi.org/project/py-cord/">
 <u> py-cord</u></a> package
 </p>
+
+<hr/>
+
+# Upgrading Package/ Module
+
+```shell
+# Linux/macOS
+  python3 -m pip uninstall pycord-btns-menus -y
+  python3 -m pip install pycord-btns-menus
+
+# Windows
+  # Method-1:
+    py -3 -m pip uninstall pycord-btns-menus -y
+    py -3 -m pip install pycord-btns-menus
+  # Method-2:
+    pip uninstall pycord-btns-menus -y
+    pip install pycord-btns-menus
+```
 
 <hr/>
 
