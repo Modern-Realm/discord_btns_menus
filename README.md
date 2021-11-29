@@ -111,7 +111,7 @@ async def test(ctx):
 
 <p align="center">
     <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/buttons.gif" 
-    alt="Button-Samples.gif" height="100" width="100">
+    alt="Button-Samples.gif" height="400" width="300">
 </p>
 
 <hr/>
