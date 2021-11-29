@@ -6,6 +6,10 @@
 [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
 
+### Join [Support Server](https://discord.gg/GVMWx5EaAN) for more guidance !
+
+<hr/>
+
 # Features:
 
 <hr/>
