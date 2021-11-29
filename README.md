@@ -91,7 +91,7 @@ if __name__ == "__main__":
 
 ```
 
-<center>![Buttons-Sample.gif](https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/buttons.gif)</center>
+<center>![Buttons](https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/buttons.gif)</center>
 
 <hr/>
 
