@@ -25,9 +25,9 @@
   python3 -m pip install -U pycord-btns-menus
 
 # Windows
-    #Method-1:
+    # Method-1:
       py -3 -m pip install -U pycord-btns-menus
-    #Method-2:
+    # Method-2:
       pip install pycord-btns-menus
 ```
 
@@ -109,7 +109,8 @@ async def test(ctx):
     await ctx.send(f"Sample buttons ...", view=view_)
 ```
 
-<br/>
+### Preview:
+
 <p align="center">
     <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_buttons.gif" 
     alt="Button-Samples.gif" height="400" width="300">
@@ -145,10 +146,50 @@ async def test(ctx):
     await ctx.send(f"Sample buttons ...", view=view_)
 ```
 
-<br/>
+### Preview:
+
 <p align="center">
     <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_dropmenus.gif"
     alt="DropMenu-Samples.gif" height="400" width="300">
+</p>
+
+<hr/>
+
+# Buttons & DropMenus combination [![Generic badge](https://img.shields.io/badge/STATUS-BETA-lime.svg)](https://shields.io/)
+
+##### **•** In this feature you can make & send Buttons and DropMenus together
+
+##### **•** For more examples for mixture of btns & menus go to <u><a href="">Examples/combinations</a></u>
+
+<br/>
+
+## Examples for <u>combinations</u>
+
+Usage of both Buttons and DropMenus at once ...
+
+```python
+@client.command()
+async def test(ctx):
+    user: discord.Member = ctx.author
+
+    btn1 = SButton(label="Delete Menu", style=ButtonStyle.danger, delete_msg=True)
+    menu1 = SDropMenu(placeholder="Select one", options=[
+        SelectOption(label="About Python", value="python")
+    ])
+    menu1.add_query(("python", "Python is a widely-used, interpreted, object-oriented and"
+                               " high-level programming language with dynamic semantics, used for general-purpose programming.\n"
+                               "It was created by Guido van Rossum, and first released on February 20, 1991."))
+
+    view_ = BtnAndDropMenu(user, btn1, menu1).view()
+
+    await ctx.send(f"Sample buttons & Menus combinations ...", view=view_)
+```
+
+### Preview:
+
+<p align="center">
+    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_combinations.gif"
+    alt="Sample-Combinations.gif" height="400" width="300">
 </p>
 
 <hr/>
