@@ -327,6 +327,8 @@ class Menu(ui.Select):
                         else:
                             resp_log.append(SDropMenu.convert_resp(query, self.values))
                     resp_: str = '\n'.join(resp_log)
+                    if resp_ is None or len(resp_) <= 5:
+                        resp_ = resp
                 else:
                     resp_ = resp
                 await interaction.message.edit(content="", embed=embed(resp_), view=view_)
@@ -341,6 +343,10 @@ class Menu(ui.Select):
                         else:
                             resp_log.append(SDropMenu.convert_resp(query, self.values))
                     resp_: str = '\n'.join(resp_log)
+
+                    if resp_ is None or len(resp_) <= 5:
+                        resp_ = resp
+
                 else:
                     resp_ = resp
                 await interaction.response.send_message(content=resp_, ephemeral=emph_)
