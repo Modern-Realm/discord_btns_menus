@@ -94,6 +94,8 @@ if __name__ == "__main__":
 
 # Example for <u>Buttons</u>:
 
+Button type <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/Buttons.py"> **DuoButton** </a>
+
 ```python
 @client.command()
 async def test(ctx):
@@ -108,13 +110,8 @@ async def test(ctx):
 <br/>
 
 <p align="center">
-    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/buttons.gif" alt="Button-Samples.gif">
+    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/buttons.gif" 
+    alt="Button-Samples.gif" height="100px" width="100px">
 </p>
-
-<center>
-
-![Buttons Sample gif](https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/buttons.gif)
-
-</center>
 
 <hr/>
