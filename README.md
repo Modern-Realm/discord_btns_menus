@@ -10,15 +10,17 @@
 
 <hr/>
 
-### 1. Buttons (ui.Button)
+### 1. Buttons
 
-### 2. DropMenus (ui.Select)
+### 2. DropMenus
 
-### 3. Combined usage of Buttons & DropMenus
+### 3. Combinations (Usage of both Buttons & DropMenus)
 
 <hr/>
 
 # Installation
+
+Python 3.6 or higher is required !
 
 ```shell
 # Linux/macOS
@@ -30,6 +32,11 @@
     # Method-2:
       pip install pycord-btns-menus
 ```
+
+<p style="font-weight: bold;"><span style="color: red;">Note: </span>
+Make sure to install <a href="">
+<u> py-cord</u></a> package
+</p>
 
 <hr/>
 
@@ -44,18 +51,18 @@ from btns_menus.Buttons import *
 # with this you can import all types of buttons
 
 # For DropMenus:
-from btns_menus.DropMenu import DropMenu, DuoDropMenu
+from btns_menus.DropMenu import DropMenu, DuoDropMenu, BtnAndDropMenu
 # with this you can import specific DropMenus
 # or
 from btns_menus.DropMenu import *
-# with this you can import all types of DropMenus
+# with this you can import all types of DropMenus and Combinations
 ```
 
 <hr/>
 
 # Sample Usage
 
-Create a file with '.py ' extension, Like: <u> main.py </u>
+Create a file with '.py ' extension, Like: <u> **main.py** </u>
 
 ```python
 from btns_menus.Buttons import *
@@ -96,7 +103,9 @@ if __name__ == "__main__":
 
 Button type
 <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
-**DuoButton** </a>
+**DuoButton** </a> , for more samples go
+to <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/Examples/buttons.py">
+Examples/Buttons</a>
 
 ```python
 @client.command()
@@ -122,7 +131,9 @@ async def test(ctx):
 
 DropMenu type
 <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/DropMenu.py">
-**DuoDropMenu** </a>
+**DuoDropMenu** </a>, for more samples go
+to <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/Examples/drop_menus.py">
+Examples/DropMenus</a>
 
 ```python
 @client.command()
@@ -157,9 +168,9 @@ async def test(ctx):
 
 # Buttons & DropMenus combination [![Generic badge](https://img.shields.io/badge/STATUS-BETA-lime.svg)](https://shields.io/)
 
-##### **•** In this feature you can make & send Buttons and DropMenus together
+##### • In this feature you can make & send Buttons and DropMenus together
 
-##### **•** For more examples for mixture of btns & menus go to <u><a href="">Examples/combinations</a></u>
+##### • For more examples for mixture of btns & menus go to <u><a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/Examples/combinations.py">Examples/combinations</a></u>
 
 <br/>
 
