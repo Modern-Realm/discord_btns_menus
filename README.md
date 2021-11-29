@@ -79,10 +79,9 @@ async def on_ready():
 async def test(ctx):
     user = ctx.author
 
-    btn1 = SButton(label="Hello")
-    btn2 = SButton(label="Bye")
+    btn1 = SButton(label="Hello", response="Hello have a nice day !")
 
-    view_ = DuoButton(user, btn1, btn2).view()
+    view_ = Button(user, btn1).view()
     await ctx.send("click here !", view=view_)
 
 
@@ -91,8 +90,22 @@ if __name__ == "__main__":
 
 ```
 
-<center>![Buttons](https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/buttons.gif)</center>
-
 <hr/>
 
 # Example for <u>Buttons</u>:
+
+```python
+@client.command()
+async def test(ctx):
+    user: discord.Member = ctx.author
+    btn1 = SButton(label="Wave 👋", response=f"Hello {user.mention} have a nice day !")
+    btn2 = SButton(label="Bye", response=f"Bye {user.mention} see you later !", style=ButtonStyle.secondary)
+    view_ = DuoButton(user, btn1, btn2).view()
+
+    await ctx.send(f"Sample buttons ...", view=view_)
+```
+
+<br/>
+<center>![Buttons](https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/buttons.gif)</center>
+
+<hr/>
