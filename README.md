@@ -94,7 +94,9 @@ if __name__ == "__main__":
 
 # Example for <u>Buttons</u>:
 
-Button type <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/Buttons.py"> **DuoButton** </a>
+Button type
+<a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
+**DuoButton** </a>
 
 ```python
 @client.command()
@@ -108,10 +110,45 @@ async def test(ctx):
 ```
 
 <br/>
-
 <p align="center">
-    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/buttons.gif" 
+    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_buttons.gif" 
     alt="Button-Samples.gif" height="400" width="300">
+</p>
+
+<hr/>
+
+# Examples for <u>DropMenus</u>:
+
+DropMenu type
+<a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/DropMenu.py">
+**DuoDropMenu** </a>
+
+```python
+@client.command()
+async def test(ctx):
+    user: discord.Member = ctx.author
+
+    menu1 = SDropMenu(placeholder="select one", options=[
+        SelectOption(label="username"),
+        SelectOption(label="None of the above")
+    ])
+    menu1.add_query(("username", f"username: {user.name}"))
+
+    menu2 = SDropMenu(placeholder="choose one", options=[
+        SelectOption(label="discriminator"),
+        SelectOption(label="None of the above")
+    ])
+    menu2.add_query(("discriminator", f"discriminator: {user.discriminator}"))
+
+    view_ = DuoDropMenu(user, menu1, menu2).view()
+
+    await ctx.send(f"Sample buttons ...", view=view_)
+```
+
+<br/>
+<p align="center">
+    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_dropmenus.gif"
+    alt="DropMenu-Samples.gif" height="400" width="300">
 </p>
 
 <hr/>
