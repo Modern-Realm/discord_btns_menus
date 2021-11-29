@@ -46,7 +46,7 @@ from btns_menus.Buttons import *
 # For DropMenus:
 from btns_menus.DropMenu import DropMenu, DuoDropMenu
 # with this you can import specific DropMenus
-#or
+# or
 from btns_menus.DropMenu import *
 # with this you can import all types of DropMenus
 ```
@@ -91,9 +91,8 @@ if __name__ == "__main__":
 
 ```
 
-![Buttons](https://github.com/skrphenix/bin/blob/main/buttons.gif)
+<center>![Buttons-Sample.gif](https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/buttons.gif)</center>
 
 <hr/>
 
 # Example for <u>Buttons</u>:
-
