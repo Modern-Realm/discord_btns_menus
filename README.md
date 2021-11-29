@@ -1,13 +1,14 @@
-# Package Name: pycord-btns-menus
+# Package Name: <a href='https://pypi.org/project/pycord-btns-menus/'> pycord-btns-menus </a>
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-[![Generic badge](https://img.shields.io/badge/Python-3.6-<COLOR>.svg)](https://shields.io/)
-[![PyPi license](https://badgen.net/pypi/license/pip/)](https://pypi.com/project/pip/)
+[![Generic badge](https://img.shields.io/badge/Python-3.6-blue.svg)](https://shields.io/)
+[![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
+[![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
 
 # Features:
 
-<hr>
+<hr/>
 
 ### 1. Buttons (ui.Button)
 
@@ -15,7 +16,42 @@
 
 ### 3. Combined usage of Buttons & DropMenus
 
-<hr>
+<hr/>
+
+# Installation
+
+```shell
+# Linux/macOS
+  python3 -m pip install -U pycord-btns-menus
+
+# Windows
+    #Method-1:
+      py -3 -m pip install -U pycord-btns-menus
+    #Method-2:
+      pip install pycord-btns-menus
+```
+
+<hr/>
+
+# How to import module ?
+
+```python
+# For buttons:
+from btns_menus.Buttons import Button, DuoButton
+# with this you can import specific Buttons
+# or
+from btns_menus.Buttons import *
+# with this you can import all types of buttons
+
+# For DropMenus:
+from btns_menus.DropMenu import DropMenu, DuoDropMenu
+# with this you can import specific DropMenus
+#or
+from btns_menus.DropMenu import *
+# with this you can import all types of DropMenus
+```
+
+<hr/>
 
 # Sample Usage
 
@@ -54,6 +90,10 @@ if __name__ == "__main__":
     client.run('token')
 
 ```
+
+![Buttons](https://github.com/skrphenix/bin/blob/main/buttons.gif)
+
+<hr/>
 
 # Example for <u>Buttons</u>:
 
