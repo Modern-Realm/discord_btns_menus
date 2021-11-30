@@ -265,7 +265,7 @@ async def test(ctx):
 ### Preview:
 
 <p align="center">
-    <img src=""
+    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_multibuttons.gif"
     alt="Sample-Combinations.gif" height="400" width="300">
 </p>
 
