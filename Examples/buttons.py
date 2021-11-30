@@ -21,3 +21,7 @@ view_ = DuoButton(author, btn1, btn2).view()
 btn1 = SButton(label="username", response=f"{ctx.author} ")
 btn2 = SButton(label="Bye", response="")
 btn3 = SButton(label="Bye", response="")
+
+"""
+Similarly You can Do the same to make 4 and 5 Buttons
+"""
