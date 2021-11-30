@@ -1,5 +1,9 @@
 # Package Name: <a href='https://pypi.org/project/pycord-btns-menus/'> pycord-btns-menus </a>
 
+#### A responsive package for Buttons, DropMenus and Combinations
+
+##### • This module makes the process a lot easier !
+
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
 [![Generic badge](https://img.shields.io/badge/Python-3.6-blue.svg)](https://shields.io/)
@@ -222,6 +226,46 @@ async def test(ctx):
 
 <p align="center">
     <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_combinations.gif"
+    alt="Sample-Combinations.gif" height="400" width="300">
+</p>
+
+<hr/>
+
+# Example for <u>MultiButtons</u>
+
+Button type
+<a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
+**MultiButton** </a> , for more samples go
+to <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
+Examples/Buttons</a>
+
+The Process for <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/DropMenu.py">
+**MultiDropMenu**</a> will be the same ...
+
+```python
+@client.command()
+async def test(ctx):
+    user: discord.Member = ctx.author
+    user_avatar = user.display_avatar or user.default_avatar
+
+    btn1 = SButton(label="username", style=ButtonStyle.primary, response=user.name)
+    btn2 = SButton(label="discriminator", style=ButtonStyle.secondary, response=user.discriminator)
+    btn4 = SButton(label="Avatar", style=ButtonStyle.secondary, response=str(user_avatar), ephemeral=True)
+    btn3 = SButton(label="Server Name", style=ButtonStyle.secondary, response=user.guild.name)
+    btn5 = SButton(label="Display Name", style=ButtonStyle.secondary, response=user.display_name)
+    btn6 = SButton(label="Delete Menu", style=ButtonStyle.danger, delete_msg=True)
+
+    buttons = [btn1, btn2, btn3, btn4, btn5, btn6]
+
+    view_ = MultiButton(user, buttons).view()
+
+    await ctx.send(f"Sample Usage of Multi Buttons ...", view=view_)
+```
+
+### Preview:
+
+<p align="center">
+    <img src=""
     alt="Sample-Combinations.gif" height="400" width="300">
 </p>
 
