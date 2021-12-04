@@ -1,4 +1,4 @@
-# Package Name: <a href='https://pypi.org/project/pycord-btns-menus/'> pycord-btns-menus </a>
+# Package Name: <a href='https://pypi.org/project/pycord-btns-menus/' target="_blank"> pycord-btns-menus </a>
 
 #### A responsive package for Buttons, DropMenus and Combinations
 
