@@ -335,3 +335,33 @@ class BtnAnd4DropMenu:
         view_.add_item(Menu(self.root_, self.menu4))
 
         return view_
+
+
+class MultiBtnAndDropMenu:
+    def __init__(self, author: discord.Member, buttons: List[SButton], menus: List[SDropMenu],
+                 *, timeout: float = DEFAULT_TIMEOUT):
+        self.author = author
+        self.timeout = timeout
+        self.btns = buttons
+        self.menus = menus
+
+        for btn_ in self.btns:
+            if btn_.author is None:
+                btn_.update(author=self.author)
+
+        self.root_ = lambda: MultiBtnAndDropMenu(self.author, self.btns, self.menus, timeout=self.timeout)
+
+    def view(self) -> ui.View:
+        view_ = ui.View(timeout=self.timeout)
+        for btn_ in self.btns:
+            if not btn_.hidden:
+                view_.add_item(Btn(self.root_, btn_))
+
+        for menu_ in self.menus:
+            if not menu_.hidden:
+                view_.add_item(Menu(self.root_, menu_))
+
+        return view_
+
+
+MultiBtnAndMenu = MultiBtnAndDropMenu

@@ -1,6 +1,7 @@
 import discord
 from typing import *
 from datetime import datetime
+import asyncio
 from discord import utils, ui, ButtonStyle
 from discord.components import SelectOption
 
@@ -18,10 +19,11 @@ class StructureOfButton:
                  url: Optional[str] = None,
                  emoji: Optional[Union[str, discord.Emoji, discord.PartialEmoji]] = None,
                  row: Optional[int] = None,
-                 response: Optional[str] = None,
+                 response: Optional[Union[str, discord.Embed]] = None,
                  rewrite: bool = False,
                  ephemeral: bool = False,
                  delete_msg: bool = False,
+                 hidden: bool = False,
                  author: discord.Member = None,
                  verify_: bool = True):
         self.kwargs = {
@@ -37,7 +39,10 @@ class StructureOfButton:
             "rewrite": rewrite,
             "ephemeral": ephemeral,
             "delete_msg": delete_msg,
-            "verify": verify_
+            "hidden": hidden,
+            "verify": verify_,
+            "func": None,
+            "coro_func": None
         }
 
         self.after_: Optional[dict] = None
@@ -75,6 +80,10 @@ class StructureOfButton:
     def is_ephemeral(self) -> bool:
         return self.kwargs['ephemeral']
 
+    @property
+    def hidden(self) -> bool:
+        return self.kwargs['hidden']
+
     def after_response(self, **options):
         kwargs = {}
         if len(options) >= 1:
@@ -85,6 +94,12 @@ class StructureOfButton:
                     kwargs.update({key: options[key]})
 
             self.after_ = kwargs
+
+    async def add_coro_func(self, function, *args):
+        self.kwargs['coro_func'] = lambda: function(*args)
+
+    def add_func(self, function, *args):
+        self.kwargs['func'] = lambda: function(*args)
 
     @property
     def after_resp(self) -> Optional[Dict]:
@@ -121,21 +136,25 @@ class Btn(ui.Button):
             if self.btn_args['delete_msg']:
                 return await interaction.message.delete()
 
-            if self.btn.is_ephemeral:
-                emph_ = True
-            else:
-                emph_ = False
+            if self.btn_args['coro_func'] is not None:
+                func = self.btn_args['coro_func']
+                await func()
 
+            if self.btn_args['func'] is not None:
+                func = self.btn_args['func']
+                func()
+
+            emph_ = self.btn.is_ephemeral
             btn_ = self.root()
             view_ = btn_.view()
             if self.btn_args['rewrite']:
-                if check_for_embed(resp):
+                if is_embed(resp):
                     await interaction.message.edit(content="", embed=resp, view=view_)
                 else:
                     await interaction.message.edit(content=resp, view=view_)
             else:
                 await interaction.message.edit(view=view_)
-                if check_for_embed(resp):
+                if is_embed(resp):
                     await interaction.response.send_message(content="", embed=resp, ephemeral=emph_)
                 else:
                     await interaction.response.send_message(content=resp, ephemeral=emph_)
@@ -150,10 +169,10 @@ class StructureOfDropMenu:
                  options: List[SelectOption] = None,
                  disabled: bool = False,
                  row: Optional[int] = None,
-                 response: Optional[str] = None,
+                 response: Optional[Union[str, discord.Embed]] = None,
                  rewrite: bool = False,
                  ephemeral: bool = False,
-                 delete_msg: bool = False,
+                 hidden: bool = False,
                  author: discord.Member = None,
                  verify_: bool = True
                  ):
@@ -174,7 +193,7 @@ class StructureOfDropMenu:
             "response": response,
             "rewrite": rewrite,
             "ephemeral": ephemeral,
-            "delete_msg": delete_msg,
+            "hidden": hidden,
             "verify": verify_,
             "queries": []
         }
@@ -213,6 +232,10 @@ class StructureOfDropMenu:
     @property
     def is_ephemeral(self) -> bool:
         return self.kwargs['ephemeral']
+
+    @property
+    def hidden(self) -> bool:
+        return self.kwargs['hidden']
 
     @property
     def queries(self) -> List:
@@ -307,9 +330,6 @@ class Menu(ui.Select):
             else:
                 get_queries = None
 
-            if self.menu_args['delete_msg']:
-                return await interaction.message.delete()
-
             if self.menu.is_ephemeral:
                 emph_ = True
             else:
@@ -321,7 +341,7 @@ class Menu(ui.Select):
                 resp_log: list = []
                 if get_queries is not None:
                     for query in get_queries:
-                        if check_for_embed(query):
+                        if is_embed(query):
                             resp_: discord.Embed = query
                             resp_log.append(SDropMenu.convert_resp(resp_.description, self.values))
                         else:
@@ -337,7 +357,7 @@ class Menu(ui.Select):
                 resp_log: list = []
                 if get_queries is not None:
                     for query in get_queries:
-                        if check_for_embed(query):
+                        if is_embed(query):
                             resp_: discord.Embed = query
                             resp_log.append(SDropMenu.convert_resp(resp_.description, self.values))
                         else:
@@ -352,18 +372,18 @@ class Menu(ui.Select):
                 await interaction.response.send_message(content=resp_, ephemeral=emph_)
 
 
-def check_for_embed(response):
+def is_embed(response):
     if isinstance(response, discord.Embed):
         return True
     else:
         return False
 
 
-def check_for_Invoker(button: Union[SButton, SDropMenu], interaction) -> bool:
-    args_ = button.args
+def check_for_Invoker(component: Union[SButton, SDropMenu], interaction) -> bool:
+    args_ = component.args
     type_ = args_['verify']
     if type_:
-        if interaction.user == args_['author']:
+        if interaction.user == component.author:
             return True
         else:
             return False
@@ -372,34 +392,31 @@ def check_for_Invoker(button: Union[SButton, SDropMenu], interaction) -> bool:
 
 
 def embed(context, color=0xffff00, timestamp: bool = False) -> discord.Embed:
-    if timestamp:
-        em = discord.Embed(
-            description=context,
-            color=discord.Color(color),
-            timestamp=datetime.utcnow()
-        )
-        return em
-    else:
-        em = discord.Embed(
-            description=context,
-            color=discord.Color(color)
-        )
-        return em
+    present_time = datetime.utcnow() if timestamp else None
+
+    em = discord.Embed(
+        description=context,
+        color=discord.Color(color),
+        timestamp=present_time
+    )
+    return em
 
 
 def rich_embed(_title, description, color=0xffff00, timestamp: bool = False) -> discord.Embed:
-    if timestamp:
-        em = discord.Embed(
-            title=_title,
-            description=description,
-            color=discord.Color(color),
-            timestamp=datetime.utcnow()
-        )
-        return em
-    else:
-        em = discord.Embed(
-            title=_title,
-            description=description,
-            color=discord.Color(color)
-        )
-        return em
+    present_time = datetime.utcnow() if timestamp else None
+
+    em = discord.Embed(
+        title=_title,
+        description=description,
+        color=discord.Color(color),
+        timestamp=present_time
+    )
+    return em
+
+
+async def coro_call_function(function, *args, **kwargs):
+    return await function(*args, **kwargs)
+
+
+def call_function(function, *args, **kwargs):
+    return function(*args, **kwargs)

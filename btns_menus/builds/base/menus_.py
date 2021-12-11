@@ -19,7 +19,8 @@ class SingleDropMenu:
 
     def view(self) -> ui.View:
         view_ = ui.View(timeout=self.timeout)
-        view_.add_item(Menu(self.root_, self.menu1))
+        if not self.menu1.hidden:
+            view_.add_item(Menu(self.root_, self.menu1))
 
         return view_
 
@@ -30,20 +31,18 @@ class DuoDropMenu:
         self.author = author
         self.timeout = timeout
 
-        self.menu1 = drop_menu1
-        self.menu2 = drop_menu2
+        self.menus = [drop_menu1, drop_menu2]
+        for menu_ in self.menus:
+            if menu_.author is None:
+                menu_.update_one(self.author, "author")
 
-        if self.menu1.author is None:
-            self.menu1.update_one(self.author, "author")
-        if self.menu2.author is None:
-            self.menu2.update_one(self.author, "author")
-
-        self.root_ = lambda: DuoDropMenu(self.author, self.menu1, self.menu2, timeout=self.timeout)
+        self.root_ = lambda: DuoDropMenu(self.author, self.menus[0], self.menus[1], timeout=self.timeout)
 
     def view(self) -> ui.View:
         view_ = ui.View(timeout=self.timeout)
-        view_.add_item(Menu(self.root_, self.menu1))
-        view_.add_item(Menu(self.root_, self.menu2))
+        for menu_ in self.menus:
+            if not menu_.hidden:
+                view_.add_item(Menu(self.root_, menu_))
 
         return view_
 
@@ -54,24 +53,19 @@ class TrioDropMenu:
         self.author = author
         self.timeout = timeout
 
-        self.menu1 = drop_menu1
-        self.menu2 = drop_menu2
-        self.menu3 = drop_menu3
+        self.menus = [drop_menu1, drop_menu2, drop_menu3]
+        for menu_ in self.menus:
+            if menu_.author is None:
+                menu_.update_one(self.author, "author")
 
-        if self.menu1.author is None:
-            self.menu1.update_one(self.author, "author")
-        if self.menu2.author is None:
-            self.menu2.update_one(self.author, "author")
-        if self.menu3.author is None:
-            self.menu3.update_one(self.author, "author")
-
-        self.root_ = lambda: TrioDropMenu(self.author, self.menu1, self.menu2, self.menu3, timeout=self.timeout)
+        self.root_ = lambda: TrioDropMenu(self.author, self.menus[0], self.menus[1], self.menus[2],
+                                          timeout=self.timeout)
 
     def view(self) -> ui.View:
         view_ = ui.View(timeout=self.timeout)
-        view_.add_item(Menu(self.root_, self.menu1))
-        view_.add_item(Menu(self.root_, self.menu2))
-        view_.add_item(Menu(self.root_, self.menu3))
+        for menu_ in self.menus:
+            if not menu_.hidden:
+                view_.add_item(Menu(self.root_, menu_))
 
         return view_
 
@@ -83,29 +77,19 @@ class QuartetDropMenu:
         self.author = author
         self.timeout = timeout
 
-        self.menu1 = drop_menu1
-        self.menu2 = drop_menu2
-        self.menu3 = drop_menu3
-        self.menu4 = drop_menu4
+        self.menus = [drop_menu1, drop_menu2, drop_menu3, drop_menu4]
+        for menu_ in self.menus:
+            if menu_.author is None:
+                menu_.update_one(self.author, "author")
 
-        if self.menu1.author is None:
-            self.menu1.update_one(self.author, "author")
-        if self.menu2.author is None:
-            self.menu2.update_one(self.author, "author")
-        if self.menu3.author is None:
-            self.menu3.update_one(self.author, "author")
-        if self.menu4.author is None:
-            self.menu4.update_one(self.author, "author")
-
-        self.root_ = lambda: QuartetDropMenu(self.author, self.menu1, self.menu2, self.menu3, self.menu4,
+        self.root_ = lambda: QuartetDropMenu(self.author, self.menus[0], self.menus[1], self.menus[2], self.menus[3],
                                              timeout=self.timeout)
 
     def view(self) -> ui.View:
         view_ = ui.View(timeout=self.timeout)
-        view_.add_item(Menu(self.root_, self.menu1))
-        view_.add_item(Menu(self.root_, self.menu2))
-        view_.add_item(Menu(self.root_, self.menu3))
-        view_.add_item(Menu(self.root_, self.menu4))
+        for menu_ in self.menus:
+            if not menu_.hidden:
+                view_.add_item(Menu(self.root_, menu_))
 
         return view_
 
@@ -117,32 +101,39 @@ class QuintetDropMenu:
         self.author = author
         self.timeout = timeout
 
-        self.menu1 = drop_menu1
-        self.menu2 = drop_menu2
-        self.menu3 = drop_menu3
-        self.menu4 = drop_menu4
-        self.menu5 = drop_menu5
+        self.menus = [drop_menu1, drop_menu2, drop_menu3, drop_menu4, drop_menu5]
+        for menu_ in self.menus:
+            if menu_.author is None:
+                menu_.update_one(self.author, "author")
 
-        if self.menu1.author is None:
-            self.menu1.update_one(self.author, "author")
-        if self.menu2.author is None:
-            self.menu2.update_one(self.author, "author")
-        if self.menu3.author is None:
-            self.menu3.update_one(self.author, "author")
-        if self.menu4.author is None:
-            self.menu4.update_one(self.author, "author")
-        if self.menu5.author is None:
-            self.menu5.update_one(self.author, "author")
-
-        self.root_ = lambda: QuintetDropMenu(self.author, self.menu1, self.menu2, self.menu3,
-                                             self.menu4, self.menu5, timeout=self.timeout)
+        self.root_ = lambda: QuintetDropMenu(self.author, self.menus[0], self.menus[1], self.menus[2],
+                                             self.menus[3], self.menus[4], timeout=self.timeout)
 
     def view(self) -> ui.View:
         view_ = ui.View(timeout=self.timeout)
-        view_.add_item(Menu(self.root_, self.menu1))
-        view_.add_item(Menu(self.root_, self.menu2))
-        view_.add_item(Menu(self.root_, self.menu3))
-        view_.add_item(Menu(self.root_, self.menu4))
-        view_.add_item(Menu(self.root_, self.menu5))
+        for menu_ in self.menus:
+            if not menu_.hidden:
+                view_.add_item(Menu(self.root_, menu_))
+
+        return view_
+
+
+class MultiDropMenu:
+    def __init__(self, author: discord.Member, menus: List[SDropMenu], /, timeout: float = DEFAULT_TIMEOUT):
+        self.author = author
+        self.timeout = timeout
+        self.menus = menus
+
+        for menu_ in self.menus:
+            if menu_.author is None:
+                menu_.update(author=self.author)
+
+        self.root_ = lambda: MultiDropMenu(self.author, self.menus, timeout=self.timeout)
+
+    def view(self) -> ui.View:
+        view_ = ui.View(timeout=self.timeout)
+        for menu_ in self.menus:
+            if not menu_.hidden:
+                view_.add_item(Menu(self.root_, menu_))
 
         return view_

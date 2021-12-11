@@ -28,3 +28,8 @@ QuintetButton = QuintetButton
 """
 5 Buttons
 """
+
+MultiButton = MultiButton
+"""
+Upto 20+ Buttons
+"""

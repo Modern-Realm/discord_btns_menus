@@ -19,7 +19,8 @@ class SingleButton:
 
     def view(self) -> ui.View:
         view_ = ui.View(timeout=self.timeout)
-        view_.add_item(Btn(self.root_, self.btn1))
+        if not self.btn1.hidden:
+            view_.add_item(Btn(self.root_, self.btn1))
 
         return view_
 
@@ -30,20 +31,18 @@ class DuoButton:
         self.author = author
         self.timeout = timeout
 
-        self.btn1 = button1
-        self.btn2 = button2
+        self.btns = [button1, button2]
+        for btn_ in self.btns:
+            if btn_.author is None:
+                btn_.update(author=self.author)
 
-        if self.btn1.author is None:
-            self.btn1.update(author=self.author)
-        if self.btn2.author is None:
-            self.btn2.update(author=self.author)
-
-        self.root_ = lambda: DuoButton(self.author, self.btn1, self.btn2, timeout=self.timeout)
+        self.root_ = lambda: DuoButton(self.author, self.btns[0], self.btns[1], timeout=self.timeout)
 
     def view(self) -> ui.View:
         view_ = ui.View(timeout=self.timeout)
-        view_.add_item(Btn(self.root_, self.btn1))
-        view_.add_item(Btn(self.root_, self.btn2))
+        for btn_ in self.btns:
+            if not btn_.hidden:
+                view_.add_item(Btn(self.root_, btn_))
 
         return view_
 
@@ -54,24 +53,18 @@ class TrioButton:
         self.author = author
         self.timeout = timeout
 
-        self.btn1 = button1
-        self.btn2 = button2
-        self.btn3 = button3
+        self.btns = [button1, button2, button3]
+        for btn_ in self.btns:
+            if btn_.author is None:
+                btn_.update(author=self.author)
 
-        if self.btn1.author is None:
-            self.btn1.update(author=self.author)
-        if self.btn2.author is None:
-            self.btn2.update(author=self.author)
-        if self.btn3.author is None:
-            self.btn3.update(author=self.author)
-
-        self.root_ = lambda: TrioDropMenu(self.author, self.btn1, self.btn2, self.btn3, timeout=self.timeout)
+        self.root_ = lambda: TrioButton(self.author, self.btns[0], self.btns[1], self.btns[2], timeout=self.timeout)
 
     def view(self) -> ui.View:
         view_ = ui.View(timeout=self.timeout)
-        view_.add_item(Btn(self.root_, self.btn1))
-        view_.add_item(Btn(self.root_, self.btn2))
-        view_.add_item(Btn(self.root_, self.btn3))
+        for btn_ in self.btns:
+            if not btn_.hidden:
+                view_.add_item(Btn(self.root_, btn_))
 
         return view_
 
@@ -82,29 +75,19 @@ class QuartetButton:
         self.author = author
         self.timeout = timeout
 
-        self.btn1 = button1
-        self.btn2 = button2
-        self.btn3 = button3
-        self.btn4 = button4
+        self.btns = [button1, button2, button3, button4]
+        for btn_ in self.btns:
+            if btn_.author is None:
+                btn_.update(author=self.author)
 
-        if self.btn1.author is None:
-            self.btn1.update(author=self.author)
-        if self.btn2.author is None:
-            self.btn2.update(author=self.author)
-        if self.btn3.author is None:
-            self.btn3.update(author=self.author)
-        if self.btn4.author is None:
-            self.btn4.update(author=self.author)
-
-        self.root_ = lambda: QuartetButton(self.author, self.btn1, self.btn2,
-                                           self.btn3, self.btn4, timeout=self.timeout)
+        self.root_ = lambda: QuartetButton(self.author, self.btns[0], self.btns[1],
+                                           self.btns[2], self.btns[3], timeout=self.timeout)
 
     def view(self) -> ui.View:
         view_ = ui.View(timeout=self.timeout)
-        view_.add_item(Btn(self.root_, self.btn1))
-        view_.add_item(Btn(self.root_, self.btn2))
-        view_.add_item(Btn(self.root_, self.btn3))
-        view_.add_item(Btn(self.root_, self.btn4))
+        for btn_ in self.btns:
+            if not btn_.hidden:
+                view_.add_item(Btn(self.root_, btn_))
 
         return view_
 
@@ -116,32 +99,39 @@ class QuintetButton:
         self.author = author
         self.timeout = timeout
 
-        self.btn1 = button1
-        self.btn2 = button2
-        self.btn3 = button3
-        self.btn4 = button4
-        self.btn5 = button5
+        self.btns = [button1, button2, button3, button4, button5]
+        for btn_ in self.btns:
+            if btn_.author is None:
+                btn_.update(author=self.author)
 
-        if self.btn1.author is None:
-            self.btn1.update(author=self.author)
-        if self.btn2.author is None:
-            self.btn2.update(author=self.author)
-        if self.btn3.author is None:
-            self.btn3.update(author=self.author)
-        if self.btn4.author is None:
-            self.btn4.update(author=self.author)
-        if self.btn5.author is None:
-            self.btn5.update(author=self.author)
-
-        self.root_ = lambda: QuintetButton(self.author, self.btn1, self.btn2, self.btn3,
-                                           self.btn4, self.btn5, timeout=self.timeout)
+        self.root_ = lambda: QuintetButton(self.author, self.btns[0], self.btns[1], self.btns[2],
+                                           self.btns[3], self.btns[4], timeout=self.timeout)
 
     def view(self) -> ui.View:
         view_ = ui.View(timeout=self.timeout)
-        view_.add_item(Btn(self.root_, self.btn1))
-        view_.add_item(Btn(self.root_, self.btn2))
-        view_.add_item(Btn(self.root_, self.btn3))
-        view_.add_item(Btn(self.root_, self.btn4))
-        view_.add_item(Btn(self.root_, self.btn5))
+        for btn_ in self.btns:
+            if not btn_.hidden:
+                view_.add_item(Btn(self.root_, btn_))
+
+        return view_
+
+
+class MultiButton:
+    def __init__(self, author: discord.Member, buttons: List[SButton], /, timeout: float = DEFAULT_TIMEOUT):
+        self.author = author
+        self.timeout = timeout
+        self.btns = buttons
+
+        for btn_ in self.btns:
+            if btn_.author is None:
+                btn_.update(author=self.author)
+
+        self.root_ = lambda: MultiButton(self.author, self.btns, timeout=self.timeout)
+
+    def view(self) -> ui.View:
+        view_ = ui.View(timeout=self.timeout)
+        for btn_ in self.btns:
+            if not btn_.hidden:
+                view_.add_item(Btn(self.root_, btn_))
 
         return view_

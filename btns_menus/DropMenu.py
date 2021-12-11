@@ -1,7 +1,7 @@
 from .builds.base.in_build import *
 from .builds.base.menus_ import *
 from .builds.base.menus_ import *
-from .builds.base.mixture_a import *
+from .builds.base.combinations import *
 
 SDropMenu = SDropMenu
 
@@ -28,4 +28,13 @@ QuartetDropMenu = QuartetDropMenu
 QuintetDropMenu = QuintetDropMenu
 """
 5 Menus
+"""
+
+MultiDropMenu = MultiDropMenu
+"""
+Upto 20+ Menus
+"""
+
+"""
+And Combinations Included ! ( BtnDropMenu, Btn2DropMenu, ... )
 """
