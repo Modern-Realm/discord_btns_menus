@@ -37,6 +37,8 @@ Python 3.6 or higher is required !
 # Windows
   # Method-1:
     py -3 -m pip install -U pycord-btns-menus
+    # or
+    python -m pip install -U pycord-btns-menus
   # Method-2:
     pip install pycord-btns-menus
 ```
@@ -52,16 +54,15 @@ Make sure to install <a href="https://pypi.org/project/py-cord/">
 
 ```shell
 # Linux/macOS
-  python3 -m pip uninstall pycord-btns-menus -y
-  python3 -m pip install pycord-btns-menus
+  python3 -m pip install pycord-btns-menus --upgrade
 
 # Windows
   # Method-1:
-    py -3 -m pip uninstall pycord-btns-menus -y
-    py -3 -m pip install pycord-btns-menus
+    py -3 -m pip install -U pycord-btns-menus
+    # or
+    python -m pip install pycord-btns-menus --upgrade
   # Method-2:
-    pip uninstall pycord-btns-menus -y
-    pip install pycord-btns-menus
+    pip install pycord-btns-menus --upgrade
 ```
 
 <hr/>
