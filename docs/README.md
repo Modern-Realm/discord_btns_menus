@@ -2,6 +2,8 @@
 
 [![Generic badge](https://img.shields.io/badge/vLatest-0.1.2-gold.svg)](https://shields.io/)
 
+<br/>
+
 # Quick Start
 
 ## Installation
