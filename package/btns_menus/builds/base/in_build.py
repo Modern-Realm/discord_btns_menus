@@ -195,7 +195,9 @@ class StructureOfDropMenu:
             "ephemeral": ephemeral,
             "hidden": hidden,
             "verify": verify_,
-            "queries": []
+            "queries": [],
+            "func": None,
+            "coro_func": None
         }
 
         self.after_: Optional[dict] = None
@@ -256,14 +258,21 @@ class StructureOfDropMenu:
     def after_resp(self) -> Optional[Dict]:
         return self.after_
 
-    value_ = str
-    response_ = str
+    async def add_coro_func(self, function, *args):
+        self.kwargs['coro_func'] = lambda: function(*args)
 
-    def add_query(self, query: Tuple[value_, response_]):
-        queries_: list = self.kwargs['queries']
-        queries_.append(query)
+    def add_func(self, function, *args):
+        self.kwargs['func'] = lambda: function(*args)
 
-    def add_queries(self, *queries: Tuple[value_, response_]):
+    value_ = values_ = str
+    response_ = Union[str, discord.Embed]
+
+    def add_query(self, *query: Tuple[value_, response_]):
+        for query in query:
+            queries_: list = self.kwargs['queries']
+            queries_.append(query)
+
+    def add_queries(self, *queries: Tuple[List[values_], response_]):
         for query_ in queries:
             queries_: list = self.kwargs['queries']
             queries_.append(query_)
@@ -298,78 +307,135 @@ class Menu(ui.Select):
         self.root = root
         self.menu = menu
         self.menu_args = menu.args
+        self.post_embed = False
+        self.post_embed_color = 0xffff00
+        self.post_embed_title = ''
         super().__init__(
             custom_id=self.menu_args['custom_id'], placeholder=self.menu_args['placeholder'],
             min_values=self.menu_args['min_values'], max_values=self.menu_args['max_values'],
             options=self.menu_args['options'], disabled=self.menu_args['disabled'], row=self.menu_args['row']
         )
 
-    @staticmethod
-    def query_conditions(values_, queries: List[Tuple[str, str]]) -> List[Union[str, discord.Embed]]:
+    def query_conditions(self, queries) -> Union[List[Union[str, discord.Embed]], None]:
+        query_ = True
         cache_ = []
+
+        values_ = self.values
         for val, response_ in queries:
-            for value_ in values_:
-                if value_ == val:
-                    cache_.append(response_)
-        return cache_
+            if isinstance(val, list):
+                for val_, val1_ in zip(val, values_):
+                    if val_ != val1_:
+                        query_ = False
+                        cache_.clear()
+                        break
+
+                if query_:
+                    if is_embed(response_):
+                        # response_: discord.Embed = response_
+                        resp1_ = response_.description
+                        self.post_embed = True
+                        self.post_embed_color = response_.color
+                        title_ = response_.title
+                        if title_ is not None and title_ != '':
+                            self.post_embed_title = title_
+                    else:
+                        resp1_ = response_
+                    cache_.append(SDropMenu.convert_resp(resp1_, values_))
+            else:
+                for value_ in values_:
+                    if value_ == val:
+                        if is_embed(response_):
+                            resp1_ = response_.description
+                            self.post_embed = True
+                            self.post_embed_color = response_.color
+                            title_ = response_.title
+                            if title_ is not None and title_ != '':
+                                self.post_embed_title = title_
+                        else:
+                            resp1_ = response_
+                        cache_.append(SDropMenu.convert_resp(resp1_, values_))
+
+        if len(cache_) >= 1:
+            return cache_
+        else:
+            return None
 
     async def callback(self, interaction):
         checked = check_for_Invoker(self.menu, interaction)
+
         if checked:
             if self.menu_args['response'] is None:
                 resp = f"Options: ' {', '.join(self.values)} ' has been selected !"
             else:
-                resp = self.menu_args['response']
+                if is_embed(resp):
+                    self.post_embed = True
+                    self.post_embed_color = response_.color
+                    title_ = response_.title
+                    if title_ is not None and title_ != '':
+                        self.post_embed_title = title_
+
+                    resp = self.menu_args['response'].description
+                else:
+                    resp = self.menu_args['response']
 
             if self.menu.after_resp is not None:
                 for key in self.menu.after_resp:
                     self.menu.update_one(self.menu.after_resp[key], key)
 
             if len(self.menu.queries) >= 1:
-                get_queries = self.query_conditions(self.values, self.menu.queries)
+                get_queries = self.query_conditions(self.menu.queries)
             else:
                 get_queries = None
 
-            if self.menu.is_ephemeral:
-                emph_ = True
+            emph_ = self.menu.is_ephemeral
+
+            if self.menu_args['coro_func'] is not None:
+                func = self.menu_args['coro_func']
+                await func()
+
+            if self.menu_args['func'] is not None:
+                func = self.menu_args['func']
+                func()
+
+            if get_queries is not None:
+                msg_log = '\n'.join(get_queries)
             else:
-                emph_ = False
+                msg_log = None
 
             menu_ = self.root()
             view_ = menu_.view()
+
             if self.menu_args['rewrite']:
-                resp_log: list = []
-                if get_queries is not None:
-                    for query in get_queries:
-                        if is_embed(query):
-                            resp_: discord.Embed = query
-                            resp_log.append(SDropMenu.convert_resp(resp_.description, self.values))
-                        else:
-                            resp_log.append(SDropMenu.convert_resp(query, self.values))
-                    resp_: str = '\n'.join(resp_log)
-                    if resp_ is None or len(resp_) <= 5:
-                        resp_ = resp
+                if msg_log is not None:
+                    if post_embed:
+                        em = discord.Embed(title=self.post_embed_title, description=msg_log,
+                                           color=self.post_embed_color)
+                        await interaction.message.edit(content=' ', embed=em, view=view_)
+                    else:
+                        await interaction.message.edit(content=msg_log, embed=None, view=view_)
                 else:
-                    resp_ = resp
-                await interaction.message.edit(content="", embed=embed(resp_), view=view_)
+                    if self.post_embed:
+                        em = em = discord.Embed(title=self.post_embed_title, description=resp,
+                                                color=self.post_embed_color)
+                        await interaction.message.edit(content=' ', embed=em, view=view_)
+                    else:
+                        await interaction.message.edit(content=resp, embed=None, view=view_)
             else:
                 await interaction.message.edit(view=view_)
-                resp_log: list = []
-                if get_queries is not None:
-                    for query in get_queries:
-                        if is_embed(query):
-                            resp_: discord.Embed = query
-                            resp_log.append(SDropMenu.convert_resp(resp_.description, self.values))
-                        else:
-                            resp_log.append(SDropMenu.convert_resp(query, self.values))
-                    resp_: str = '\n'.join(resp_log)
-
-                    if resp_ is None or len(resp_) <= 5:
-                        resp_ = resp
-
+                if msg_log is not None:
+                    if self.post_embed:
+                        em = discord.Embed(title=self.post_embed_title, description=msg_log,
+                                           color=self.post_embed_color)
+                        await interaction.response.send_message(embed=em)
+                    else:
+                        await interaction.response.send_message(content=msg_log)
                 else:
-                    resp_ = resp
-                await interaction.response.send_message(content=resp_, ephemeral=emph_)
+                    if self.post_embed:
+                        em = discord.Embed(title=self.post_embed_title, description=resp,
+                                           color=self.post_embed_color)
+                        await interaction.response.send_message(content=' ', embed=em, ephemeral=emph_)
+                    else:
+                        await interaction.response.send_message(content=resp, ephemeral=emph_)
 
 
 def is_embed(response):
@@ -391,32 +457,20 @@ def check_for_Invoker(component: Union[SButton, SDropMenu], interaction) -> bool
         return True
 
 
-def embed(context, color=0xffff00, timestamp: bool = False) -> discord.Embed:
+def embed(context: str, color=0xffff00, timestamp: bool = False) -> discord.Embed:
     present_time = datetime.utcnow() if timestamp else None
-
-    em = discord.Embed(
-        description=context,
-        color=discord.Color(color),
-        timestamp=present_time
-    )
+    em = discord.Embed(description=context, color=discord.Color(color), timestamp=present_time)
     return em
 
 
-def rich_embed(_title, description, color=0xffff00, timestamp: bool = False) -> discord.Embed:
+def rich_embed(_title: str, description: str, color=0xffff00, timestamp: bool = False) -> discord.Embed:
     present_time = datetime.utcnow() if timestamp else None
-
-    em = discord.Embed(
-        title=_title,
-        description=description,
-        color=discord.Color(color),
-        timestamp=present_time
-    )
+    em = discord.Embed(title=_title, description=description, color=discord.Color(color), timestamp=present_time)
     return em
 
+# async def call_coro_function(function, *args, **kwargs):
+#     return await function(*args, **kwargs)
+#
 
-async def coro_call_function(function, *args, **kwargs):
-    return await function(*args, **kwargs)
-
-
-def call_function(function, *args, **kwargs):
-    return function(*args, **kwargs)
+# def call_function(function, *args, **kwargs):
+#     return function(*args, **kwargs)
