@@ -14,15 +14,13 @@
 
 <hr/>
 
-# Features:
+# Key Features
 
-<hr/>
+### <li> Buttons </li>
 
-### 1. Buttons
+### <li> DropMenus </li>
 
-### 2. DropMenus
-
-### 3. Combinations (Usage of both Buttons & DropMenus)
+### <li> Combinations (Usage of both Buttons & DropMenus) </li>
 
 <hr/>
 

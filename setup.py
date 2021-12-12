@@ -13,6 +13,7 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url="https://github.com/skrphenix/pycord_btns_menus",
     project_urls={
+        "Documentation": "https://skrphenix.github.io/pycord_btns_menus/",
         "Bug Tracker": "https://github.com/skrphenix/pycord_btns_menus/issues",
         "Examples": "https://github.com/skrphenix/pycord_btns_menus/tree/main/Examples",
         "Source": "https://github.com/skrphenix/pycord_btns_menus/tree/main/btns_menus",
