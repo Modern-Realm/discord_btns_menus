@@ -159,7 +159,10 @@ class Btn(ui.Button):
                     title_ = resp.title
                     if title_ is not None and title_ != '':
                         self.post_embed_title = title_
-                    await interaction.message.edit(content="", embed=resp_, view=view_)
+
+                    em = discord.Embed(title=self.post_embed_title, description=resp_,
+                                       color=self.post_embed_color)
+                    await interaction.message.edit(content="", embed=em, view=view_)
                 else:
                     await interaction.message.edit(content=resp, view=view_)
             else:
@@ -171,7 +174,10 @@ class Btn(ui.Button):
                     title_ = resp.title
                     if title_ is not None and title_ != '':
                         self.post_embed_title = title_
-                    await interaction.response.send_message(content="", embed=resp_, ephemeral=emph_)
+
+                    em = discord.Embed(title=self.post_embed_title, description=resp_,
+                                       color=self.post_embed_color)
+                    await interaction.response.send_message(content="", embed=em, ephemeral=emph_)
                 else:
                     await interaction.response.send_message(content=resp, ephemeral=emph_)
 
