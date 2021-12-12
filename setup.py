@@ -16,7 +16,7 @@ setuptools.setup(
         "Documentation": "https://skrphenix.github.io/pycord_btns_menus/",
         "Bug Tracker": "https://github.com/skrphenix/pycord_btns_menus/issues",
         "Examples": "https://github.com/skrphenix/pycord_btns_menus/tree/main/Examples",
-        "Source": "https://github.com/skrphenix/pycord_btns_menus/tree/main/btns_menus",
+        "Source": "https://github.com/skrphenix/pycord_btns_menus/tree/main/package/btns_menus",
         "Support Server": "https://discord.gg/GVMWx5EaAN",
     },
     keywords=["pycord", "py-cord", "btns", "pycord buttons",
