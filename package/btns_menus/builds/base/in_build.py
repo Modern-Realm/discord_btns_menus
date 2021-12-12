@@ -114,6 +114,10 @@ class Btn(ui.Button):
         self.root = root
         self.btn = button
         self.btn_args = self.btn.args
+        self.post_embed = False
+        self.post_embed_color = 0xffff00
+        self.post_embed_title = ''
+
         super().__init__(
             label=self.btn_args['label'], custom_id=self.btn_args['custom_id'],
             disabled=self.btn_args['disabled'],
@@ -149,13 +153,25 @@ class Btn(ui.Button):
             view_ = btn_.view()
             if self.btn_args['rewrite']:
                 if is_embed(resp):
-                    await interaction.message.edit(content="", embed=resp, view=view_)
+                    resp_ = resp.description
+                    self.post_embed = True
+                    self.post_embed_color = resp.color
+                    title_ = resp.title
+                    if title_ is not None and title_ != '':
+                        self.post_embed_title = title_
+                    await interaction.message.edit(content="", embed=resp_, view=view_)
                 else:
                     await interaction.message.edit(content=resp, view=view_)
             else:
                 await interaction.message.edit(view=view_)
                 if is_embed(resp):
-                    await interaction.response.send_message(content="", embed=resp, ephemeral=emph_)
+                    resp_ = resp.description
+                    self.post_embed = True
+                    self.post_embed_color = resp.color
+                    title_ = resp.title
+                    if title_ is not None and title_ != '':
+                        self.post_embed_title = title_
+                    await interaction.response.send_message(content="", embed=resp_, ephemeral=emph_)
                 else:
                     await interaction.response.send_message(content=resp, ephemeral=emph_)
 
@@ -331,7 +347,6 @@ class Menu(ui.Select):
 
                 if query_:
                     if is_embed(response_):
-                        # response_: discord.Embed = response_
                         resp1_ = response_.description
                         self.post_embed = True
                         self.post_embed_color = response_.color
