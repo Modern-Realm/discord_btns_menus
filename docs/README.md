@@ -1,6 +1,6 @@
 # Documentation for <u> pycord-btns-menus </u>
 
-[![Generic badge](https://img.shields.io/badge/vLatest-0.1.2-gold.svg)](https://shields.io/)
+[![Generic badge](https://img.shields.io/badge/vLatest-0.1.4-gold.svg)](https://shields.io/)
 
 <br/>
 
