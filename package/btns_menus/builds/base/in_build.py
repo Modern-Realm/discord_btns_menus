@@ -153,31 +153,13 @@ class Btn(ui.Button):
             view_ = btn_.view()
             if self.btn_args['rewrite']:
                 if is_embed(resp):
-                    resp_ = resp.description
-                    self.post_embed = True
-                    self.post_embed_color = resp.color
-                    title_ = resp.title
-                    if title_ is not None and title_ != '':
-                        self.post_embed_title = title_
-
-                    em = discord.Embed(title=self.post_embed_title, description=resp_,
-                                       color=self.post_embed_color)
-                    await interaction.message.edit(content="", embed=em, view=view_)
+                    await interaction.message.edit(content="", embed=resp, view=view_)
                 else:
                     await interaction.message.edit(content=resp, view=view_)
             else:
                 await interaction.message.edit(view=view_)
                 if is_embed(resp):
-                    resp_ = resp.description
-                    self.post_embed = True
-                    self.post_embed_color = resp.color
-                    title_ = resp.title
-                    if title_ is not None and title_ != '':
-                        self.post_embed_title = title_
-
-                    em = discord.Embed(title=self.post_embed_title, description=resp_,
-                                       color=self.post_embed_color)
-                    await interaction.response.send_message(content="", embed=em, ephemeral=emph_)
+                    await interaction.response.send_message(content="", embed=resp, ephemeral=emph_)
                 else:
                     await interaction.response.send_message(content=resp, ephemeral=emph_)
 
@@ -301,24 +283,28 @@ class StructureOfDropMenu:
 
     @staticmethod
     def convert_resp(content: str, values: list):
-        if "{values}" in content:
-            try:
-                return content.replace("{values}", ", ".join(values))
-            except ValueError:
-                raise ValueError("Format key not Found\nTry this formatters: `{values}`, `{{values[index]}}`")
-        elif "{{values[" in content:
-            try:
-                x = content.index("{{")
-                y = content.index("}}")
+        count = 1
+        max_count = len(values) + 5
+        while (count <= max_count):
+            if "{values}" in content:
+                try:
+                    content = content.replace("{values}", ", ".join(values))
+                except ValueError:
+                    raise ValueError("Format key not Found\nTry this formatters: `{values}`, `{{values[index]}}`")
+            elif "{{values[" in content:
+                try:
+                    x = content.index("{{")
+                    y = content.index("}}")
 
-                index: int = int(content[content.index("[") + 1: content.index("]")])
-                return content.replace(f"{content[x: y + 2]}", values[index])
-            except ValueError:
-                raise ValueError("Format key not Found\nTry this formatters: `{values}`, `{{values[index]}}`")
-            except IndexError:
-                raise IndexError(f"list index out of range (len(values) = {len(values)})")
-        else:
-            return content
+                    index: int = int(content[content.index("[") + 1: content.index("]")])
+                    content = content.replace(f"{content[x: y + 2]}", values[index])
+                except ValueError:
+                    raise ValueError("Format key not Found\nTry this formatters: `{values}`, `{{values[index]}}`")
+                except IndexError:
+                    raise IndexError(f"list index out of range (len(values) = {len(values)})")
+            count += 1
+
+        return content
 
 
 SDropMenu = StructureOfDropMenu
@@ -329,75 +315,33 @@ class Menu(ui.Select):
         self.root = root
         self.menu = menu
         self.menu_args = menu.args
-        self.post_embed = False
-        self.post_embed_color = 0xffff00
-        self.post_embed_title = ''
         super().__init__(
             custom_id=self.menu_args['custom_id'], placeholder=self.menu_args['placeholder'],
             min_values=self.menu_args['min_values'], max_values=self.menu_args['max_values'],
             options=self.menu_args['options'], disabled=self.menu_args['disabled'], row=self.menu_args['row']
         )
 
-    def query_conditions(self, queries) -> Union[List[Union[str, discord.Embed]], None]:
-        query_ = True
-        cache_ = []
-
+    def query_conditions(self, queries) -> Union[str, discord.Embed, None]:
         values_ = self.values
         for val, response_ in queries:
             if isinstance(val, list):
-                for val_, val1_ in zip(val, values_):
-                    if val_ != val1_:
-                        query_ = False
-                        cache_.clear()
-                        break
-
-                if query_:
-                    if is_embed(response_):
-                        resp1_ = response_.description
-                        self.post_embed = True
-                        self.post_embed_color = response_.color
-                        title_ = response_.title
-                        if title_ is not None and title_ != '':
-                            self.post_embed_title = title_
-                    else:
-                        resp1_ = response_
-                    cache_.append(SDropMenu.convert_resp(resp1_, values_))
+                if sorted(val) == sorted(values_):
+                    return response_
             else:
                 for value_ in values_:
-                    if value_ == val:
-                        if is_embed(response_):
-                            resp1_ = response_.description
-                            self.post_embed = True
-                            self.post_embed_color = response_.color
-                            title_ = response_.title
-                            if title_ is not None and title_ != '':
-                                self.post_embed_title = title_
-                        else:
-                            resp1_ = response_
-                        cache_.append(SDropMenu.convert_resp(resp1_, values_))
+                    if val == value_:
+                        return response_
 
-        if len(cache_) >= 1:
-            return cache_
-        else:
-            return None
+        return None
 
     async def callback(self, interaction):
         checked = check_for_Invoker(self.menu, interaction)
 
         if checked:
             if self.menu_args['response'] is None:
-                resp = f"Options: ' {', '.join(self.values)} ' has been selected !"
+                resp = SDropMenu.convert_resp("Options: ' {values} ' has been selected !", self.values)
             else:
-                if is_embed(resp):
-                    self.post_embed = True
-                    self.post_embed_color = response_.color
-                    title_ = response_.title
-                    if title_ is not None and title_ != '':
-                        self.post_embed_title = title_
-
-                    resp = self.menu_args['response'].description
-                else:
-                    resp = self.menu_args['response']
+                resp = self.menu_args['response']
 
             if self.menu.after_resp is not None:
                 for key in self.menu.after_resp:
@@ -419,43 +363,43 @@ class Menu(ui.Select):
                 func()
 
             if get_queries is not None:
-                msg_log = '\n'.join(get_queries)
+                resp_ = get_queries
             else:
-                msg_log = None
+                resp_ = None
 
             menu_ = self.root()
             view_ = menu_.view()
 
             if self.menu_args['rewrite']:
-                if msg_log is not None:
-                    if post_embed:
-                        em = discord.Embed(title=self.post_embed_title, description=msg_log,
-                                           color=self.post_embed_color)
-                        await interaction.message.edit(content=' ', embed=em, view=view_)
+                if resp_ is not None:
+                    if is_embed(resp_):
+                        resp_.description = SDropMenu.convert_resp(resp_.description, self.values)
+                        await interaction.message.edit(content=' ', embed=resp_, view=view_)
                     else:
-                        await interaction.message.edit(content=msg_log, embed=None, view=view_)
+                        resp_ = SDropMenu.convert_resp(resp_, self.values)
+                        await interaction.message.edit(content=resp_, embed=None, view=view_)
                 else:
-                    if self.post_embed:
-                        em = em = discord.Embed(title=self.post_embed_title, description=resp,
-                                                color=self.post_embed_color)
-                        await interaction.message.edit(content=' ', embed=em, view=view_)
+                    if is_embed(resp):
+                        resp.description = SDropMenu.convert_resp(resp.description, self.values)
+                        await interaction.message.edit(content=' ', embed=resp, view=view_)
                     else:
+                        resp = SDropMenu.convert_resp(resp, self.values)
                         await interaction.message.edit(content=resp, embed=None, view=view_)
             else:
                 await interaction.message.edit(view=view_)
-                if msg_log is not None:
-                    if self.post_embed:
-                        em = discord.Embed(title=self.post_embed_title, description=msg_log,
-                                           color=self.post_embed_color)
-                        await interaction.response.send_message(embed=em)
+                if resp_ is not None:
+                    if is_embed(resp_):
+                        resp_.description = SDropMenu.convert_resp(resp_.description, self.values)
+                        await interaction.response.send_message(embed=resp_)
                     else:
-                        await interaction.response.send_message(content=msg_log)
+                        resp_ = SDropMenu.convert_resp(resp_, self.values)
+                        await interaction.response.send_message(content=resp_)
                 else:
-                    if self.post_embed:
-                        em = discord.Embed(title=self.post_embed_title, description=resp,
-                                           color=self.post_embed_color)
-                        await interaction.response.send_message(content=' ', embed=em, ephemeral=emph_)
+                    if is_embed(resp):
+                        resp.description = SDropMenu.convert_resp(resp.description, self.values)
+                        await interaction.response.send_message(content=' ', embed=resp, ephemeral=emph_)
                     else:
+                        resp = SDropMenu.convert_resp(resp, self.values)
                         await interaction.response.send_message(content=resp, ephemeral=emph_)
 
 
