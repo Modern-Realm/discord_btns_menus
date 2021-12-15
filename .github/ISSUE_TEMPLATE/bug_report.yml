@@ -24,9 +24,11 @@ body:
       label: Project Location
       description: Where is the project located?
       options:
-        - Local
-        - Remote
-        - Somewhere else (please specify in the description!)
+        - The core library
+        - btns_menus.builds.base
+        - btns_menus.Buttons
+        - btns_menus.DropMenu
+        - The documentation
     validations:
       required: true
   - type: textarea
@@ -47,3 +49,19 @@ body:
       label: Relevant log output
       description: If applicable, provide relevant log output. No need for backticks here.
       render: shell
+  - type: checkboxes
+      attributes:
+        label: Checklist
+        description: >
+          Let's make sure you've properly done due dilligence when reporting this issue!
+        options:
+          - label: I have searched the open issues for duplicates.
+            required: true
+          - label: I have shown the entire traceback, if possible.
+            required: true
+          - label: I have removed my token from display, if visible.
+            required: true
+  - type: textarea
+    attributes:
+      label: Additional Context
+      description: If there is anything else to say, please do so here.
