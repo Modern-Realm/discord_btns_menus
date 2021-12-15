@@ -23,7 +23,7 @@ body:
       required: true
   - type: textarea
     attributes:
-      label: The Problem
+      label: The Purpose
       description: >
         What problem is your feature trying to solve?
         What becomes easier or possible when this feature is implemented?
