@@ -50,17 +50,17 @@ body:
       description: If applicable, provide relevant log output. No need for backticks here.
       render: shell
   - type: checkboxes
-      attributes:
-        label: Checklist
-        description: >
-          Let's make sure you've properly done due dilligence when reporting this issue!
-        options:
-          - label: I have searched the open issues for duplicates.
-            required: true
-          - label: I have shown the entire traceback, if possible.
-            required: true
-          - label: I have removed my token from display, if visible.
-            required: true
+    id: TC
+    attributes:
+      label: Checklist
+      description: Let's make sure you've properly done due dilligence when reporting this issue!
+      options:
+        - label: I have searched the open issues for duplicates.
+          required: true
+        - label: I have shown the entire traceback, if possible.
+          required: true
+        - label: I have removed my token from display, if visible.
+          required: true
   - type: textarea
     attributes:
       label: Additional Context
