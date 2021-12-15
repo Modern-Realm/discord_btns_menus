@@ -7,7 +7,7 @@
 <!-- Put an x inside [ ] to check it, like so: [x] -->
 
 - [ ] If code changes were made then they have been tested.
-    - [ ] I have updated the documentation to reflect the changes.
+- [ ] I have updated the documentation to reflect the changes.
 - [ ] If `type: ignore` comments were used, a comment is also left explaining why
 - [ ] This PR fixes an issue.
 - [ ] This PR adds something new (e.g. new method or parameters).
