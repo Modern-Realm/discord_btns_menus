@@ -341,7 +341,7 @@ class MultiBtnAndDropMenu:
 
         for menu_ in self.menus:
             if not menu_.hidden:
-                view_.add_item(Btn(self.root_, menu_))
+                view_.add_item(Menu(self.root_, menu_))
 
         return view_
 
