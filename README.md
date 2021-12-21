@@ -76,10 +76,10 @@ from btns_menus.Buttons import *
 # with this you can import all types of buttons
 
 # For DropMenus:
-from btns_menus.DropMenu import DropMenu, DuoDropMenu, BtnAndDropMenu
+from btns_menus.DropMenus import DropMenu, DuoDropMenu, BtnAndDropMenu
 # with this you can import specific DropMenus
 # or
-from btns_menus.DropMenu import *
+from btns_menus.DropMenus import *
 # with this you can import all types of DropMenus and Combinations
 ```
 
@@ -91,7 +91,7 @@ Create a file with '.py ' extension, Like: <u> **main.py** </u>
 
 ```python
 from btns_menus.Buttons import *
-from btns_menus.DropMenu import *
+from btns_menus.DropMenus import *
 
 import discord
 from discord.ext import commands
