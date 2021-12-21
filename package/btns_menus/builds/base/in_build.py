@@ -3,13 +3,13 @@ from typing import *
 from datetime import datetime
 import asyncio
 from discord import utils, ui, ButtonStyle
-from discord.components import SelectOption
+from discord.components import SelectOption, Button
 
 MISSING = utils.MISSING
 DEFAULT_TIMEOUT: float = 180.0
 
 
-class StructureOfButton:
+class StructureOfButton(Button):
     def __init__(self,
                  *,
                  label: str,
@@ -114,9 +114,6 @@ class Btn(ui.Button):
         self.root = root
         self.btn = button
         self.btn_args = self.btn.args
-        self.post_embed = False
-        self.post_embed_color = 0xffff00
-        self.post_embed_title = ''
 
         super().__init__(
             label=self.btn_args['label'], custom_id=self.btn_args['custom_id'],
@@ -155,7 +152,7 @@ class Btn(ui.Button):
                 if is_embed(resp):
                     await interaction.message.edit(content="", embed=resp, view=view_)
                 else:
-                    await interaction.message.edit(content=resp, view=view_)
+                    await interaction.message.edit(content=resp, embed=None, view=view_)
             else:
                 await interaction.message.edit(view=view_)
                 if is_embed(resp):
@@ -205,6 +202,7 @@ class StructureOfDropMenu:
         }
 
         self.after_: Optional[dict] = None
+        self.selected_values: Optional[str, List] = None
 
     def update_one(self, details, option: str):
         if option not in self.kwargs.keys():
@@ -268,15 +266,12 @@ class StructureOfDropMenu:
     def add_func(self, function, *args):
         self.kwargs['func'] = lambda: function(*args)
 
-    value_ = values_ = str
-    response_ = Union[str, discord.Embed]
-
-    def add_query(self, *query: Tuple[value_, response_]):
+    def add_query(self, *query: Tuple[str, Union[str, discord.Embed]]):
         for query in query:
             queries_: list = self.kwargs['queries']
             queries_.append(query)
 
-    def add_queries(self, *queries: Tuple[List[values_], response_]):
+    def add_queries(self, *queries: Tuple[List[str], Union[str, discord.Embed]]):
         for query_ in queries:
             queries_: list = self.kwargs['queries']
             queries_.append(query_)
@@ -338,6 +333,8 @@ class Menu(ui.Select):
         checked = check_for_Invoker(self.menu, interaction)
 
         if checked:
+            self.menu.selected_values = self.values
+
             if self.menu_args['response'] is None:
                 resp = SDropMenu.convert_resp("Options: ' {values} ' has been selected !", self.values)
             else:
@@ -432,6 +429,8 @@ def rich_embed(_title: str, description: str, color=0xffff00, timestamp: bool = 
     present_time = datetime.utcnow() if timestamp else None
     em = discord.Embed(title=_title, description=description, color=discord.Color(color), timestamp=present_time)
     return em
+
+# This codes can also be usable ....
 
 # async def call_coro_function(function, *args, **kwargs):
 #     return await function(*args, **kwargs)
