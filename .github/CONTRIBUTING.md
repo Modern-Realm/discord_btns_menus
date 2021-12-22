@@ -60,25 +60,25 @@ You can get support/help/guidance from below social-media links
 <p style="margin-left: 20px;">
 
 <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/github_icon.png" alt="icon" width="18" height="18">
-<a style="color: cyan; font-size: 20px;" href="https://github.com/skrphenix/pycord_btns_menus"> 
+<a href="https://github.com/skrphenix/pycord_btns_menus"> 
 Home Page </a>
 
 <br/>
 
 <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/discord_icon.png" alt="icon" width="18" height="18">
-<a style="color: #FF8C00; font-size: 20px;" href="https://discord.gg/GVMWx5EaAN"> 
+<a href="https://discord.gg/GVMWx5EaAN"> 
 Support Server </a>
 
 <br/>
 
 <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/PyPi_icon.png" alt="icon" width="18" height="18">
-<a style="color: cyan; font-size: 20px;" href="https://pypi.org/project/pycord-btns-menus/"> 
+<a href="https://pypi.org/project/pycord-btns-menus/"> 
 PyPi Package </a>
 
 <br/>
 
 <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/docs_icon.png" alt="icon" width="18" height="18">
-<a style="color: cyan; font-size: 20px;" href="https://skrphenix.github.io/pycord_btns_menus/"> 
+<a href="https://skrphenix.github.io/pycord_btns_menus/"> 
 Documentation </a>
 
 </p>
@@ -88,10 +88,10 @@ Documentation </a>
 ## Direct Links for <u>Contributors</u>
 
 <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/github_icon.png" alt="icon" width="18" height="18">
-<a style="color: cyan; font-size: 20px;" href="https://github.com/skrphenix/pycord_btns_menus/issues/new/choose"> 
+<a href="https://github.com/skrphenix/pycord_btns_menus/issues/new/choose"> 
 Open Issue /</a>
 
-<a style="color: cyan; font-size: 20px;" href="https://github.com/skrphenix/pycord_btns_menus/pulls">
+<a href="https://github.com/skrphenix/pycord_btns_menus/pulls">
 Pull Requests
 </a>
 
