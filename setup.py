@@ -22,9 +22,18 @@ setuptools.setup(
     keywords=["pycord", "py-cord", "btns", "pycord buttons",
               "pycord btns", "pycord btns menus", "py-cord btns menus"],
     classifiers=[
+        "Development Status :: 5 - Production/Stable",
+        "Intended Audience :: Developers",
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+        "Natural Language :: English",
+        "Topic :: Internet",
+        "Topic :: Buttons"
+        "Topic :: Software Development",
+        "Topic :: Software Development :: Libraries",
+        "Topic :: Software Development :: Libraries :: Python Modules",
+        "Typing :: Typed",
     ],
     license="MIT",
     package_dir={"": "package"},
