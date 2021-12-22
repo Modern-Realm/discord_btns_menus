@@ -77,8 +77,7 @@ PyPi Package </a>
 
 <br/>
 
-<img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/docs_icon.png" alt="icon" width="18" height="18">
-<a href="https://skrphenix.github.io/pycord_btns_menus/"> 
+<img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/docs_icon.png" alt="icon" width="18" height="18"> <a href="https://skrphenix.github.io/pycord_btns_menus/"> 
 Documentation </a>
 
 </p>
