@@ -125,6 +125,14 @@ class Btn(ui.Button):
     async def callback(self, interaction):
         checked = check_for_Invoker(self.btn, interaction)
         if checked:
+            if self.btn_args['coro_func'] is not None:
+                func = self.btn_args['coro_func']
+                await func()
+
+            if self.btn_args['func'] is not None:
+                func = self.btn_args['func']
+                func()
+
             if self.btn_args['response'] is None:
                 resp = f"Button ' {self.btn.name} ' has been clicked !"
             else:
@@ -136,14 +144,6 @@ class Btn(ui.Button):
 
             if self.btn_args['delete_msg']:
                 return await interaction.message.delete()
-
-            if self.btn_args['coro_func'] is not None:
-                func = self.btn_args['coro_func']
-                await func()
-
-            if self.btn_args['func'] is not None:
-                func = self.btn_args['func']
-                func()
 
             emph_ = self.btn.is_ephemeral
             btn_ = self.root()
@@ -280,7 +280,7 @@ class StructureOfDropMenu:
     def convert_resp(content: str, values: list):
         count = 1
         max_count = len(values) + 5
-        while (count <= max_count):
+        while count <= max_count:
             if "{values}" in content:
                 try:
                     content = content.replace("{values}", ", ".join(values))
@@ -335,6 +335,14 @@ class Menu(ui.Select):
         if checked:
             self.menu.selected_values = self.values
 
+            if self.menu_args['coro_func'] is not None:
+                func = self.menu_args['coro_func']
+                await func()
+
+            if self.menu_args['func'] is not None:
+                func = self.menu_args['func']
+                func()
+
             if self.menu_args['response'] is None:
                 resp = SDropMenu.convert_resp("Options: ' {values} ' has been selected !", self.values)
             else:
@@ -350,14 +358,6 @@ class Menu(ui.Select):
                 get_queries = None
 
             emph_ = self.menu.is_ephemeral
-
-            if self.menu_args['coro_func'] is not None:
-                func = self.menu_args['coro_func']
-                await func()
-
-            if self.menu_args['func'] is not None:
-                func = self.menu_args['func']
-                func()
 
             if get_queries is not None:
                 resp_ = get_queries
