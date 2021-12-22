@@ -77,7 +77,8 @@ PyPi Package </a>
 
 <br/>
 
-<img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/docs_icon.png" alt="icon" width="18" height="18"> <a href="https://skrphenix.github.io/pycord_btns_menus/"> 
+<img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/docs_icon.png" alt="icon" width="18" height="18">
+<a href="https://skrphenix.github.io/pycord_btns_menus/"> 
 Documentation </a>
 
 </p>
@@ -86,12 +87,15 @@ Documentation </a>
 
 ## Direct Links for <u>Contributors</u>
 
-<img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/github_icon.png" alt="icon" width="18" height="18">
-<a href="https://github.com/skrphenix/pycord_btns_menus/issues/new/choose"> 
-Open Issue /</a>
+<p style="margin-left: 20px;">
+   <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/github_icon.png" alt="icon" width="18" height="18"> 
+   <a href="https://github.com/skrphenix/pycord_btns_menus/issues/new/choose"> 
+   Open Issue /</a>
+   
+   <a href="https://github.com/skrphenix/pycord_btns_menus/pulls">
+   Pull Requests
+   </a>
 
-<a href="https://github.com/skrphenix/pycord_btns_menus/pulls">
-Pull Requests
-</a>
+</p>
 
 <hr/>
