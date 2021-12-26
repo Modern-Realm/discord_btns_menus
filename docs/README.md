@@ -1,4 +1,4 @@
-# Documentation [![Generic badge](https://img.shields.io/badge/vLatest-0.1.6-gold.svg)](https://shields.io/)
+# Documentation [![Generic badge](https://img.shields.io/badge/vLatest-0.1.8-gold.svg)](https://shields.io/)
 
 # Quick Start
 
@@ -32,7 +32,7 @@ Create a file with '.py ' extension, Like: <u> **main.py** </u>
 
 ```python
 from btns_menus.Buttons import *
-from btns_menus.DropMenu import *
+from btns_menus.DropMenus import *
 
 import discord
 from discord.ext import commands
