@@ -22,7 +22,7 @@
 
 ### <li> Combinations (Usage of both Buttons & DropMenus) </li>
 
-### • Paginator `for help commands`
+### <li> Paginator `for help commands` </li>
 
 <hr/>
 
