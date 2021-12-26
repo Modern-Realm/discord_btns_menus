@@ -282,7 +282,8 @@ async def test(ctx):
 
 <hr/>
 
-# Example for Paginator [![Generic badge](https://img.shields.io/badge/NEW-Feature-gold.svg)](https://shields.io/)
+# Example for Paginator
+[![Generic badge](https://img.shields.io/badge/NEW-Feature-gold.svg)](https://shields.io/)
 
 It is used for help commands which sends the embeds like page-wise using buttons & Drop Menus
 
