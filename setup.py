@@ -44,6 +44,6 @@ setuptools.setup(
         "https://github.com/Pycord-Development/pycord"
     ],
     install_requires=[
-        "py-cord @ git+https://github.com/Pycord-Development/pycord@c8c2b1e23cb610b4c5f84c48fb23f279f2f0d53f"
+        "py-cord @ git+https://github.com/Pycord-Development/pycord"
     ]
 )

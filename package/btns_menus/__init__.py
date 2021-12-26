@@ -7,4 +7,5 @@ Author: P. Sai Keerthan Reddy
 Author-email: saikeerthan.keerthan.9@gmail.com
 License: MIT
 Location: c:/users/sai keerthan/appdata/local/programs/python/python39/lib/site-packages
+Requires: py-cord
 """
