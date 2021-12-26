@@ -22,6 +22,8 @@
 
 ### <li> Combinations (Usage of both Buttons & DropMenus) </li>
 
+### • Paginator `for help commands`
+
 <hr/>
 
 # Installation
@@ -30,15 +32,21 @@ Python 3.6 or higher is required !
 
 ```shell
 # Linux/macOS
-  python3 -m pip install -U pycord-btns-menus
+  python3 -m pip install pycord-btns-menus
 
 # Windows
   # Method-1:
-    py -3 -m pip install -U pycord-btns-menus
+    py -3 -m pip install pycord-btns-menus
     # or
-    python -m pip install -U pycord-btns-menus
+    python -m pip install pycord-btns-menus
   # Method-2:
     pip install pycord-btns-menus
+
+# Using GIT for ALPHA or BETA Versions
+  # Method-1:
+    pip install git+https://github.com/skrphenix/pycord_btns_menus.git
+  # Method-2:
+    pip install git+https://github.com/skrphenix/pycord_btns_menus
 ```
 
 <p style="font-weight: bold;"><span style="color: red;">Note: </span>
@@ -58,9 +66,9 @@ Make sure to install <a href="https://pypi.org/project/py-cord/">
   # Method-1:
     py -3 -m pip install -U pycord-btns-menus
     # or
-    python -m pip install pycord-btns-menus --upgrade
+    python -m pip install -U pycord-btns-menus
   # Method-2:
-    pip install pycord-btns-menus --upgrade
+    pip install -U pycord-btns-menus
 ```
 
 <hr/>
@@ -80,7 +88,10 @@ from btns_menus.DropMenus import DropMenu, DuoDropMenu, BtnAndDropMenu
 # with this you can import specific DropMenus
 # or
 from btns_menus.DropMenus import *
-# with this you can import all types of DropMenus and Combinations
+# with this you can import all types of DropMenus 
+
+from btns_menus.Combinations import *
+# with this you can import all types of Combinations
 ```
 
 <hr/>
@@ -92,6 +103,7 @@ Create a file with '.py ' extension, Like: <u> **main.py** </u>
 ```python
 from btns_menus.Buttons import *
 from btns_menus.DropMenus import *
+from btns_menus.Combinations import *
 
 import discord
 from discord.ext import commands
@@ -265,6 +277,45 @@ async def test(ctx):
 
 <p align="center">
     <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_multibuttons.gif"
+    alt="Sample-Combinations.gif" height="400" width="300">
+</p>
+
+<hr/>
+
+# Example for Paginator [![Generic badge](https://img.shields.io/badge/NEW-Feature-gold.svg)](https://shields.io/)
+
+It is used for help commands which sends the embeds like page-wise using buttons & Drop Menus
+
+```python
+from btns_menus.Paginator import *
+from datetime import datetime
+import discord
+
+# This function is for sample purposes
+def embed(context: str, color=0xffff00, timestamp: bool = False) -> discord.Embed:
+    present_time = datetime.utcnow() if timestamp else None
+    em = discord.Embed(description=context, color=discord.Color(color), timestamp=present_time)
+    return em
+
+
+@client.command()
+async def help(ctx):
+    user = ctx.author
+
+    embeds = [embed("embed-1"), embed("embed-2"), embed("embed-3"),
+              embed("embed-4"), embed("embed-5"), embed("embed-6")]
+    cmd_list = [
+        SOption(name="moderation", embed_=embeds[1]),
+        SOption(name="giveaways", embed_=embeds[2]),
+        SOption(name="links", embed_=embeds[3])
+    ]
+
+    view_ = Paginator(user, embeds, commands_list=cmd_list).view()
+    await ctx.send(embed=embeds[0], view=view_)
+```
+
+<p align="center">
+    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_paginator.gif"
     alt="Sample-Combinations.gif" height="400" width="300">
 </p>
 
