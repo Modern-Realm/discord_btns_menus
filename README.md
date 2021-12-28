@@ -1,6 +1,6 @@
 # Package Name: <a href='https://pypi.org/project/pycord-btns-menus/'> pycord-btns-menus </a>
 
-#### A responsive package for Buttons, DropMenus and Combinations
+#### A responsive package for Buttons, DropMenus, Combinations and Paginator
 
 ##### • This module makes the process a lot easier !
 
