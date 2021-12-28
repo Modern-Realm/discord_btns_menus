@@ -8,7 +8,7 @@ setuptools.setup(
     version="0.1.8",
     author="P. Sai Keerthan Reddy",
     author_email="saikeerthan.keerthan.9@gmail.com",
-    description="A responsive package for Buttons, DropMenus and Combinations.",
+    description="A responsive package for Buttons, DropMenus, Combinations and Paginator",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/skrphenix/pycord_btns_menus",
@@ -29,7 +29,6 @@ setuptools.setup(
         "Operating System :: OS Independent",
         "Natural Language :: English",
         "Topic :: Internet",
-        "Topic :: Buttons"
         "Topic :: Software Development",
         "Topic :: Software Development :: Libraries",
         "Topic :: Software Development :: Libraries :: Python Modules",
