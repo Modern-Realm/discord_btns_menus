@@ -44,31 +44,36 @@ class Paginator:
 
     def create_pages(self):
         for button_ in self.buttons:
-            if button_.id.lower() == "home":
-                self.home_btn = button_
-                self.buttons.remove(button_)
-            if button_.id.lower() == "forward":
-                self.forward_btn = button_
-                self.buttons.remove(button_)
-            if button_.id.lower() == "backward":
-                self.backward_btn = button_
-                self.buttons.remove(button_)
-            if button_.id.lower() == "delete":
-                self.delete_menu = button_
-                self.buttons.remove(button_)
+            if button_.id is not None:
+                if button_.id.lower() == "home":
+                    self.home_btn = button_
+                    self.buttons.remove(button_)
+                if button_.id.lower() == "forward":
+                    self.forward_btn = button_
+                    self.buttons.remove(button_)
+                if button_.id.lower() == "backward":
+                    self.backward_btn = button_
+                    self.buttons.remove(button_)
+                if button_.id.lower() == "delete":
+                    self.delete_menu = button_
+                    self.buttons.remove(button_)
 
         for menu_ in self.menus:
-            if menu_.id.lower() in ["commands", "commands-list"]:
-                self.cmds_menu = menu_
-                self.menus.remove(menu_)
+            if menu_.id is not None:
+                if menu_.id.lower() in ["commands", "commands-list", "cmds-list"]:
+                    self.cmds_menu = menu_
+                    self.menus.remove(menu_)
 
         self.home_btn = SButton(label="Home", emoji="🏠", response=self.embeds[0], style=ButtonStyle.green,
                                 rewrite=True, disabled=True) if self.home_btn is None else self.home_btn
-        self.forward_btn = SButton(label='', emoji="⏩", rewrite=True) if self.forward_btn is None else self.forward_btn
-        self.backward_btn = SButton(label='', emoji="⏪",
+        self.forward_btn = SButton(label='', emoji="⏩", rewrite=True,
+                                   style=ButtonStyle.secondary) if self.forward_btn is None else self.forward_btn
+        self.backward_btn = SButton(label='', emoji="⏪", style=ButtonStyle.secondary,
                                     rewrite=True) if self.backward_btn is None else self.backward_btn
         self.delete_menu = SButton(label='Delete Menu', emoji="🗑️", style=ButtonStyle.danger,
                                    delete_msg=True) if self.delete_menu is None else self.delete_menu
+        self.cmds_menu = SDropMenu(placeholder="Select any one Module",
+                                   rewrite=True) if self.cmds_menu is None else self.cmds_menu
 
         self.build()
 
@@ -84,12 +89,10 @@ class Paginator:
             self.pages += 1
             if self.pages >= len(self.embeds) - 1:
                 self.pages = len(self.embeds) - 1
-
                 self.forward_btn.update(disabled=True)
-            else:
-                self.home_btn.update(disabled=False)
-                self.backward_btn.update(disabled=False)
 
+            self.backward_btn.update(disabled=False)
+            self.home_btn.update(disabled=False)
             self.forward_btn.update_one(self.embeds[self.pages], "response")
 
         def backward_pages():
@@ -100,7 +103,10 @@ class Paginator:
                 self.home_btn.update(disabled=True)
                 self.backward_btn.update(disabled=True)
             else:
-                self.forward_btn.update(disabled=False)
+                self.backward_btn.update(disabled=False)
+                self.home_btn.update(disabled=False)
+
+            self.forward_btn.update(disabled=False)
             self.backward_btn.update_one(self.embeds[self.pages], "response")
 
         if self.cmds_list is not None:
@@ -109,7 +115,7 @@ class Paginator:
                 opt_ = SelectOption(label=option['name'], description=option['description'], emoji=option['emoji'])
                 options.append(opt_)
 
-            self.cmds_menu = SDropMenu(placeholder="Select any one Module", options=options, rewrite=True)
+            self.cmds_menu.update(options=options)
             for option in self.cmds_list:
                 self.cmds_menu.add_query((option['name'], option['embed']))
 
@@ -121,7 +127,7 @@ class Paginator:
 
                 self.cmds_menu.add_func(reset_view)
 
-            self.menus.append(self.cmds_menu)
+            self.menus.insert(0, self.cmds_menu)
 
         if self.home_btn.kwargs['func'] is None and self.home_btn.kwargs['coro_func'] is None:
             self.home_btn.add_func(home_page)

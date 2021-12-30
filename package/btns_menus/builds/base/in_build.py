@@ -95,11 +95,11 @@ class StructureOfButton(Button):
 
             self.after_ = kwargs
 
-    async def add_coro_func(self, function, *args):
-        self.kwargs['coro_func'] = lambda: function(*args)
+    async def add_coro_func(self, function, *args, **kwargs):
+        self.kwargs['coro_func'] = lambda: function(*args, **kwargs)
 
-    def add_func(self, function, *args):
-        self.kwargs['func'] = lambda: function(*args)
+    def add_func(self, function, *args, **kwargs):
+        self.kwargs['func'] = lambda: function(*args, **kwargs)
 
     @property
     def after_resp(self) -> Optional[Dict]:
@@ -177,11 +177,6 @@ class StructureOfDropMenu:
                  author: discord.Member = None,
                  verify_: bool = True
                  ):
-
-        if options is None:
-            raise ValueError(
-                "Invalid Form Body\nIn builds.1.builds.0.options: This field is required `--options`")
-
         self.kwargs = {
             "author": author,
             "custom_id": custom_id,
@@ -387,10 +382,10 @@ class Menu(ui.Select):
                 if resp_ is not None:
                     if is_embed(resp_):
                         resp_.description = SDropMenu.convert_resp(resp_.description, self.values)
-                        await interaction.response.send_message(embed=resp_)
+                        await interaction.response.send_message(embed=resp_, ephemeral=emph_)
                     else:
                         resp_ = SDropMenu.convert_resp(resp_, self.values)
-                        await interaction.response.send_message(content=resp_)
+                        await interaction.response.send_message(content=resp_, ephemeral=emph_)
                 else:
                     if is_embed(resp):
                         resp.description = SDropMenu.convert_resp(resp.description, self.values)
@@ -429,6 +424,14 @@ def rich_embed(_title: str, description: str, color=0xffff00, timestamp: bool = 
     present_time = datetime.utcnow() if timestamp else None
     em = discord.Embed(title=_title, description=description, color=discord.Color(color), timestamp=present_time)
     return em
+
+
+async def on_interaction_check(interaction: discord.Interaction) -> bool:
+    pass
+
+
+async def on_getting_error(interaction: discord.Interaction) -> bool:
+    pass
 
 # This codes can also be usable ....
 
