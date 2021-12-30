@@ -46,7 +46,7 @@ class Paginator:
         for button_ in self.buttons:
             if button_.id.lower() == "home":
                 self.home_btn = button_
-                self.home_btn.remove(button_)
+                self.buttons.remove(button_)
             if button_.id.lower() == "forward":
                 self.forward_btn = button_
                 self.buttons.remove(button_)
@@ -130,7 +130,9 @@ class Paginator:
         if self.backward_btn.kwargs['func'] is None and self.backward_btn.kwargs['coro_func'] is None:
             self.backward_btn.add_func(backward_pages)
 
-        self.buttons += [self.home_btn, self.forward_btn, self.backward_btn, self.delete_menu]
+        created_btns = [self.home_btn, self.forward_btn, self.backward_btn, self.delete_menu]
+        for x in range(len(created_btns)):
+            self.buttons.insert(x, created_btns[x])
 
     def view(self) -> ui.View:
         view_ = MultiBtnAndMenu(self.author, self.buttons, self.menus, timeout=self.timeout).view()
