@@ -3,7 +3,7 @@ from typing import *
 from datetime import datetime
 import asyncio
 from discord import utils, ui, ButtonStyle
-from discord.components import SelectOption, Button
+from discord.components import SelectOption
 
 MISSING = utils.MISSING
 DEFAULT_TIMEOUT: float = 180.0
