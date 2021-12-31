@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="pycord-btns-menus",
-    version="0.1.8",
+    version="0.2.0",
     author="P. Sai Keerthan Reddy",
     author_email="saikeerthan.keerthan.9@gmail.com",
     description="A responsive package for Buttons, DropMenus, Combinations and Paginator",
@@ -39,9 +39,6 @@ setuptools.setup(
     packages=["btns_menus", "btns_menus.builds", "btns_menus.builds.base"],
     include_package_data=True,
     python_requires=">=3.6",
-    dependency_links=[
-        "https://github.com/Pycord-Development/pycord"
-    ],
     install_requires=[
         "py-cord @ git+https://github.com/Pycord-Development/pycord"
     ]
