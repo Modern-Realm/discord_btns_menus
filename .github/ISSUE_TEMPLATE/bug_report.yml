@@ -1,6 +1,7 @@
 name: Bug
 description: File a bug report
-labels: unconfirmed bug
+labels:
+  - unconfirmed bug
 body:
   - type: markdown
     attributes:
@@ -19,7 +20,9 @@ body:
         - The core library
         - btns_menus.builds.base
         - btns_menus.Buttons
-        - btns_menus.DropMenu
+        - btns_menus.DropMenus
+        - btns_menus.Combinations
+        - btns_menus.Paginator
         - The documentation
     validations:
       required: true
