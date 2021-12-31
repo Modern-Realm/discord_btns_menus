@@ -8,7 +8,7 @@ from discord import ui
 
 class BtnAndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton, menu1: SDropMenu,
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -36,7 +36,7 @@ class BtnAndDropMenu:
 
 class Btn2AndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, menu1: SDropMenu,
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -66,7 +66,7 @@ class Btn2AndDropMenu:
 class Btn3AndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  button2: SButton, button3: SButton, menu1: SDropMenu,
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -98,7 +98,7 @@ class Btn3AndDropMenu:
 class Btn4AndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  button2: SButton, button3: SButton, button4: SButton, menu1: SDropMenu,
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -130,7 +130,7 @@ class Btn4AndDropMenu:
 
 class BtnAnd2DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, menu1: SDropMenu, menu2: SDropMenu,
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -159,7 +159,7 @@ class BtnAnd2DropMenu:
 
 class Btn2And2DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, menu1: SDropMenu, menu2: SDropMenu,
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -191,7 +191,7 @@ class Btn2And2DropMenu:
 class Btn3And2DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, button3: SButton,
                  menu1: SDropMenu, menu2: SDropMenu,
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -224,7 +224,7 @@ class Btn3And2DropMenu:
 class BtnAnd3DropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  menu1: SDropMenu, menu2: SDropMenu, menu3: SDropMenu,
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -256,7 +256,7 @@ class BtnAnd3DropMenu:
 class Btn2And3DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton,
                  menu1: SDropMenu, menu2: SDropMenu, menu3: SDropMenu,
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -289,7 +289,7 @@ class Btn2And3DropMenu:
 class BtnAnd4DropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  menu1: SDropMenu, menu2: SDropMenu, menu3: SDropMenu, menu4: SDropMenu,
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -321,13 +321,13 @@ class BtnAnd4DropMenu:
 
 class MultiBtnAndDropMenu:
     def __init__(self, author: discord.Member, buttons: List[SButton], menus: List[SDropMenu],
-                 *, timeout: float = DEFAULT_TIMEOUT):
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
-        self.btns = buttons
-        self.menus = menus
+        self.btns: List = buttons
+        self.menus: List = menus
 
-        components = self.btns + self.menus
+        components: List = self.btns + self.menus
         for component_ in components:
             if component_.author is None:
                 component_.update(author=self.author)

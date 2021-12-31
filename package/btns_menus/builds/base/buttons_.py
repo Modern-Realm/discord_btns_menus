@@ -6,7 +6,7 @@ from discord import ui
 
 
 class SingleButton:
-    def __init__(self, author: discord.Member, button1: SButton, /, timeout: float = DEFAULT_TIMEOUT):
+    def __init__(self, author: discord.Member, button1: SButton, /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -27,7 +27,7 @@ class SingleButton:
 
 class DuoButton:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton,
-                 /, timeout: float = DEFAULT_TIMEOUT):
+                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -49,7 +49,7 @@ class DuoButton:
 
 class TrioButton:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, button3: SButton,
-                 /, timeout: float = DEFAULT_TIMEOUT):
+                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -71,7 +71,7 @@ class TrioButton:
 
 class QuartetButton:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, button3: SButton, button4: SButton,
-                 /, timeout: float = DEFAULT_TIMEOUT):
+                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -95,7 +95,7 @@ class QuartetButton:
 class QuintetButton:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton,
                  button3: SButton, button4: SButton, button5: SButton,
-                 /, timeout: float = DEFAULT_TIMEOUT):
+                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -117,7 +117,7 @@ class QuintetButton:
 
 
 class MultiButton:
-    def __init__(self, author: discord.Member, buttons: List[SButton], /, timeout: float = DEFAULT_TIMEOUT):
+    def __init__(self, author: discord.Member, buttons: List[SButton], /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
         self.btns = buttons

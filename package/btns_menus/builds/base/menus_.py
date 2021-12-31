@@ -6,7 +6,7 @@ from discord import ui
 
 
 class SingleDropMenu:
-    def __init__(self, author: discord.Member, drop_menu1: SDropMenu, /, timeout: float = DEFAULT_TIMEOUT):
+    def __init__(self, author: discord.Member, drop_menu1: SDropMenu, /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -27,7 +27,7 @@ class SingleDropMenu:
 
 class DuoDropMenu:
     def __init__(self, author: discord.Member, drop_menu1: SDropMenu, drop_menu2: SDropMenu,
-                 /, timeout: float = DEFAULT_TIMEOUT):
+                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -49,7 +49,7 @@ class DuoDropMenu:
 
 class TrioDropMenu:
     def __init__(self, author: discord.Member, drop_menu1: SDropMenu, drop_menu2: SDropMenu, drop_menu3: SDropMenu,
-                 /, timeout: float = DEFAULT_TIMEOUT):
+                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -73,7 +73,7 @@ class TrioDropMenu:
 class QuartetDropMenu:
     def __init__(self, author: discord.Member, drop_menu1: SDropMenu, drop_menu2: SDropMenu,
                  drop_menu3: SDropMenu, drop_menu4: SDropMenu,
-                 /, timeout: float = DEFAULT_TIMEOUT):
+                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -97,7 +97,7 @@ class QuartetDropMenu:
 class QuintetDropMenu:
     def __init__(self, author: discord.Member, drop_menu1: SDropMenu, drop_menu2: SDropMenu,
                  drop_menu3: SDropMenu, drop_menu4: SDropMenu, drop_menu5: SDropMenu,
-                 /, timeout: float = DEFAULT_TIMEOUT):
+                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
 
@@ -119,7 +119,7 @@ class QuintetDropMenu:
 
 
 class MultiDropMenu:
-    def __init__(self, author: discord.Member, menus: List[SDropMenu], /, timeout: float = DEFAULT_TIMEOUT):
+    def __init__(self, author: discord.Member, menus: List[SDropMenu], /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
         self.author = author
         self.timeout = timeout
         self.menus = menus

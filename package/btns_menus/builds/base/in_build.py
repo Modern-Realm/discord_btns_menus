@@ -9,7 +9,7 @@ MISSING = utils.MISSING
 DEFAULT_TIMEOUT: float = 180.0
 
 
-class StructureOfButton(Button):
+class StructureOfButton:
     def __init__(self,
                  *,
                  label: str,
@@ -395,11 +395,8 @@ class Menu(ui.Select):
                         await interaction.response.send_message(content=resp, ephemeral=emph_)
 
 
-def is_embed(response):
-    if isinstance(response, discord.Embed):
-        return True
-    else:
-        return False
+def is_embed(response) -> bool:
+    return isinstance(response, discord.Embed)
 
 
 def check_for_Invoker(component: Union[SButton, SDropMenu], interaction) -> bool:
@@ -424,14 +421,6 @@ def rich_embed(_title: str, description: str, color=0xffff00, timestamp: bool = 
     present_time = datetime.utcnow() if timestamp else None
     em = discord.Embed(title=_title, description=description, color=discord.Color(color), timestamp=present_time)
     return em
-
-
-async def on_interaction_check(interaction: discord.Interaction) -> bool:
-    pass
-
-
-async def on_getting_error(interaction: discord.Interaction) -> bool:
-    pass
 
 # This codes can also be usable ....
 

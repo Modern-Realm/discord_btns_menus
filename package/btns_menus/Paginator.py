@@ -23,7 +23,7 @@ class Paginator:
                  commands_list: List[SOption] = None,
                  buttons: List[SButton] = None,
                  menus: List[SDropMenu] = None,
-                 timeout=DEFAULT_TIMEOUT
+                 timeout: Union[int, float] = DEFAULT_TIMEOUT
                  ):
         self.author = author
         self.embeds = embeds
@@ -60,7 +60,7 @@ class Paginator:
 
         for menu_ in self.menus:
             if menu_.id is not None:
-                if menu_.id.lower() in ["commands", "commands-list", "cmds-list"]:
+                if menu_.id.lower() in ["commands-list", "cmds-list"]:
                     self.cmds_menu = menu_
                     self.menus.remove(menu_)
 
@@ -75,9 +75,9 @@ class Paginator:
         self.cmds_menu = SDropMenu(placeholder="Select any one Module",
                                    rewrite=True) if self.cmds_menu is None else self.cmds_menu
 
-        self.build()
+        self.build_pages()
 
-    def build(self):
+    def build_pages(self):
         def home_page():
             self.pages = 0
 
