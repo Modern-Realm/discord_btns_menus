@@ -203,7 +203,7 @@ async def test(ctx):
 
 <hr/>
 
-# Buttons & DropMenus combination [![Generic badge](https://img.shields.io/badge/STATUS-BETA-lime.svg)](https://shields.io/)
+# Buttons & DropMenus combination
 
 ##### • In this feature you can make & send Buttons and DropMenus together
 
