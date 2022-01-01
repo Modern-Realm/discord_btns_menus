@@ -348,3 +348,30 @@ class MultiBtnAndDropMenu:
 
 
 MultiBtnAndMenu = MultiBtnAndDropMenu
+
+
+class MultiBtnsAndMenus:
+    def __init__(self, author: discord.Member, components: List[Union[SButton, SDropMenu]],
+                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        self.author = author
+        self.timeout = timeout
+        self.components = components
+
+        for component in self.components:
+            if component.author is None:
+                component.update(author=self.author)
+
+        self.root_ = lambda: MultiBtnsAndMenus(self.author, self.components, timeout=self.timeout)
+
+    def view(self) -> ui.View:
+        view_ = ui.View(timeout=self.timeout)
+        for component in self.components:
+            if not component.hidden:
+                if isinstance(component, SButton):
+                    view_.add_item(Btn(self.root_, component))
+                elif isinstance(component, SDropMenu):
+                    view_.add_item(Menu(self.root_, component))
+                else:
+                    raise ValueError("The given components are Invalid !")
+
+        return view_
