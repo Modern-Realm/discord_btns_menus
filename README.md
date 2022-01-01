@@ -292,14 +292,20 @@ from btns_menus.Paginator import *
 from datetime import datetime
 import discord
 
-em1 = discord.Embed(description="embed-1", color=discord.Color(color))
+
+# This function is for sample purposes
+def embed(context: str, color=0xffff00, timestamp: bool = False) -> discord.Embed:
+    present_time = datetime.utcnow() if timestamp else None
+    em = discord.Embed(description=context, color=discord.Color(color), timestamp=present_time)
+    return em
 
 
 @client.command()
 async def help(ctx):
     user = ctx.author
 
-    embeds = [embed("embed-1"), embed("embed-2"), embed("embed-3"), embed("embed-4")]
+    embeds = [embed("embed-1"), embed("embed-2"), embed("embed-3"),
+              embed("embed-4"), embed("embed-5"), embed("embed-6")]
     cmd_list = [
         SOption(name="moderation", embed_=embeds[1]),
         SOption(name="giveaways", embed_=embeds[2]),
