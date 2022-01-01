@@ -15,7 +15,7 @@ class StructureOfButton:
                  label: str,
                  custom_id: Optional[str] = None,
                  disabled: bool = False,
-                 style: ButtonStyle = ButtonStyle.primary,
+                 style: ButtonStyle = ButtonStyle.secondary,
                  url: Optional[str] = None,
                  emoji: Optional[Union[str, discord.Emoji, discord.PartialEmoji]] = None,
                  row: Optional[int] = None,
