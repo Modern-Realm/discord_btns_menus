@@ -34,6 +34,12 @@ class Paginator:
 
         self.pages: int = 0
 
+        self.index_for_home = 0
+        self.index_for_forward = 1
+        self.index_for_backward = 2
+        self.index_for_delete = 3
+        self.index_for_cmds = 0
+
         self.home_btn: Optional[SButton] = None
         self.forward_btn: Optional[SButton] = None
         self.backward_btn: Optional[SButton] = None
@@ -47,21 +53,26 @@ class Paginator:
             if button_.id is not None:
                 if button_.id.lower() == "home":
                     self.home_btn = button_
+                    self.index_for_home = self.buttons.index(button_)
                     self.buttons.remove(button_)
                 if button_.id.lower() == "forward":
                     self.forward_btn = button_
+                    self.index_for_forward = self.buttons.index(button_)
                     self.buttons.remove(button_)
                 if button_.id.lower() == "backward":
                     self.backward_btn = button_
+                    self.index_for_backward = self.buttons.index(button_)
                     self.buttons.remove(button_)
                 if button_.id.lower() == "delete":
                     self.delete_menu = button_
+                    self.index_for_delete = self.buttons.index(button_)
                     self.buttons.remove(button_)
 
         for menu_ in self.menus:
             if menu_.id is not None:
                 if menu_.id.lower() in ["commands-list", "cmds-list"]:
                     self.cmds_menu = menu_
+                    self.index_for_cmds = self.menus.index(menu_)
                     self.menus.remove(menu_)
 
         self.home_btn = SButton(label="Home", emoji="🏠", response=self.embeds[0], style=ButtonStyle.green,
@@ -127,7 +138,7 @@ class Paginator:
 
                 self.cmds_menu.add_func(reset_view)
 
-            self.menus.insert(0, self.cmds_menu)
+            self.menus.insert(self.index_for_cmds, self.cmds_menu)
 
         if self.home_btn.kwargs['func'] is None and self.home_btn.kwargs['coro_func'] is None:
             self.home_btn.add_func(home_page)
@@ -137,8 +148,10 @@ class Paginator:
             self.backward_btn.add_func(backward_pages)
 
         created_btns = [self.home_btn, self.forward_btn, self.backward_btn, self.delete_menu]
+        stored_indexes = [self.index_for_home, self.index_for_forward,
+                          self.index_for_backward, self.index_for_delete]
         for x in range(len(created_btns)):
-            self.buttons.insert(x, created_btns[x])
+            self.buttons.insert(stored_indexes[x], created_btns[x])
 
     def view(self) -> ui.View:
         view_ = MultiBtnAndMenu(self.author, self.buttons, self.menus, timeout=self.timeout).view()
