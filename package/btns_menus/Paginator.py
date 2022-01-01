@@ -87,7 +87,7 @@ class Paginator:
                                    rewrite=True) if self.cmds_menu is None else self.cmds_menu
 
         if self.home_btn.kwargs['response'] is None:
-            self.home_btn.kwargs['response'] = self.embeds[0]
+            self.home_btn.update(response=self.embeds[0], rewrite=True)
 
         self.build_pages()
 
