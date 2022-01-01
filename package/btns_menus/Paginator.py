@@ -86,6 +86,9 @@ class Paginator:
         self.cmds_menu = SDropMenu(placeholder="Select any one Module",
                                    rewrite=True) if self.cmds_menu is None else self.cmds_menu
 
+        if self.home_btn.kwargs['response'] is None:
+            self.home_btn.kwargs['response'] = self.embeds[0]
+
         self.build_pages()
 
     def build_pages(self):
