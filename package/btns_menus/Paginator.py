@@ -1,5 +1,3 @@
-from btns_menus.Buttons import *
-from btns_menus.DropMenus import *
 from btns_menus.Combinations import *
 
 import discord
@@ -9,6 +7,17 @@ from discord import ButtonStyle, SelectOption
 def SOption(*, name: str, embed_: discord.Embed, description: str = None,
             emoji: Union[str, discord.Emoji, discord.PartialEmoji] = None
             ) -> Dict:
+    """Options
+
+    Parameters:
+        name : label for option
+        embed_: If option is selected, the embed will be sent !
+        description: Description for the option
+        emoji: Emoji for the option
+
+    Returns:
+        Dict
+    """
     decorator_ = {
         "name": name, "description": description, "embed": embed_, "emoji": emoji
     }
@@ -25,6 +34,21 @@ class Paginator:
                  menus: List[SDropMenu] = None,
                  timeout: Union[int, float] = DEFAULT_TIMEOUT
                  ):
+        """
+        Paginator is used to show users the given embeds in pages format using **navigation Buttons and DropMenus**
+
+        Parameters:
+            author: User who will interact with the Paginator
+            embeds: The list of embeds that acts as Pages
+            commands_list (optional): The list of options which are shown as options in a Drop Menu
+            buttons (optional): List of buttons used to navigate of interact with the pages/embeds
+            menus (optional): List of Menus used to make a user select options from it
+            timeout (optional): Timeout of the interaction
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.embeds = embeds
         self.cmds_list = commands_list
@@ -157,5 +181,7 @@ class Paginator:
             self.buttons.insert(stored_indexes[x], created_btns[x])
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = MultiBtnAndMenu(self.author, self.buttons, self.menus, timeout=self.timeout).view()
         return view_

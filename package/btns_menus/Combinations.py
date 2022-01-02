@@ -9,6 +9,19 @@ from discord import ui
 class BtnAndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton, menu1: SDropMenu,
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            button1: takes button type SButton
+            menu1: takes dropmenu type SDropMenu
+            timeout: Interaction Timeout
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.timeout = timeout
 
@@ -23,6 +36,8 @@ class BtnAndDropMenu:
         self.root_ = lambda: BtnAndDropMenu(self.author, self.btn1, self.menu1, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for component_ in self.components:
             if not component_.hidden:
@@ -37,6 +52,20 @@ class BtnAndDropMenu:
 class Btn2AndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, menu1: SDropMenu,
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            button1: takes button type SButton
+            button2: takes button type SButton
+            menu1: takes Dropmenu type SDropMenu
+            timeout: Interaction Timeout
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.timeout = timeout
 
@@ -52,6 +81,8 @@ class Btn2AndDropMenu:
         self.root_ = lambda: Btn2AndDropMenu(self.author, self.btn1, self.btn2, self.menu1, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for component_ in self.components:
             if not component_.hidden:
@@ -67,6 +98,21 @@ class Btn3AndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  button2: SButton, button3: SButton, menu1: SDropMenu,
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            button1: takes button type SButton
+            button2: takes button type SButton
+            button3: takes button type SButton
+            menu1: takes dropmenu type SDropMenu
+            timeout: Interaction Timeout
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.timeout = timeout
 
@@ -99,6 +145,22 @@ class Btn4AndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  button2: SButton, button3: SButton, button4: SButton, menu1: SDropMenu,
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            button1: takes button type SButton
+            button2: takes button type SButton
+            button3: takes button type SButton
+            button4: takes button type SButton
+            menu1: takes dropmenu type SDropMenu
+            timeout: Interaction Timeout
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.timeout = timeout
 
@@ -117,6 +179,8 @@ class Btn4AndDropMenu:
                                              self.btn3, self.btn4, self.menu1, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for component_ in self.components:
             if not component_.hidden:
@@ -131,6 +195,20 @@ class Btn4AndDropMenu:
 class BtnAnd2DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, menu1: SDropMenu, menu2: SDropMenu,
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            button1: takes button type SButton
+            menu1: takes dropmenu type SDropMenu
+            menu2: takes dropmenu type SDropMenu
+            timeout: Interaction Timeout
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.timeout = timeout
 
@@ -146,6 +224,8 @@ class BtnAnd2DropMenu:
         self.root_ = lambda: BtnAnd2DropMenu(self.author, self.btn1, self.menu1, self.menu2, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for component_ in self.components:
             if not component_.hidden:
@@ -160,6 +240,20 @@ class BtnAnd2DropMenu:
 class Btn2And2DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, menu1: SDropMenu, menu2: SDropMenu,
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+            author: Interaction User
+            button1: takes button type SButton
+            button2: takes button type SButton
+            menu1: takes dropmenu type SDropMenu
+            menu2: takes dropmenu type SDropMenu
+            timeout: Interaction Timeout
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.timeout = timeout
 
@@ -177,6 +271,8 @@ class Btn2And2DropMenu:
                                               self.menu2, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for component_ in self.components:
             if not component_.hidden:
@@ -192,6 +288,22 @@ class Btn3And2DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, button3: SButton,
                  menu1: SDropMenu, menu2: SDropMenu,
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            button1: takes button type SButton
+            button2: takes button type SButton
+            button3: takes button type SButton
+            menu1: takes dropmenu type SDropMenu
+            menu2: takes dropmenu type SDropMenu
+            timeout: Interaction Timeout
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.timeout = timeout
 
@@ -210,6 +322,8 @@ class Btn3And2DropMenu:
                                               self.menu2, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for component_ in self.components:
             if not component_.hidden:
@@ -225,6 +339,21 @@ class BtnAnd3DropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  menu1: SDropMenu, menu2: SDropMenu, menu3: SDropMenu,
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            button1: takes button type SButton
+            menu1: takes dropmenu type SDropMenu
+            menu2: takes dropmenu type SDropMenu
+            menu3: takes dropmenu type SDropMenu
+            timeout: Interaction Timeout
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.timeout = timeout
 
@@ -242,6 +371,8 @@ class BtnAnd3DropMenu:
                                              self.menu3, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for component_ in self.components:
             if not component_.hidden:
@@ -257,6 +388,22 @@ class Btn2And3DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton,
                  menu1: SDropMenu, menu2: SDropMenu, menu3: SDropMenu,
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            button1: takes button type SButton
+            button2: takes button type SButton
+            menu1: takes dropmenu type SDropMenu
+            menu2: takes dropmenu type SDropMenu
+            menu3: takes dropmenu type SDropMenu
+            timeout: Interaction Timeout
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.timeout = timeout
 
@@ -275,6 +422,8 @@ class Btn2And3DropMenu:
                                              self.menu3, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for component_ in self.components:
             if not component_.hidden:
@@ -290,6 +439,19 @@ class BtnAnd4DropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  menu1: SDropMenu, menu2: SDropMenu, menu3: SDropMenu, menu4: SDropMenu,
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            button1: takes button type SButton
+            menu1: takes dropmenu type SDropMenu
+            menu2: takes dropmenu type SDropMenu
+            menu3: takes dropmenu type SDropMenu
+            menu4: takes dropmenu type SDropMenu
+            timeout: Interaction Timeout
+        """
+
         self.author = author
         self.timeout = timeout
 
@@ -308,6 +470,8 @@ class BtnAnd4DropMenu:
                                              self.menu3, self.menu4, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for component_ in self.components:
             if not component_.hidden:
@@ -322,6 +486,16 @@ class BtnAnd4DropMenu:
 class MultiBtnAndDropMenu:
     def __init__(self, author: discord.Member, buttons: List[SButton], menus: List[SDropMenu],
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            buttons: takes List of button type SButton
+            menus: takes List of dropmenu type SDropMenu
+            timeout: Interaction Timeout
+        """
+
         self.author = author
         self.timeout = timeout
         self.btns: List = buttons
@@ -335,6 +509,8 @@ class MultiBtnAndDropMenu:
         self.root_ = lambda: MultiBtnAndDropMenu(self.author, self.btns, self.menus, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for btn_ in self.btns:
             if not btn_.hidden:
@@ -353,6 +529,20 @@ MultiBtnAndMenu = MultiBtnAndDropMenu
 class MultiBtnsAndMenus:
     def __init__(self, author: discord.Member, components: List[Union[SButton, SDropMenu]],
                  *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+        """
+        🌟 Full Flexibility
+
+        Responsive Buttons and DropMenus
+
+        Parameters:
+            author: Interaction User
+            components: Takes List of components (both buttons and drop menus)
+            timeout: Interaction Timeout
+
+        Returns:
+            view: discord.ui.View
+        """
+
         self.author = author
         self.timeout = timeout
         self.components = components
@@ -364,6 +554,8 @@ class MultiBtnsAndMenus:
         self.root_ = lambda: MultiBtnsAndMenus(self.author, self.components, timeout=self.timeout)
 
     def view(self) -> ui.View:
+        """:returns: discord.ui.View"""
+
         view_ = ui.View(timeout=self.timeout)
         for component in self.components:
             if not component.hidden:

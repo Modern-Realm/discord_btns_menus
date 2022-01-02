@@ -26,6 +26,29 @@ class StructureOfButton:
                  hidden: bool = False,
                  author: discord.Member = None,
                  verify_: bool = True):
+        """
+        It is a decorator used to create a **Button** overwriting ui.Button
+
+        Parameters:
+            label: Label of the Button
+            custom_id: Unique ID of the Button
+            disabled: It is used to enable/disable the Button, i.e. Preventing user from using it
+            style: Color of the Button
+            url: Onclick Redirects to the given url
+            emoji: Emoji for the Button
+            row: Places the Button in given Row
+            response: Sends the message (str, embed) in user channel
+            rewrite: It is used to send the message by editing the original message rather than sending a new one
+            ephemeral: It is used to send the message where it's only visible to interacted user or to all
+            delete_msg: Deletes the original message
+            hidden: It hides the Button from View
+            author: Interaction User
+            verify_: It is used to make the func to check for author parameter or not
+
+        Returns:
+            Button
+        """
+
         self.kwargs = {
             "author": author,
             "label": label,
@@ -47,13 +70,34 @@ class StructureOfButton:
 
         self.after_: Optional[dict] = None
 
-    def update_one(self, details, option: str):
+    def update_one(self, details: Any, option: str):
+        """
+        Updates the option of the **Button**
+
+        Parameters:
+            details: Takes any datatype for updating
+            option: The option which should be overwritten
+
+        Returns:
+            None
+        """
+
         if option not in self.kwargs.keys():
             raise ValueError(f"Invalid option `--{option}`")
         else:
             self.kwargs[option] = details
 
     def update(self, **options):
+        """
+        Updates the options of the **Button*
+
+        Parameters:
+            options: takes variables
+
+        Returns:
+            None
+        """
+
         for key in options:
             if key not in self.kwargs.keys():
                 raise ValueError(f"Invalid option `--{key}`")
@@ -62,29 +106,74 @@ class StructureOfButton:
 
     @property
     def args(self) -> Dict:
+        """
+        It's a property used to get kwargs of the button
+
+        - Aliases: ['args', 'kwargs']
+
+        :return: Dict
+        """
+
         return self.kwargs
 
     @property
-    def author(self) -> discord.Member:
+    def author(self) -> Optional[discord.Member]:
+        """
+        It's a property used to get author of the button
+
+        :return: user: discord.Member (or) None
+        """
+
         return self.kwargs['author']
 
     @property
     def name(self) -> str:
+        """
+        It's a property used to get label of the button
+
+        :return: name: str
+        """
+
         return self.kwargs['label']
 
     @property
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
+        """
+        It's a property used to get ID of the button
+
+        :return: custom_id: str (or) None
+        """
+
         return self.kwargs['custom_id']
 
     @property
     def is_ephemeral(self) -> bool:
+        """
+        It's a property used to check whether it's ephemeral or not
+
+        :return: ephemeral: bool , i.e [True, False]
+        """
+
         return self.kwargs['ephemeral']
 
     @property
     def hidden(self) -> bool:
+        """
+        It's a property used to get hidden parm of the button
+
+        :return: hidden: bool, i.e [True, False]
+        """
+
         return self.kwargs['hidden']
 
     def after_response(self, **options):
+        """
+        It's an event type function which changes the provided options after button ( onclick )
+
+        :param options: takes variables
+        :return: None
+        """
+
         kwargs = {}
         if len(options) >= 1:
             for key in options:
@@ -96,13 +185,38 @@ class StructureOfButton:
             self.after_ = kwargs
 
     async def add_coro_func(self, function, *args, **kwargs):
+        """
+        It's an asynchronous function which stores same function type
+        and adds the func to button for execution after getting clicked
+
+        :param function: takes asynchronous function
+        :param args: takes args of the function provided by a user
+        :param kwargs: takes kwargs of the function provided by a user
+        :return: None
+        """
+
         self.kwargs['coro_func'] = lambda: function(*args, **kwargs)
 
     def add_func(self, function, *args, **kwargs):
+        """
+        It's a function which stores same function type and adds the func to button for execution after getting clicked
+
+        :param function: takes a function
+        :param args: takes args of the function provided by a user
+        :param kwargs: takes kwargs of the function provided by a user
+        :return: None
+        """
+
         self.kwargs['func'] = lambda: function(*args, **kwargs)
 
     @property
     def after_resp(self) -> Optional[Dict]:
+        """
+        It's a property used to get a dictionary of options which are to be changed after button click
+
+        :returns: Dict (or) None
+        """
+
         return self.after_
 
 
@@ -177,6 +291,28 @@ class StructureOfDropMenu:
                  author: discord.Member = None,
                  verify_: bool = True
                  ):
+        """
+        It is a decorator used to create a **DropMenu** overwriting ui.Select
+
+        Parameters:
+            custom_id: Unique ID of the Button
+            placeholder: A short placeholder for DropMenu
+            min_values: Limiting the user to select atleast minimum options in DropMenu
+            max_values: Limiting the user to select atmost maximum options in DropMenu
+            options: Options which are shown in DropMenu and can be selected by interacted user
+            disabled: It is used to enable/disable the DropMenu, i.e. Preventing user from using it
+            row: Places the DropMenu in given Row
+            response: Sends the message (str, embed) in user channel
+            rewrite: It is used to send the message by editing the original message rather than sending a new one
+            ephemeral: It is used to send the message where it's only visible to interacted user or to all
+            hidden:  It hides the Button from View
+            author: Interaction User
+            verify_: It is used to make the func to check for author parameter or not
+
+        Returns:
+            DropMenu
+        """
+
         self.kwargs = {
             "author": author,
             "custom_id": custom_id,
@@ -214,33 +350,83 @@ class StructureOfDropMenu:
 
     @property
     def args(self) -> Dict:
+        """
+        It's a property used to get kwargs of the DropMenu
+
+        - Aliases: ['args', 'kwargs']
+
+        :return: Dict
+        """
+
         return self.kwargs
 
     @property
     def author(self) -> Optional[discord.Member]:
+        """
+        It's a property used to get author of the DropMenu
+
+        :return: user: discord.Member (or) None
+        """
+
         return self.kwargs['author']
 
     @property
-    def name(self) -> Optional[str]:
-        return self.kwargs['label']
+    def placeholder(self) -> Optional[str]:
+        """
+        It's a property used to get placeholder of the DropMenu
+
+        :return:
+        """
+
+        return self.kwargs['placeholder']
 
     @property
-    def id(self) -> str:
+    def id(self) -> Optional[str]:
+        """
+        It's a property used to get ID of the DropMenu
+
+        :return: custom_id: str (or) None
+        """
+
         return self.kwargs['custom_id']
 
     @property
     def is_ephemeral(self) -> bool:
+        """
+        It's a property used to check whether it's ephemeral or not
+
+        :return: ephemeral: bool , i.e [True, False]
+        """
+
         return self.kwargs['ephemeral']
 
     @property
     def hidden(self) -> bool:
+        """
+        It's a property used to get hidden parm of the DropMenu
+
+        :return: hidden: bool, i.e [True, False]
+        """
         return self.kwargs['hidden']
 
     @property
-    def queries(self) -> List:
+    def queries(self) -> Optional[List]:
+        """
+        It's a property used to get all queries of the DropMenu
+
+        :return: queries: List (or) None
+        """
+
         return self.kwargs['queries']
 
     def after_response(self, **options):
+        """
+        It's an event type function which changes the provided options after option (on-select) of the DropMenu
+
+        :param options: takes variables
+        :return: None
+        """
+
         kwargs = {}
         if len(options) >= 1:
             for key in options:
@@ -253,26 +439,76 @@ class StructureOfDropMenu:
 
     @property
     def after_resp(self) -> Optional[Dict]:
+        """
+        It's a property used to get all options which are to be changed after option (on-select) of the DropMenu
+
+        :return: Dict (or) None
+        """
+
         return self.after_
 
-    async def add_coro_func(self, function, *args):
-        self.kwargs['coro_func'] = lambda: function(*args)
+    async def add_coro_func(self, function, *args, **kwargs):
+        """
+        It's an asynchronous function which stores same function type
+        and adds the func to DropMenu for execution after getting an option selected
 
-    def add_func(self, function, *args):
-        self.kwargs['func'] = lambda: function(*args)
+        :param function: takes asynchronous function
+        :param args: takes args of the function provided by a user
+        :param kwargs: takes kwargs of the function provided by a user
+        :return: None
+        """
+
+        self.kwargs['coro_func'] = lambda: function(*args, **kwargs)
+
+    def add_func(self, function, *args, **kwargs):
+        """
+        It's a function which stores same function type and
+        adds the func to DropMenu for execution after getting an option selected
+
+        :param function: takes a function
+        :param args: takes args of the function provided by a user
+        :param kwargs: takes kwargs of the function provided by a user
+        :return: None
+        """
+
+        self.kwargs['func'] = lambda: function(*args, **kwargs)
 
     def add_query(self, *query: Tuple[str, Union[str, discord.Embed]]):
+        """
+        It's an event type function used to add queries for the DropMenu
+
+        :param query: takes option-name and response
+        :return: None
+        """
+
         for query in query:
             queries_: list = self.kwargs['queries']
             queries_.append(query)
 
     def add_queries(self, *queries: Tuple[List[str], Union[str, discord.Embed]]):
+        """
+        It's an event type function used to add queries for the DropMenu
+
+        :param queries: takes option-name and response
+        :return: None
+        """
+
         for query_ in queries:
             queries_: list = self.kwargs['queries']
             queries_.append(query_)
 
     @staticmethod
     def convert_resp(content: str, values: list):
+        """
+        It's not a reusable function
+
+        Used for formatting the provided content with respective values
+
+        :param content: takes content/ message
+        :param values: selected values of the DropMenu
+        :return: None
+        """
+
         count = 1
         max_count = len(values) + 5
         while count <= max_count:
@@ -396,10 +632,24 @@ class Menu(ui.Select):
 
 
 def is_embed(response) -> bool:
+    """
+    Checks whether the type of response is str (or) embed
+
+    :param response: takes str (or) embed
+    :return: bool, i.e [True, False]
+    """
     return isinstance(response, discord.Embed)
 
 
 def check_for_Invoker(component: Union[SButton, SDropMenu], interaction) -> bool:
+    """
+    Checks whether the author of the component and interaction are same or not
+
+    :param component: takes either button: SButton or dropmenu: SDropMenu
+    :param interaction:
+    :return: bool, i.e [True, False]
+    """
+
     args_ = component.args
     type_ = args_['verify']
     if type_:
@@ -409,24 +659,3 @@ def check_for_Invoker(component: Union[SButton, SDropMenu], interaction) -> bool
             return False
     else:
         return True
-
-
-def embed(context: str, color=0xffff00, timestamp: bool = False) -> discord.Embed:
-    present_time = datetime.utcnow() if timestamp else None
-    em = discord.Embed(description=context, color=discord.Color(color), timestamp=present_time)
-    return em
-
-
-def rich_embed(_title: str, description: str, color=0xffff00, timestamp: bool = False) -> discord.Embed:
-    present_time = datetime.utcnow() if timestamp else None
-    em = discord.Embed(title=_title, description=description, color=discord.Color(color), timestamp=present_time)
-    return em
-
-# This codes can also be usable ....
-
-# async def call_coro_function(function, *args, **kwargs):
-#     return await function(*args, **kwargs)
-#
-
-# def call_function(function, *args, **kwargs):
-#     return function(*args, **kwargs)
