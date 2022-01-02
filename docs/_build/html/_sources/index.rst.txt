@@ -11,6 +11,7 @@ Welcome to py's documentation!
    :caption: Contents:
 
    cd/modules
+   cd/btns_menus
 
 
 Indices and tables
