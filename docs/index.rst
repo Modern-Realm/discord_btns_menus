@@ -10,8 +10,9 @@ Welcome to py's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-   cd/modules
    cd/btns_menus
+   cd/modules
+   cd/btns_menus.builds.base
 
 
 Indices and tables
