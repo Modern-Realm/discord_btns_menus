@@ -7,16 +7,14 @@ from discord import ButtonStyle, SelectOption
 def SOption(*, name: str, embed_: discord.Embed, description: str = None,
             emoji: Union[str, discord.Emoji, discord.PartialEmoji] = None
             ) -> Dict:
-    """Options
+    """It's a decorator used to overwrite options in discord.ui.Select
 
-    Parameters:
-        name : label for option
-        embed_: If option is selected, the embed will be sent !
-        description: Description for the option
-        emoji: Emoji for the option
+    :param name : label for option
+    :param embed_: If option is selected, the embed will be sent !
+    :param description: Description for the option
+    :param emoji: Emoji for the option
 
-    Returns:
-        Dict
+    :returns: Dict
     """
     decorator_ = {
         "name": name, "description": description, "embed": embed_, "emoji": emoji
@@ -37,16 +35,14 @@ class Paginator:
         """
         Paginator is used to show users the given embeds in pages format using **navigation Buttons and DropMenus**
 
-        Parameters:
-            author: User who will interact with the Paginator
-            embeds: The list of embeds that acts as Pages
-            commands_list (optional): The list of options which are shown as options in a Drop Menu
-            buttons (optional): List of buttons used to navigate of interact with the pages/embeds
-            menus (optional): List of Menus used to make a user select options from it
-            timeout (optional): Timeout of the interaction
+        :param author: User who will interact with the Paginator
+        :param embeds: The list of embeds that acts as Pages
+        :param commands_list: The list of options which are shown as options in a Drop Menu
+        :param buttons: List of buttons used to navigate of interact with the pages/embeds
+        :param menus: List of Menus used to make a user select options from it
+        :param timeout: Timeout of the interaction
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author

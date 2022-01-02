@@ -10,13 +10,11 @@ class SingleDropMenu:
         """
         Responsive DropMenu
 
-        Parameters:
-            author: Interaction User
-            drop_menu1: Takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param drop_menu1: Takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -45,14 +43,12 @@ class DuoDropMenu:
         """
         Responsive DropMenus
 
-        Parameters:
-            author: Interaction User
-            drop_menu1: Takes dropmenu type SDropmenu
-            drop_menu2: Takes dropmenu type SDropmenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param drop_menu1: Takes dropmenu type SDropmenu
+        :param drop_menu2: Takes dropmenu type SDropmenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -82,15 +78,13 @@ class TrioDropMenu:
         """
         Responsive DropMenus
 
-        Parameters:
-            author: Interaction User
-            drop_menu1: takes dropmenu type SDropMenu
-            drop_menu2: takes dropmenu type SDropMenu
-            drop_menu3: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param drop_menu1: takes dropmenu type SDropMenu
+        :param drop_menu2: takes dropmenu type SDropMenu
+        :param drop_menu3: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -122,16 +116,14 @@ class QuartetDropMenu:
         """
         Responsive DropMenus
 
-        Parameters:
-            author: Interaction User
-            drop_menu1: takes dropmenu type SDropMenu
-            drop_menu2: takes dropmenu type SDropMenu
-            drop_menu3: takes dropmenu type SDropMenu
-            drop_menu4: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param drop_menu1: takes dropmenu type SDropMenu
+        :param drop_menu2: takes dropmenu type SDropMenu
+        :param drop_menu3: takes dropmenu type SDropMenu
+        :param drop_menu4: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -163,17 +155,15 @@ class QuintetDropMenu:
         """
         Responsive DropMenus
 
-        Parameters:
-            author: Interaction User
-            drop_menu1: takes dropmenu type SDropMenu
-            drop_menu2: takes dropmenu type SDropMenu
-            drop_menu3: takes dropmenu type SDropMenu
-            drop_menu4: takes dropmenu type SDropMenu
-            drop_menu5: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param drop_menu1: takes dropmenu type SDropMenu
+        :param drop_menu2: takes dropmenu type SDropMenu
+        :param drop_menu3: takes dropmenu type SDropMenu
+        :param drop_menu4: takes dropmenu type SDropMenu
+        :param drop_menu5: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -203,13 +193,11 @@ class MultiDropMenu:
         """
         Responsive Multi DropMenus
 
-        Parameters:
-            author: Interaction User
-            menus: takes List of dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param menus: takes List of dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author

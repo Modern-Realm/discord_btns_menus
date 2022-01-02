@@ -12,14 +12,12 @@ class BtnAndDropMenu:
         """
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            button1: takes button type SButton
-            menu1: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: takes button type SButton
+        :param menu1: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -55,15 +53,13 @@ class Btn2AndDropMenu:
         """
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            button1: takes button type SButton
-            button2: takes button type SButton
-            menu1: takes Dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: takes button type SButton
+        :param button2: takes button type SButton
+        :param menu1: takes Dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -101,16 +97,14 @@ class Btn3AndDropMenu:
         """
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            button1: takes button type SButton
-            button2: takes button type SButton
-            button3: takes button type SButton
-            menu1: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: takes button type SButton
+        :param button2: takes button type SButton
+        :param button3: takes button type SButton
+        :param menu1: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -148,17 +142,15 @@ class Btn4AndDropMenu:
         """
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            button1: takes button type SButton
-            button2: takes button type SButton
-            button3: takes button type SButton
-            button4: takes button type SButton
-            menu1: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: takes button type SButton
+        :param button2: takes button type SButton
+        :param button3: takes button type SButton
+        :param button4: takes button type SButton
+        :param menu1: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -198,15 +190,13 @@ class BtnAnd2DropMenu:
         """
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            button1: takes button type SButton
-            menu1: takes dropmenu type SDropMenu
-            menu2: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: takes button type SButton
+        :param menu1: takes dropmenu type SDropMenu
+        :param menu2: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -243,15 +233,14 @@ class Btn2And2DropMenu:
         """
         Responsive Buttons and DropMenus
 
-            author: Interaction User
-            button1: takes button type SButton
-            button2: takes button type SButton
-            menu1: takes dropmenu type SDropMenu
-            menu2: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: takes button type SButton
+        :param button2: takes button type SButton
+        :param menu1: takes dropmenu type SDropMenu
+        :param menu2: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -291,17 +280,15 @@ class Btn3And2DropMenu:
         """
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            button1: takes button type SButton
-            button2: takes button type SButton
-            button3: takes button type SButton
-            menu1: takes dropmenu type SDropMenu
-            menu2: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: takes button type SButton
+        :param button2: takes button type SButton
+        :param button3: takes button type SButton
+        :param menu1: takes dropmenu type SDropMenu
+        :param menu2: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -342,16 +329,14 @@ class BtnAnd3DropMenu:
         """
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            button1: takes button type SButton
-            menu1: takes dropmenu type SDropMenu
-            menu2: takes dropmenu type SDropMenu
-            menu3: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: takes button type SButton
+        :param menu1: takes dropmenu type SDropMenu
+        :param menu2: takes dropmenu type SDropMenu
+        :param menu3: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -391,17 +376,15 @@ class Btn2And3DropMenu:
         """
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            button1: takes button type SButton
-            button2: takes button type SButton
-            menu1: takes dropmenu type SDropMenu
-            menu2: takes dropmenu type SDropMenu
-            menu3: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: takes button type SButton
+        :param button2: takes button type SButton
+        :param menu1: takes dropmenu type SDropMenu
+        :param menu2: takes dropmenu type SDropMenu
+        :param menu3: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -442,14 +425,15 @@ class BtnAnd4DropMenu:
         """
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            button1: takes button type SButton
-            menu1: takes dropmenu type SDropMenu
-            menu2: takes dropmenu type SDropMenu
-            menu3: takes dropmenu type SDropMenu
-            menu4: takes dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: takes button type SButton
+        :param menu1: takes dropmenu type SDropMenu
+        :param menu2: takes dropmenu type SDropMenu
+        :param menu3: takes dropmenu type SDropMenu
+        :param menu4: takes dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
+
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -489,11 +473,12 @@ class MultiBtnAndDropMenu:
         """
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            buttons: takes List of button type SButton
-            menus: takes List of dropmenu type SDropMenu
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param buttons: takes List of button type SButton
+        :param menus: takes List of dropmenu type SDropMenu
+        :param timeout: Interaction Timeout
+
+        :returns: view: discord.ui.View
         """
 
         self.author = author
@@ -534,13 +519,11 @@ class MultiBtnsAndMenus:
 
         Responsive Buttons and DropMenus
 
-        Parameters:
-            author: Interaction User
-            components: Takes List of components (both buttons and drop menus)
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param components: Takes List of components (both buttons and drop menus)
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
 
         self.author = author

@@ -10,14 +10,13 @@ class SingleButton:
         """
         Responsive Button
 
-        Parameters:
-            author: Interaction User
-            button1: Takes Button Type SButton
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: Takes Button Type SButton
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
+
         self.author = author
         self.timeout = timeout
 
@@ -44,15 +43,14 @@ class DuoButton:
         """
         Responsive Buttons
 
-        Parameters:
-            author: Interaction User
-            button1: Takes Button Type SButton
-            button2: Takes Button Type SButton
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: Takes Button Type SButton
+        :param button2: Takes Button Type SButton
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
+
         self.author = author
         self.timeout = timeout
 
@@ -80,16 +78,15 @@ class TrioButton:
         """
         Responsive Buttons
 
-        Parameters:
-            author: Interaction User
-            button1: Takes Button Type SButton
-            button2: Takes Button Type SButton
-            button3: Takes Button Type SButton
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: Takes Button Type SButton
+        :param button2: Takes Button Type SButton
+        :param button3: Takes Button Type SButton
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
+
         self.author = author
         self.timeout = timeout
 
@@ -117,16 +114,14 @@ class QuartetButton:
         """
         Responsive Buttons
 
-        Parameters:
-            author: Interaction User
-            button1: Takes Button Type SButton
-            button2: Takes Button Type SButton
-            button3: Takes Button Type SButton
-            button4: Takes Button Type SButton
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: Takes Button Type SButton
+        :param button2: Takes Button Type SButton
+        :param button3: Takes Button Type SButton
+        :param button4: Takes Button Type SButton
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
         self.author = author
         self.timeout = timeout
@@ -157,17 +152,15 @@ class QuintetButton:
         """
         Responsive Buttons
 
-        Parameters:
-            author: Interaction User
-            button1: Takes Button Type SButton
-            button2: Takes Button Type SButton
-            button3: Takes Button Type SButton
-            button4: Takes Button Type SButton
-            button5: Takes Button Type SButton
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param button1: Takes Button Type SButton
+        :param button2: Takes Button Type SButton
+        :param button3: Takes Button Type SButton
+        :param button4: Takes Button Type SButton
+        :param button5: Takes Button Type SButton
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
         self.author = author
         self.timeout = timeout
@@ -196,13 +189,11 @@ class MultiButton:
         """
         Responsive Buttons
 
-        Parameters:
-            author: Interaction User
-            buttons: Takes Button Type SButton
-            timeout: Interaction Timeout
+        :param author: Interaction User
+        :param buttons: Takes Button Type SButton
+        :param timeout: Interaction Timeout
 
-        Returns:
-            view: discord.ui.View
+        :returns: view: discord.ui.View
         """
         self.author = author
         self.timeout = timeout

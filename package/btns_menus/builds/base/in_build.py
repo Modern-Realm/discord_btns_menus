@@ -29,24 +29,22 @@ class StructureOfButton:
         """
         It is a decorator used to create a **Button** overwriting ui.Button
 
-        Parameters:
-            label: Label of the Button
-            custom_id: Unique ID of the Button
-            disabled: It is used to enable/disable the Button, i.e. Preventing user from using it
-            style: Color of the Button
-            url: Onclick Redirects to the given url
-            emoji: Emoji for the Button
-            row: Places the Button in given Row
-            response: Sends the message (str, embed) in user channel
-            rewrite: It is used to send the message by editing the original message rather than sending a new one
-            ephemeral: It is used to send the message where it's only visible to interacted user or to all
-            delete_msg: Deletes the original message
-            hidden: It hides the Button from View
-            author: Interaction User
-            verify_: It is used to make the func to check for author parameter or not
+        :param label: Label of the Button
+        :param custom_id: Unique ID of the Button
+        :param disabled: It is used to enable/disable the Button, i.e. Preventing user from using it
+        :param style: Color of the Button
+        :param url: Onclick Redirects to the given url
+        :param emoji: Emoji for the Button
+        :param row: Places the Button in given Row
+        :param response: Sends the message (str, embed) in user channel
+        :param rewrite: It is used to send the message by editing the original message rather than sending a new one
+        :param ephemeral: It is used to send the message where it's only visible to interacted user or to all
+        :param delete_msg: Deletes the original message
+        :param hidden: It hides the Button from View
+        :param author: Interaction User
+        :param verify_: It is used to make the func to check for author parameter or not
 
-        Returns:
-            Button
+        :returns: Button
         """
 
         self.kwargs = {
@@ -74,12 +72,10 @@ class StructureOfButton:
         """
         Updates the option of the **Button**
 
-        Parameters:
-            details: Takes any datatype for updating
-            option: The option which should be overwritten
+        :param details: Takes any datatype for updating
+        :param option: The option which should be overwritten
 
-        Returns:
-            None
+        :returns: None
         """
 
         if option not in self.kwargs.keys():
@@ -91,11 +87,9 @@ class StructureOfButton:
         """
         Updates the options of the **Button*
 
-        Parameters:
-            options: takes variables
+        :param options: takes variables
 
-        Returns:
-            None
+        :returns: None
         """
 
         for key in options:
@@ -111,7 +105,7 @@ class StructureOfButton:
 
         - Aliases: ['args', 'kwargs']
 
-        :return: Dict
+        :returns: Dict
         """
 
         return self.kwargs
@@ -121,7 +115,7 @@ class StructureOfButton:
         """
         It's a property used to get author of the button
 
-        :return: user: discord.Member (or) None
+        :returns: user: discord.Member (or) None
         """
 
         return self.kwargs['author']
@@ -131,7 +125,7 @@ class StructureOfButton:
         """
         It's a property used to get label of the button
 
-        :return: name: str
+        :returns: name: str
         """
 
         return self.kwargs['label']
@@ -141,7 +135,7 @@ class StructureOfButton:
         """
         It's a property used to get ID of the button
 
-        :return: custom_id: str (or) None
+        :returns: custom_id: str (or) None
         """
 
         return self.kwargs['custom_id']
@@ -151,7 +145,7 @@ class StructureOfButton:
         """
         It's a property used to check whether it's ephemeral or not
 
-        :return: ephemeral: bool , i.e [True, False]
+        :returns: ephemeral: bool , i.e [True, False]
         """
 
         return self.kwargs['ephemeral']
@@ -161,7 +155,7 @@ class StructureOfButton:
         """
         It's a property used to get hidden parm of the button
 
-        :return: hidden: bool, i.e [True, False]
+        :returns: hidden: bool, i.e [True, False]
         """
 
         return self.kwargs['hidden']
@@ -171,7 +165,7 @@ class StructureOfButton:
         It's an event type function which changes the provided options after button ( onclick )
 
         :param options: takes variables
-        :return: None
+        :returns: None
         """
 
         kwargs = {}
@@ -192,7 +186,7 @@ class StructureOfButton:
         :param function: takes asynchronous function
         :param args: takes args of the function provided by a user
         :param kwargs: takes kwargs of the function provided by a user
-        :return: None
+        :returns: None
         """
 
         self.kwargs['coro_func'] = lambda: function(*args, **kwargs)
@@ -204,7 +198,7 @@ class StructureOfButton:
         :param function: takes a function
         :param args: takes args of the function provided by a user
         :param kwargs: takes kwargs of the function provided by a user
-        :return: None
+        :returns: None
         """
 
         self.kwargs['func'] = lambda: function(*args, **kwargs)
@@ -294,23 +288,21 @@ class StructureOfDropMenu:
         """
         It is a decorator used to create a **DropMenu** overwriting ui.Select
 
-        Parameters:
-            custom_id: Unique ID of the Button
-            placeholder: A short placeholder for DropMenu
-            min_values: Limiting the user to select atleast minimum options in DropMenu
-            max_values: Limiting the user to select atmost maximum options in DropMenu
-            options: Options which are shown in DropMenu and can be selected by interacted user
-            disabled: It is used to enable/disable the DropMenu, i.e. Preventing user from using it
-            row: Places the DropMenu in given Row
-            response: Sends the message (str, embed) in user channel
-            rewrite: It is used to send the message by editing the original message rather than sending a new one
-            ephemeral: It is used to send the message where it's only visible to interacted user or to all
-            hidden:  It hides the Button from View
-            author: Interaction User
-            verify_: It is used to make the func to check for author parameter or not
+        :param custom_id: Unique ID of the Button
+        :param placeholder: A short placeholder for DropMenu
+        :param min_values: Limiting the user to select atleast minimum options in DropMenu
+        :param max_values: Limiting the user to select atmost maximum options in DropMenu
+        :param options: Options which are shown in DropMenu and can be selected by interacted user
+        :param disabled: It is used to enable/disable the DropMenu, i.e. Preventing user from using it
+        :param row: Places the DropMenu in given Row
+        :param response: Sends the message (str, embed) in user channel
+        :param rewrite: It is used to send the message by editing the original message rather than sending a new one
+        :param ephemeral: It is used to send the message where it's only visible to interacted user or to all
+        :param hidden:  It hides the Button from View
+        :param author: Interaction User
+        :param verify_: It is used to make the func to check for author parameter or not
 
-        Returns:
-            DropMenu
+        :returns: DropMenu
         """
 
         self.kwargs = {
@@ -355,7 +347,7 @@ class StructureOfDropMenu:
 
         - Aliases: ['args', 'kwargs']
 
-        :return: Dict
+        :returns: Dict
         """
 
         return self.kwargs
@@ -365,7 +357,7 @@ class StructureOfDropMenu:
         """
         It's a property used to get author of the DropMenu
 
-        :return: user: discord.Member (or) None
+        :returns: user: discord.Member (or) None
         """
 
         return self.kwargs['author']
@@ -375,7 +367,7 @@ class StructureOfDropMenu:
         """
         It's a property used to get placeholder of the DropMenu
 
-        :return:
+        :returns:
         """
 
         return self.kwargs['placeholder']
@@ -385,7 +377,7 @@ class StructureOfDropMenu:
         """
         It's a property used to get ID of the DropMenu
 
-        :return: custom_id: str (or) None
+        :returns: custom_id: str (or) None
         """
 
         return self.kwargs['custom_id']
@@ -395,7 +387,7 @@ class StructureOfDropMenu:
         """
         It's a property used to check whether it's ephemeral or not
 
-        :return: ephemeral: bool , i.e [True, False]
+        :returns: ephemeral: bool , i.e [True, False]
         """
 
         return self.kwargs['ephemeral']
@@ -405,7 +397,7 @@ class StructureOfDropMenu:
         """
         It's a property used to get hidden parm of the DropMenu
 
-        :return: hidden: bool, i.e [True, False]
+        :returns: hidden: bool, i.e [True, False]
         """
         return self.kwargs['hidden']
 
@@ -414,7 +406,7 @@ class StructureOfDropMenu:
         """
         It's a property used to get all queries of the DropMenu
 
-        :return: queries: List (or) None
+        :returns: queries: List (or) None
         """
 
         return self.kwargs['queries']
@@ -424,7 +416,7 @@ class StructureOfDropMenu:
         It's an event type function which changes the provided options after option (on-select) of the DropMenu
 
         :param options: takes variables
-        :return: None
+        :returns: None
         """
 
         kwargs = {}
@@ -442,7 +434,7 @@ class StructureOfDropMenu:
         """
         It's a property used to get all options which are to be changed after option (on-select) of the DropMenu
 
-        :return: Dict (or) None
+        :returns: Dict (or) None
         """
 
         return self.after_
@@ -455,7 +447,7 @@ class StructureOfDropMenu:
         :param function: takes asynchronous function
         :param args: takes args of the function provided by a user
         :param kwargs: takes kwargs of the function provided by a user
-        :return: None
+        :returns: None
         """
 
         self.kwargs['coro_func'] = lambda: function(*args, **kwargs)
@@ -468,7 +460,7 @@ class StructureOfDropMenu:
         :param function: takes a function
         :param args: takes args of the function provided by a user
         :param kwargs: takes kwargs of the function provided by a user
-        :return: None
+        :returns: None
         """
 
         self.kwargs['func'] = lambda: function(*args, **kwargs)
@@ -478,7 +470,7 @@ class StructureOfDropMenu:
         It's an event type function used to add queries for the DropMenu
 
         :param query: takes option-name and response
-        :return: None
+        :returns: None
         """
 
         for query in query:
@@ -490,7 +482,7 @@ class StructureOfDropMenu:
         It's an event type function used to add queries for the DropMenu
 
         :param queries: takes option-name and response
-        :return: None
+        :returns: None
         """
 
         for query_ in queries:
@@ -506,7 +498,7 @@ class StructureOfDropMenu:
 
         :param content: takes content/ message
         :param values: selected values of the DropMenu
-        :return: None
+        :returns: None
         """
 
         count = 1
