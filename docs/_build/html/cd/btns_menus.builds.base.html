@@ -1,0 +1,562 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>btns_menus.builds.base package &#8212; py 1.1 documentation</title>
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+   
+  <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="btns-menus-builds-base-package">
+<h1>btns_menus.builds.base package<a class="headerlink" href="#btns-menus-builds-base-package" title="Permalink to this headline">¶</a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</section>
+<section id="module-btns_menus.builds.base.in_build">
+<span id="btns-menus-builds-base-in-build-module"></span><h2>btns_menus.builds.base.in_build module<a class="headerlink" href="#module-btns_menus.builds.base.in_build" title="Permalink to this headline">¶</a></h2>
+<dl class="py class">
+<dt id="btns_menus.builds.base.in_build.Btn">
+<em class="property">class </em><code class="sig-prename descclassname">btns_menus.builds.base.in_build.</code><code class="sig-name descname">Btn</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span><span class="p">:</span> <span class="n">ClassVar</span></em>, <em class="sig-param"><span class="n">button</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#btns_menus.builds.base.in_build.StructureOfButton" title="btns_menus.builds.base.in_build.StructureOfButton">btns_menus.builds.base.in_build.StructureOfButton</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.Btn" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">discord.ui.button.Button</span></code></p>
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.Btn.callback">
+<em class="property">async </em><code class="sig-name descname">callback</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interaction</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.Btn.callback" title="Permalink to this definition">¶</a></dt>
+<dd><p><a href="#id3"><span class="problematic" id="id4">|coro|</span></a></p>
+<p>The callback associated with this UI item.</p>
+<p>This can be overridden by subclasses.</p>
+<dl class="simple">
+<dt>interaction: <code class="xref py py-class docutils literal notranslate"><span class="pre">Interaction</span></code></dt><dd><p>The interaction that triggered this UI item.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="btns_menus.builds.base.in_build.Menu">
+<em class="property">class </em><code class="sig-prename descclassname">btns_menus.builds.base.in_build.</code><code class="sig-name descname">Menu</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">root</span><span class="p">:</span> <span class="n">ClassVar</span></em>, <em class="sig-param"><span class="n">menu</span><span class="p">:</span> <span class="n"><a class="reference internal" href="#btns_menus.builds.base.in_build.StructureOfDropMenu" title="btns_menus.builds.base.in_build.StructureOfDropMenu">btns_menus.builds.base.in_build.StructureOfDropMenu</a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.Menu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">discord.ui.select.Select</span></code></p>
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.Menu.callback">
+<em class="property">async </em><code class="sig-name descname">callback</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">interaction</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.Menu.callback" title="Permalink to this definition">¶</a></dt>
+<dd><p><a href="#id5"><span class="problematic" id="id6">|coro|</span></a></p>
+<p>The callback associated with this UI item.</p>
+<p>This can be overridden by subclasses.</p>
+<dl class="simple">
+<dt>interaction: <code class="xref py py-class docutils literal notranslate"><span class="pre">Interaction</span></code></dt><dd><p>The interaction that triggered this UI item.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.Menu.query_conditions">
+<code class="sig-name descname">query_conditions</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">queries</span></em><span class="sig-paren">)</span> &#x2192; Optional<span class="p">[</span>Union<span class="p">[</span>str<span class="p">, </span>discord.embeds.Embed<span class="p">]</span><span class="p">]</span><a class="headerlink" href="#btns_menus.builds.base.in_build.Menu.query_conditions" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="btns_menus.builds.base.in_build.SButton">
+<code class="sig-prename descclassname">btns_menus.builds.base.in_build.</code><code class="sig-name descname">SButton</code><a class="headerlink" href="#btns_menus.builds.base.in_build.SButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#btns_menus.builds.base.in_build.StructureOfButton" title="btns_menus.builds.base.in_build.StructureOfButton"><code class="xref py py-class docutils literal notranslate"><span class="pre">btns_menus.builds.base.in_build.StructureOfButton</span></code></a></p>
+</dd></dl>
+
+<dl class="py attribute">
+<dt id="btns_menus.builds.base.in_build.SDropMenu">
+<code class="sig-prename descclassname">btns_menus.builds.base.in_build.</code><code class="sig-name descname">SDropMenu</code><a class="headerlink" href="#btns_menus.builds.base.in_build.SDropMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>alias of <a class="reference internal" href="#btns_menus.builds.base.in_build.StructureOfDropMenu" title="btns_menus.builds.base.in_build.StructureOfDropMenu"><code class="xref py py-class docutils literal notranslate"><span class="pre">btns_menus.builds.base.in_build.StructureOfDropMenu</span></code></a></p>
+</dd></dl>
+
+<dl class="py class">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton">
+<em class="property">class </em><code class="sig-prename descclassname">btns_menus.builds.base.in_build.</code><code class="sig-name descname">StructureOfButton</code><span class="sig-paren">(</span><em class="sig-param">*</em>, <em class="sig-param">label: str</em>, <em class="sig-param">custom_id: Optional[str</em>, <em class="sig-param">None] = None</em>, <em class="sig-param">disabled: bool = False</em>, <em class="sig-param">style: discord.enums.ButtonStyle = &lt;ButtonStyle.secondary: 2&gt;</em>, <em class="sig-param">url: Optional[str</em>, <em class="sig-param">None] = None</em>, <em class="sig-param">emoji: Optional[Union[str</em>, <em class="sig-param">discord.emoji.Emoji</em>, <em class="sig-param">discord.partial_emoji.PartialEmoji]] = None</em>, <em class="sig-param">row: Optional[int</em>, <em class="sig-param">None] = None</em>, <em class="sig-param">response: Optional[Union[str</em>, <em class="sig-param">discord.embeds.Embed]] = None</em>, <em class="sig-param">rewrite: bool = False</em>, <em class="sig-param">ephemeral: bool = False</em>, <em class="sig-param">delete_msg: bool = False</em>, <em class="sig-param">hidden: bool = False</em>, <em class="sig-param">author: discord.member.Member = None</em>, <em class="sig-param">verify_: bool = True</em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.add_coro_func">
+<em class="property">async </em><code class="sig-name descname">add_coro_func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.add_coro_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s an asynchronous function which stores same function type
+and adds the func to button for execution after getting clicked</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> – takes asynchronous function</p></li>
+<li><p><strong>args</strong> – takes args of the function provided by a user</p></li>
+<li><p><strong>kwargs</strong> – takes kwargs of the function provided by a user</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.add_func">
+<code class="sig-name descname">add_func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.add_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a function which stores same function type and adds the func to button for execution after getting clicked</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> – takes a function</p></li>
+<li><p><strong>args</strong> – takes args of the function provided by a user</p></li>
+<li><p><strong>kwargs</strong> – takes kwargs of the function provided by a user</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.after_resp">
+<em class="property">property </em><code class="sig-name descname">after_resp</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.after_resp" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get a dictionary of options which are to be changed after button click</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Dict (or) None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.after_response">
+<code class="sig-name descname">after_response</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.after_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s an event type function which changes the provided options after button ( onclick )</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>options</strong> – takes variables</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.args">
+<em class="property">property </em><code class="sig-name descname">args</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get kwargs of the button</p>
+<ul class="simple">
+<li><p>Aliases: [‘args’, ‘kwargs’]</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.author">
+<em class="property">property </em><code class="sig-name descname">author</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.author" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get author of the button</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>user: discord.Member (or) None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.hidden">
+<em class="property">property </em><code class="sig-name descname">hidden</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.hidden" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get hidden parm of the button</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>hidden: bool, i.e [True, False]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get ID of the button</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>custom_id: str (or) None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.is_ephemeral">
+<em class="property">property </em><code class="sig-name descname">is_ephemeral</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.is_ephemeral" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to check whether it’s ephemeral or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>ephemeral: bool , i.e [True, False]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.name">
+<em class="property">property </em><code class="sig-name descname">name</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.name" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get label of the button</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>name: str</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the options of the <a href="#id1"><span class="problematic" id="id2">**</span></a>Button*</p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>options: takes variables</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfButton.update_one">
+<code class="sig-name descname">update_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">details</span><span class="p">:</span> <span class="n">Any</span></em>, <em class="sig-param"><span class="n">option</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfButton.update_one" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the option of the <strong>Button</strong></p>
+<dl class="simple">
+<dt>Parameters:</dt><dd><p>details: Takes any datatype for updating
+option: The option which should be overwritten</p>
+</dd>
+<dt>Returns:</dt><dd><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu">
+<em class="property">class </em><code class="sig-prename descclassname">btns_menus.builds.base.in_build.</code><code class="sig-name descname">StructureOfDropMenu</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span></em>, <em class="sig-param"><span class="n">custom_id</span><span class="p">:</span> <span class="n">str</span> <span class="o">=</span> <span class="default_value">...</span></em>, <em class="sig-param"><span class="n">placeholder</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>str<span class="p">, </span>None<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">min_values</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">max_values</span><span class="p">:</span> <span class="n">int</span> <span class="o">=</span> <span class="default_value">1</span></em>, <em class="sig-param"><span class="n">options</span><span class="p">:</span> <span class="n">List<span class="p">[</span>discord.components.SelectOption<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">disabled</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">row</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>int<span class="p">, </span>None<span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">response</span><span class="p">:</span> <span class="n">Optional<span class="p">[</span>Union<span class="p">[</span>str<span class="p">, </span>discord.embeds.Embed<span class="p">]</span><span class="p">]</span></span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">rewrite</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">ephemeral</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">hidden</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">False</span></em>, <em class="sig-param"><span class="n">author</span><span class="p">:</span> <span class="n">discord.member.Member</span> <span class="o">=</span> <span class="default_value">None</span></em>, <em class="sig-param"><span class="n">verify_</span><span class="p">:</span> <span class="n">bool</span> <span class="o">=</span> <span class="default_value">True</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.add_coro_func">
+<em class="property">async </em><code class="sig-name descname">add_coro_func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.add_coro_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s an asynchronous function which stores same function type
+and adds the func to DropMenu for execution after getting an option selected</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> – takes asynchronous function</p></li>
+<li><p><strong>args</strong> – takes args of the function provided by a user</p></li>
+<li><p><strong>kwargs</strong> – takes kwargs of the function provided by a user</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.add_func">
+<code class="sig-name descname">add_func</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">function</span></em>, <em class="sig-param"><span class="o">*</span><span class="n">args</span></em>, <em class="sig-param"><span class="o">**</span><span class="n">kwargs</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.add_func" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a function which stores same function type and
+adds the func to DropMenu for execution after getting an option selected</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>function</strong> – takes a function</p></li>
+<li><p><strong>args</strong> – takes args of the function provided by a user</p></li>
+<li><p><strong>kwargs</strong> – takes kwargs of the function provided by a user</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.add_queries">
+<code class="sig-name descname">add_queries</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">queries</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>List<span class="p">[</span>str<span class="p">]</span><span class="p">, </span>Union<span class="p">[</span>str<span class="p">, </span>discord.embeds.Embed<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.add_queries" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s an event type function used to add queries for the DropMenu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>queries</strong> – takes option-name and response</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.add_query">
+<code class="sig-name descname">add_query</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">*</span><span class="n">query</span><span class="p">:</span> <span class="n">Tuple<span class="p">[</span>str<span class="p">, </span>Union<span class="p">[</span>str<span class="p">, </span>discord.embeds.Embed<span class="p">]</span><span class="p">]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.add_query" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s an event type function used to add queries for the DropMenu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>query</strong> – takes option-name and response</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.after_resp">
+<em class="property">property </em><code class="sig-name descname">after_resp</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.after_resp" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get all options which are to be changed after option (on-select) of the DropMenu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Dict (or) None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.after_response">
+<code class="sig-name descname">after_response</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.after_response" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s an event type function which changes the provided options after option (on-select) of the DropMenu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>options</strong> – takes variables</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.args">
+<em class="property">property </em><code class="sig-name descname">args</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.args" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get kwargs of the DropMenu</p>
+<ul class="simple">
+<li><p>Aliases: [‘args’, ‘kwargs’]</p></li>
+</ul>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>Dict</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.author">
+<em class="property">property </em><code class="sig-name descname">author</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.author" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get author of the DropMenu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>user: discord.Member (or) None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.convert_resp">
+<em class="property">static </em><code class="sig-name descname">convert_resp</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">content</span><span class="p">:</span> <span class="n">str</span></em>, <em class="sig-param"><span class="n">values</span><span class="p">:</span> <span class="n">list</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.convert_resp" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s not a reusable function</p>
+<p>Used for formatting the provided content with respective values</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>content</strong> – takes content/ message</p></li>
+<li><p><strong>values</strong> – selected values of the DropMenu</p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.hidden">
+<em class="property">property </em><code class="sig-name descname">hidden</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.hidden" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get hidden parm of the DropMenu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>hidden: bool, i.e [True, False]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.id">
+<em class="property">property </em><code class="sig-name descname">id</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.id" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get ID of the DropMenu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>custom_id: str (or) None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.is_ephemeral">
+<em class="property">property </em><code class="sig-name descname">is_ephemeral</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.is_ephemeral" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to check whether it’s ephemeral or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>ephemeral: bool , i.e [True, False]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.placeholder">
+<em class="property">property </em><code class="sig-name descname">placeholder</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.placeholder" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get placeholder of the DropMenu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p></p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.queries">
+<em class="property">property </em><code class="sig-name descname">queries</code><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.queries" title="Permalink to this definition">¶</a></dt>
+<dd><p>It’s a property used to get all queries of the DropMenu</p>
+<dl class="field-list simple">
+<dt class="field-odd">Returns</dt>
+<dd class="field-odd"><p>queries: List (or) None</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><em class="sig-param"><span class="o">**</span><span class="n">options</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.update" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt id="btns_menus.builds.base.in_build.StructureOfDropMenu.update_one">
+<code class="sig-name descname">update_one</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">details</span></em>, <em class="sig-param"><span class="n">option</span><span class="p">:</span> <span class="n">str</span></em><span class="sig-paren">)</span><a class="headerlink" href="#btns_menus.builds.base.in_build.StructureOfDropMenu.update_one" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py function">
+<dt id="btns_menus.builds.base.in_build.check_for_Invoker">
+<code class="sig-prename descclassname">btns_menus.builds.base.in_build.</code><code class="sig-name descname">check_for_Invoker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">component</span><span class="p">:</span> <span class="n">Union<span class="p">[</span><a class="reference internal" href="#btns_menus.builds.base.in_build.StructureOfButton" title="btns_menus.builds.base.in_build.StructureOfButton">btns_menus.builds.base.in_build.StructureOfButton</a><span class="p">, </span><a class="reference internal" href="#btns_menus.builds.base.in_build.StructureOfDropMenu" title="btns_menus.builds.base.in_build.StructureOfDropMenu">btns_menus.builds.base.in_build.StructureOfDropMenu</a><span class="p">]</span></span></em>, <em class="sig-param"><span class="n">interaction</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#btns_menus.builds.base.in_build.check_for_Invoker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the author of the component and interaction are same or not</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><ul class="simple">
+<li><p><strong>component</strong> – takes either button: SButton or dropmenu: SDropMenu</p></li>
+<li><p><strong>interaction</strong> – </p></li>
+</ul>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool, i.e [True, False]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="btns_menus.builds.base.in_build.is_embed">
+<code class="sig-prename descclassname">btns_menus.builds.base.in_build.</code><code class="sig-name descname">is_embed</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">response</span></em><span class="sig-paren">)</span> &#x2192; bool<a class="headerlink" href="#btns_menus.builds.base.in_build.is_embed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Checks whether the type of response is str (or) embed</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><p><strong>response</strong> – takes str (or) embed</p>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><p>bool, i.e [True, False]</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-btns_menus.builds.base">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-btns_menus.builds.base" title="Permalink to this headline">¶</a></h2>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../index.html">py</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="../search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2022, skr.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.3.0</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="../_sources/cd/btns_menus.builds.base.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
