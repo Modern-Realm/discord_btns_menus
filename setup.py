@@ -36,7 +36,7 @@ setuptools.setup(
     ],
     license="MIT",
     package_dir={"": "package"},
-    packages=["btns_menus", "btns_menus.builds", "btns_menus.builds.base"],
+    packages=["btns_menus", "btns_menus.builds"],
     include_package_data=True,
     python_requires=">=3.6",
     install_requires=[
