@@ -1,4 +1,4 @@
-from btns_menus.builds.base.in_build import Menu, SDropMenu, DEFAULT_TIMEOUT
+from btns_menus.builds.menu_ import Menu, SDropMenu, DEFAULT_TIMEOUT
 
 from typing import *
 import discord

@@ -1,4 +1,4 @@
-from btns_menus.builds.base.in_build import Btn, SButton, DEFAULT_TIMEOUT
+from btns_menus.builds.button_ import Btn, SButton, DEFAULT_TIMEOUT
 
 from typing import *
 import discord
