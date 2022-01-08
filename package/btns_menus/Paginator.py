@@ -30,7 +30,7 @@ class Paginator:
                  commands_list: List[SOption] = None,
                  buttons: List[SButton] = None,
                  menus: List[SDropMenu] = None,
-                 timeout: Union[int, float] = DEFAULT_TIMEOUT
+                 timeout: Optional[float] = DEFAULT_TIMEOUT
                  ):
         """
         Paginator is used to show users the given embeds in pages format using **navigation Buttons and DropMenus**
@@ -150,7 +150,8 @@ class Paginator:
         if self.cmds_list is not None:
             options = []
             for option in self.cmds_list:
-                opt_ = SelectOption(label=option['name'], description=option['description'], emoji=option['emoji'])
+                opt_ = SelectOption(
+                    label=option['name'], description=option['description'], emoji=option['emoji'])
                 options.append(opt_)
 
             self.cmds_menu.update(options=options)
@@ -174,7 +175,8 @@ class Paginator:
         if self.backward_btn.kwargs['func'] is None and self.backward_btn.kwargs['coro_func'] is None:
             self.backward_btn.add_func(backward_pages)
 
-        created_btns = [self.home_btn, self.forward_btn, self.backward_btn, self.delete_menu]
+        created_btns = [self.home_btn, self.forward_btn,
+                        self.backward_btn, self.delete_menu]
         stored_indexes = [self.index_for_home, self.index_for_forward,
                           self.index_for_backward, self.index_for_delete]
         for x in range(len(created_btns)):
@@ -183,5 +185,6 @@ class Paginator:
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
 
-        view_ = MultiBtnAndMenu(self.author, self.buttons, self.menus, timeout=self.timeout).view()
+        view_ = MultiBtnAndMenu(self.author, self.buttons,
+                                self.menus, timeout=self.timeout).view()
         return view_

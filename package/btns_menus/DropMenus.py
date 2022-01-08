@@ -6,7 +6,7 @@ from discord import ui
 
 
 class SingleDropMenu:
-    def __init__(self, author: discord.Member, drop_menu1: SDropMenu, /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+    def __init__(self, author: discord.Member, drop_menu1: SDropMenu, /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive DropMenu
 
@@ -25,7 +25,8 @@ class SingleDropMenu:
         if self.menu1.author is None:
             self.menu1.update_one(self.author, "author")
 
-        self.root_ = lambda: SingleDropMenu(self.author, self.menu1, timeout=self.timeout)
+        self.root_ = lambda: SingleDropMenu(
+            self.author, self.menu1, timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
@@ -39,7 +40,7 @@ class SingleDropMenu:
 
 class DuoDropMenu:
     def __init__(self, author: discord.Member, drop_menu1: SDropMenu, drop_menu2: SDropMenu,
-                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive DropMenus
 
@@ -59,7 +60,8 @@ class DuoDropMenu:
             if menu_.author is None:
                 menu_.update_one(self.author, "author")
 
-        self.root_ = lambda: DuoDropMenu(self.author, self.menus[0], self.menus[1], timeout=self.timeout)
+        self.root_ = lambda: DuoDropMenu(
+            self.author, self.menus[0], self.menus[1], timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
@@ -74,7 +76,7 @@ class DuoDropMenu:
 
 class TrioDropMenu:
     def __init__(self, author: discord.Member, drop_menu1: SDropMenu, drop_menu2: SDropMenu, drop_menu3: SDropMenu,
-                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive DropMenus
 
@@ -112,7 +114,7 @@ class TrioDropMenu:
 class QuartetDropMenu:
     def __init__(self, author: discord.Member, drop_menu1: SDropMenu, drop_menu2: SDropMenu,
                  drop_menu3: SDropMenu, drop_menu4: SDropMenu,
-                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive DropMenus
 
@@ -151,7 +153,7 @@ class QuartetDropMenu:
 class QuintetDropMenu:
     def __init__(self, author: discord.Member, drop_menu1: SDropMenu, drop_menu2: SDropMenu,
                  drop_menu3: SDropMenu, drop_menu4: SDropMenu, drop_menu5: SDropMenu,
-                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive DropMenus
 
@@ -169,7 +171,8 @@ class QuintetDropMenu:
         self.author = author
         self.timeout = timeout
 
-        self.menus = [drop_menu1, drop_menu2, drop_menu3, drop_menu4, drop_menu5]
+        self.menus = [drop_menu1, drop_menu2,
+                      drop_menu3, drop_menu4, drop_menu5]
         for menu_ in self.menus:
             if menu_.author is None:
                 menu_.update_one(self.author, "author")
@@ -189,7 +192,7 @@ class QuintetDropMenu:
 
 
 class MultiDropMenu:
-    def __init__(self, author: discord.Member, menus: List[SDropMenu], /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+    def __init__(self, author: discord.Member, menus: List[SDropMenu], /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Multi DropMenus
 
@@ -208,7 +211,8 @@ class MultiDropMenu:
             if menu_.author is None:
                 menu_.update(author=self.author)
 
-        self.root_ = lambda: MultiDropMenu(self.author, self.menus, timeout=self.timeout)
+        self.root_ = lambda: MultiDropMenu(
+            self.author, self.menus, timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""

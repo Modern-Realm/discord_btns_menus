@@ -6,7 +6,7 @@ from discord import ui
 
 
 class SingleButton:
-    def __init__(self, author: discord.Member, button1: SButton, /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+    def __init__(self, author: discord.Member, button1: SButton, /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Button
 
@@ -25,7 +25,8 @@ class SingleButton:
         if self.btn1.author is None:
             self.btn1.update(author=self.author)
 
-        self.root_ = lambda: SingleButton(self.author, self.btn1, timeout=self.timeout)
+        self.root_ = lambda: SingleButton(
+            self.author, self.btn1, timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
@@ -39,7 +40,7 @@ class SingleButton:
 
 class DuoButton:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton,
-                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons
 
@@ -59,7 +60,8 @@ class DuoButton:
             if btn_.author is None:
                 btn_.update(author=self.author)
 
-        self.root_ = lambda: DuoButton(self.author, self.btns[0], self.btns[1], timeout=self.timeout)
+        self.root_ = lambda: DuoButton(
+            self.author, self.btns[0], self.btns[1], timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
@@ -74,7 +76,7 @@ class DuoButton:
 
 class TrioButton:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, button3: SButton,
-                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons
 
@@ -95,7 +97,8 @@ class TrioButton:
             if btn_.author is None:
                 btn_.update(author=self.author)
 
-        self.root_ = lambda: TrioButton(self.author, self.btns[0], self.btns[1], self.btns[2], timeout=self.timeout)
+        self.root_ = lambda: TrioButton(
+            self.author, self.btns[0], self.btns[1], self.btns[2], timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
@@ -110,7 +113,7 @@ class TrioButton:
 
 class QuartetButton:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, button3: SButton, button4: SButton,
-                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons
 
@@ -148,7 +151,7 @@ class QuartetButton:
 class QuintetButton:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton,
                  button3: SButton, button4: SButton, button5: SButton,
-                 /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons
 
@@ -185,7 +188,7 @@ class QuintetButton:
 
 
 class MultiButton:
-    def __init__(self, author: discord.Member, buttons: List[SButton], /, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+    def __init__(self, author: discord.Member, buttons: List[SButton], /, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons
 
@@ -203,7 +206,8 @@ class MultiButton:
             if btn_.author is None:
                 btn_.update(author=self.author)
 
-        self.root_ = lambda: MultiButton(self.author, self.btns, timeout=self.timeout)
+        self.root_ = lambda: MultiButton(
+            self.author, self.btns, timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""

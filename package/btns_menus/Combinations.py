@@ -9,7 +9,7 @@ from discord import ui
 
 class BtnAndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton, menu1: SDropMenu,
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -32,7 +32,8 @@ class BtnAndDropMenu:
             if component_.author is None:
                 component_.update(author=self.author)
 
-        self.root_ = lambda: BtnAndDropMenu(self.author, self.btn1, self.menu1, timeout=self.timeout)
+        self.root_ = lambda: BtnAndDropMenu(
+            self.author, self.btn1, self.menu1, timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
@@ -50,7 +51,7 @@ class BtnAndDropMenu:
 
 class Btn2AndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, menu1: SDropMenu,
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -75,7 +76,8 @@ class Btn2AndDropMenu:
             if component_.author is None:
                 component_.update(author=self.author)
 
-        self.root_ = lambda: Btn2AndDropMenu(self.author, self.btn1, self.btn2, self.menu1, timeout=self.timeout)
+        self.root_ = lambda: Btn2AndDropMenu(
+            self.author, self.btn1, self.btn2, self.menu1, timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
@@ -94,7 +96,7 @@ class Btn2AndDropMenu:
 class Btn3AndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  button2: SButton, button3: SButton, menu1: SDropMenu,
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -139,7 +141,7 @@ class Btn3AndDropMenu:
 class Btn4AndDropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  button2: SButton, button3: SButton, button4: SButton, menu1: SDropMenu,
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -163,7 +165,8 @@ class Btn4AndDropMenu:
         self.btn4 = button4
         self.menu1 = menu1
 
-        self.components = [self.btn1, self.btn2, self.btn3, self.btn4, self.menu1]
+        self.components = [self.btn1, self.btn2,
+                           self.btn3, self.btn4, self.menu1]
         for component_ in self.components:
             if component_.author is None:
                 component_.update(author=self.author)
@@ -187,7 +190,7 @@ class Btn4AndDropMenu:
 
 class BtnAnd2DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, menu1: SDropMenu, menu2: SDropMenu,
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -212,7 +215,8 @@ class BtnAnd2DropMenu:
             if component_.author is None:
                 component_.update(author=self.author)
 
-        self.root_ = lambda: BtnAnd2DropMenu(self.author, self.btn1, self.menu1, self.menu2, timeout=self.timeout)
+        self.root_ = lambda: BtnAnd2DropMenu(
+            self.author, self.btn1, self.menu1, self.menu2, timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
@@ -230,7 +234,7 @@ class BtnAnd2DropMenu:
 
 class Btn2And2DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, menu1: SDropMenu, menu2: SDropMenu,
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -277,7 +281,7 @@ class Btn2And2DropMenu:
 class Btn3And2DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton, button3: SButton,
                  menu1: SDropMenu, menu2: SDropMenu,
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -301,7 +305,8 @@ class Btn3And2DropMenu:
         self.menu1 = menu1
         self.menu2 = menu2
 
-        self.components = [self.btn1, self.btn2, self.btn3, self.menu1, self.menu2]
+        self.components = [self.btn1, self.btn2,
+                           self.btn3, self.menu1, self.menu2]
         for component_ in self.components:
             if component_.author is None:
                 component_.update(author=self.author)
@@ -326,7 +331,7 @@ class Btn3And2DropMenu:
 class BtnAnd3DropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  menu1: SDropMenu, menu2: SDropMenu, menu3: SDropMenu,
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -373,7 +378,7 @@ class BtnAnd3DropMenu:
 class Btn2And3DropMenu:
     def __init__(self, author: discord.Member, button1: SButton, button2: SButton,
                  menu1: SDropMenu, menu2: SDropMenu, menu3: SDropMenu,
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -397,7 +402,8 @@ class Btn2And3DropMenu:
         self.menu2 = menu2
         self.menu3 = menu3
 
-        self.components = [self.btn1, self.btn2, self.menu1, self.menu2, self.menu3]
+        self.components = [self.btn1, self.btn2,
+                           self.menu1, self.menu2, self.menu3]
         for component_ in self.components:
             if component_.author is None:
                 component_.update(author=self.author)
@@ -422,7 +428,7 @@ class Btn2And3DropMenu:
 class BtnAnd4DropMenu:
     def __init__(self, author: discord.Member, button1: SButton,
                  menu1: SDropMenu, menu2: SDropMenu, menu3: SDropMenu, menu4: SDropMenu,
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -446,7 +452,8 @@ class BtnAnd4DropMenu:
         self.menu3 = menu3
         self.menu4 = menu4
 
-        self.components = [self.btn1, self.menu1, self.menu2, self.menu3, self.menu4]
+        self.components = [self.btn1, self.menu1,
+                           self.menu2, self.menu3, self.menu4]
         for component_ in self.components:
             if component_.author is None:
                 component_.update(author=self.author)
@@ -470,7 +477,7 @@ class BtnAnd4DropMenu:
 
 class MultiBtnAndDropMenu:
     def __init__(self, author: discord.Member, buttons: List[SButton], menus: List[SDropMenu],
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         Responsive Buttons and DropMenus
 
@@ -492,7 +499,8 @@ class MultiBtnAndDropMenu:
             if component_.author is None:
                 component_.update(author=self.author)
 
-        self.root_ = lambda: MultiBtnAndDropMenu(self.author, self.btns, self.menus, timeout=self.timeout)
+        self.root_ = lambda: MultiBtnAndDropMenu(
+            self.author, self.btns, self.menus, timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
@@ -514,7 +522,7 @@ MultiBtnAndMenu = MultiBtnAndDropMenu
 
 class MultiBtnsAndMenus:
     def __init__(self, author: discord.Member, components: List[Union[SButton, SDropMenu]],
-                 *, timeout: Union[int, float] = DEFAULT_TIMEOUT):
+                 *, timeout: Optional[float] = DEFAULT_TIMEOUT):
         """
         🌟 Full Flexibility
 
@@ -535,7 +543,8 @@ class MultiBtnsAndMenus:
             if component.author is None:
                 component.update(author=self.author)
 
-        self.root_ = lambda: MultiBtnsAndMenus(self.author, self.components, timeout=self.timeout)
+        self.root_ = lambda: MultiBtnsAndMenus(
+            self.author, self.components, timeout=self.timeout)
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
