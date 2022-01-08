@@ -6,7 +6,8 @@
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-[![Generic badge](https://img.shields.io/badge/Python-3.6-blue.svg)](https://shields.io/)
+[![CodeQL](https://github.com/skrphenix/pycord_btns_menus/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/skrphenix/pycord_btns_menus/actions/workflows/codeql-analysis.yml)
+[![Generic badge](https://img.shields.io/badge/Python-3.8-blue.svg)](https://shields.io/)
 [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
 
@@ -275,6 +276,7 @@ async def test(ctx):
 <hr/>
 
 # Example for Paginator
+
 [![Generic badge](https://img.shields.io/badge/NEW-Feature-gold.svg)](https://shields.io/)
 
 It is used for help commands which sends the embeds like page-wise using buttons & Drop Menus
