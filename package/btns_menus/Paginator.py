@@ -69,24 +69,28 @@ class Paginator:
         self.create_pages()
 
     def create_pages(self):
+        buttons_ = []
         for button_ in self.buttons:
             if button_.id is not None:
                 if button_.id.lower() == "home":
                     self.home_btn = button_
                     self.index_for_home = self.buttons.index(button_)
-                    self.buttons.remove(button_)
+                    buttons_.append(button_)
                 if button_.id.lower() == "forward":
                     self.forward_btn = button_
                     self.index_for_forward = self.buttons.index(button_)
-                    self.buttons.remove(button_)
+                    buttons_.append(button_)
                 if button_.id.lower() == "backward":
                     self.backward_btn = button_
                     self.index_for_backward = self.buttons.index(button_)
-                    self.buttons.remove(button_)
+                    buttons_.append(button_)
                 if button_.id.lower() == "delete":
                     self.delete_menu = button_
                     self.index_for_delete = self.buttons.index(button_)
-                    self.buttons.remove(button_)
+                    buttons_.append(button_)
+
+        for btn in buttons_:
+            self.buttons.remove(btn)
 
         for menu_ in self.menus:
             if menu_.id is not None:
