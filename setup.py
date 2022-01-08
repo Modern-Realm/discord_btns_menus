@@ -38,7 +38,7 @@ setuptools.setup(
     package_dir={"": "package"},
     packages=["btns_menus", "btns_menus.builds"],
     include_package_data=True,
-    python_requires=">=3.6",
+    python_requires=">=3.8",
     install_requires=[
         "py-cord @ git+https://github.com/Pycord-Development/pycord"
     ]
