@@ -77,33 +77,25 @@ Make sure to install <a href="https://pypi.org/project/py-cord/">
 
 ```python
 # For buttons:
-from btns_menus.Buttons import Button, DuoButton
-# with this you can import specific Buttons
-# or
-from btns_menus.Buttons import *
-# with this you can import all types of buttons
+from btns_menus.Buttons import SButton, SingleButton
 
 # For DropMenus:
-from btns_menus.DropMenus import DropMenu, DuoDropMenu, BtnAndDropMenu
-# with this you can import specific DropMenus
-# or
-from btns_menus.DropMenus import *
-# with this you can import all types of DropMenus 
+from btns_menus.DropMenus import SDropMenu, DuoDropMenu
 
-from btns_menus.Combinations import *
-# with this you can import all types of Combinations
+# For Combinations:
+from btns_menus.Combinations import MultiBtnAndDropMenu
 ```
 
 <hr/>
 
 # Sample Usage
 
-Create a file with '.py ' extension, Like: <u> **main.py** </u>
+Create a file with '.py ' extension, Like: **main.py**
 
 ```python
-from btns_menus.Buttons import *
-from btns_menus.DropMenus import *
-from btns_menus.Combinations import *
+from btns_menus.Buttons import SButton, SingleButton
+from btns_menus.DropMenus import SDropMenu, DuoDropMenu
+from btns_menus.Combinations import BtnAndDropMenu, MultiBtnAndMenu
 
 import discord
 from discord.ext import commands
@@ -125,7 +117,7 @@ async def test(ctx):
 
     btn1 = SButton(label="Hello", response="Hello have a nice day !")
 
-    view_ = Button(user, btn1).view()
+    view_ = SingleButton(user, btn1).view()
     await ctx.send("click here !", view=view_)
 
 
