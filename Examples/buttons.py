@@ -42,8 +42,8 @@ async def color_buttons(ctx):
 @client.command()
 async def buttons_by_rows(ctx):
     btn1 = SButton(label="1", row=0)
-    btn2 = SButton(label="1", row=1)
-    btn3 = SButton(label="1", row=2)
+    btn2 = SButton(label="2", row=1)
+    btn3 = SButton(label="3", row=2)
 
     view_ = TrioButton(ctx.author, btn1, btn2, btn3).view()
     await ctx.send("Buttons by rows", view=view_)
