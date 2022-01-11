@@ -4,7 +4,6 @@ import discord
 from discord import utils, ButtonStyle
 from discord.ext import commands
 
-TOKEN = os.environ.get("economy_bot")
 intents = discord.Intents.all()
 
 command_prefix = "&"
