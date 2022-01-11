@@ -143,7 +143,7 @@ async def updating_button(ctx):
     await ctx.send("Updating buttons using functions", view=view_)
 
 
-# This is for Aplha Users only
+# This is for Aplha Users only ( >=v0.2.3)
 @client.command()
 async def reaction_role_button(ctx):
     user = ctx.author
