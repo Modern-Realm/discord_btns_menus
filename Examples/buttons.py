@@ -146,7 +146,7 @@ async def updating_button(ctx):
 @client.command()
 async def reaction_role_button(ctx):
     user = ctx.author
-    role = utils.get(ctx.guild.roles, id=ROLE_ID)
+    role = utils.get(ctx.guild.roles, id=ROLE_ID)  # Make sure to mention the ROLE_ID
 
     reaction_btn = SButton(label="Verify", response="Verified !", ephemeral=True, verify_=False)
 
