@@ -63,7 +63,7 @@ class SDropMenu:
 
         self.after_: Optional[dict] = None
         self.selected_values: Optional[str, List] = None
-        self.interaction_user: Optional[discord.Member] = None
+        self.interaction: Optional[discord.Interaction] = None
 
     def update_one(self, details, option: str):
         if option not in self.kwargs.keys():
@@ -287,8 +287,8 @@ class Menu(ui.Select):
 
         return None
 
-    async def callback(self, interaction):
-        self.menu.interaction_user = interaction.user
+    async def callback(self, interaction: discord.Interaction):
+        self.menu.interaction = interaction
         checked = check_for_Invoker(self.menu, interaction)
         if checked:
             self.menu.selected_values = self.values

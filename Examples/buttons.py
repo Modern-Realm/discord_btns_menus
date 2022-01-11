@@ -151,7 +151,7 @@ async def reaction_role_button(ctx):
     reaction_btn = SButton(label="Verify", response="Verified !", ephemeral=True, verify_=False)
 
     async def give_role(button: SButton):
-        button_user = button.interaction_user
+        button_user = button.interaction.user
         await button_user.add_roles(role)
 
     await reaction_btn.add_coro_func(give_role, reaction_btn)
