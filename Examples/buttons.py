@@ -143,16 +143,18 @@ async def updating_button(ctx):
     await ctx.send("Updating buttons using functions", view=view_)
 
 
+# This is for Aplha Users only
 @client.command()
 async def reaction_role_button(ctx):
     user = ctx.author
     role = utils.get(ctx.guild.roles, id=ROLE_ID)  # Make sure to mention the ROLE_ID
     reaction_btn = SButton(label="Verify", response="Verified !", ephemeral=True, verify_=False)
 
-    async def give_role():
-        await user.add_roles(role)
+    async def give_role(button: SButton):
+        button_user = button.interaction_user
+        await button_user.add_roles(role)
 
-    await reaction_btn.add_coro_func(give_role)
+    await reaction_btn.add_coro_func(give_role, reaction_btn)
 
     view_ = SingleButton(user, reaction_btn, timeout=None).view()
     await ctx.send("Click the below button to get verified !", view=view_)

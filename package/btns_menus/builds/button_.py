@@ -63,6 +63,7 @@ class SButton:
         }
 
         self.after_: Optional[dict] = None
+        self.interaction_user: Optional[discord.Member] = None
 
     def update_one(self, details: Any, option: str):
         """
@@ -224,6 +225,7 @@ class Btn(ui.Button):
         )
 
     async def callback(self, interaction):
+        self.btn.interaction_user = interaction.user
         checked = check_for_Invoker(self.btn, interaction)
         if checked:
             if self.btn_args['coro_func'] is not None:
