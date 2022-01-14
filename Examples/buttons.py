@@ -1,14 +1,10 @@
 from btns_menus.Buttons import SButton, SingleButton, DuoButton, TrioButton
-import os
 import discord
 from discord import utils, ButtonStyle
 from discord.ext import commands
 
 intents = discord.Intents.all()
-
-command_prefix = "&"
-client = commands.Bot(command_prefix=command_prefix, intents=intents,
-                      status=discord.Status.online, activity=discord.Game(f"{command_prefix}help - phoenix"))
+client = commands.Bot(command_prefix="&", intents=intents, status=discord.Status.online)
 
 
 @client.command()
