@@ -10,7 +10,7 @@
 |  0.1.3  |        :x:         |   Yanked    |
 | < 0.1.2 |        :x:         |  Out Dated  |
 
-Note: Requires  **[py-cord](https://github.com/Pycord-Development/pycord)** or **discord.py V2.0** module
+Note: Requires  **[py-cord](https://github.com/Pycord-Development/pycord)** or **[discord.py V2.0](https://github.com/Rapptz/discord.py)** module
 
 ## Reporting a <u>Vulnerability</u>
 
