@@ -6,7 +6,7 @@
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-[![CodeQL](https://github.com/skrphenix/pycord_btns_menus/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/skrphenix/pycord_btns_menus/actions/workflows/codeql-analysis.yml)
+[![CodeQL](https://github.com/Modern-Realm/pycord_btns_menus/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Modern-Realm/pycord_btns_menus/actions/workflows/codeql-analysis.yml)
 [![Generic badge](https://img.shields.io/badge/Python-3.8-blue.svg)](https://shields.io/)
 [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
@@ -23,7 +23,7 @@
 
 ### <li> Combinations (Usage of both Buttons & DropMenus) </li>
 
-### <li> Paginator `for help commands` </li>
+### <li> Paginator [![Generic badge](https://img.shields.io/badge/NEW-gold.svg)](https://shields.io/) </li>
 
 <hr/>
 
@@ -45,14 +45,14 @@ Python 3.8 or higher is required !
 
 # Using GIT for ALPHA or BETA Versions
   # Method-1:
-    pip install git+https://github.com/skrphenix/pycord_btns_menus.git
+    pip install git+https://github.com/Modern-Realm/pycord_btns_menus.git
   # Method-2:
-    pip install git+https://github.com/skrphenix/pycord_btns_menus
+    pip install -U git+https://github.com/Modern-Realm/pycord_btns_menus
 ```
 
 <p style="font-weight: bold;"><span style="color: red;">Note: </span>
 Make sure to install <a href="https://pypi.org/project/py-cord/">
-<u> py-cord</u></a> package
+<u>py-cord</u></a> or <a href="https://github.com/Rapptz/discord.py"><u>discord.pyV2.0</u></a> package
 </p>
 
 <hr/>
@@ -132,9 +132,9 @@ if __name__ == "__main__":
 # Example for <u>Buttons</u>:
 
 Button type
-<a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
+<a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
 **DuoButton** </a> , for more samples go
-to <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/Examples/buttons.py">
+to <a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/Examples/buttons.py">
 Examples/Buttons</a>
 
 ```python
@@ -151,7 +151,7 @@ async def test(ctx):
 ### Preview:
 
 <p align="center">
-    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_buttons.gif" 
+    <img src="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/media/bin/sample_buttons.gif" 
     alt="Button-Samples.gif" height="400" width="300">
 </p>
 
@@ -160,9 +160,9 @@ async def test(ctx):
 # Examples for <u>DropMenus</u>:
 
 DropMenu type
-<a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/DropMenu.py">
+<a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/btns_menus/DropMenu.py">
 **DuoDropMenu** </a>, for more samples go
-to <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/Examples/drop_menus.py">
+to <a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/Examples/drop_menus.py">
 Examples/DropMenus</a>
 
 ```python
@@ -190,7 +190,7 @@ async def test(ctx):
 ### Preview:
 
 <p align="center">
-    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_dropmenus.gif"
+    <img src="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/media/bin/sample_dropmenus.gif"
     alt="DropMenu-Samples.gif" height="400" width="300">
 </p>
 
@@ -200,7 +200,7 @@ async def test(ctx):
 
 ##### • In this feature you can make & send Buttons and DropMenus together
 
-##### • For more examples for mixture of btns & menus go to <u><a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/Examples/combinations.py">Examples/combinations</a></u>
+##### • For more examples for mixture of btns & menus go to <u><a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/Examples/combinations.py">Examples/combinations</a></u>
 
 <br/>
 
@@ -229,7 +229,7 @@ async def test(ctx):
 ### Preview:
 
 <p align="center">
-    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_combinations.gif"
+    <img src="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/media/bin/sample_combinations.gif"
     alt="Sample-Combinations.gif" height="400" width="300">
 </p>
 
@@ -238,12 +238,12 @@ async def test(ctx):
 # Example for <u>MultiButtons</u>
 
 Button type
-<a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
+<a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
 **MultiButton** </a> , for more samples go
-to <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
+to <a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
 Examples/Buttons</a>
 
-The Process for <a href="https://github.com/skrphenix/pycord_btns_menus/blob/main/btns_menus/DropMenu.py">
+The Process for <a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/btns_menus/DropMenu.py">
 **MultiDropMenu**</a> will be the same ...
 
 ```python
@@ -269,7 +269,7 @@ async def test(ctx):
 ### Preview:
 
 <p align="center">
-    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_multibuttons.gif"
+    <img src="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/media/bin/sample_multibuttons.gif"
     alt="Sample-Combinations.gif" height="400" width="300">
 </p>
 
@@ -311,7 +311,7 @@ async def help(ctx):
 ```
 
 <p align="center">
-    <img src="https://github.com/skrphenix/pycord_btns_menus/blob/main/media/bin/sample_paginator.gif"
+    <img src="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/media/bin/sample_paginator.gif"
     alt="Sample-Combinations.gif" height="400" width="300">
 </p>
 
