@@ -1,4 +1,4 @@
-# Package Name: <a href='https://pypi.org/project/pycord-btns-menus/'> pycord-btns-menus </a>
+# Package Name: [discord-btns-menus](https://pypi.org/project/discord-btns-menus/)
 
 #### A responsive package for Buttons, DropMenus, Combinations and Paginator
 
@@ -6,12 +6,13 @@
 
 [![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-[![CodeQL](https://github.com/Modern-Realm/pycord_btns_menus/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Modern-Realm/pycord_btns_menus/actions/workflows/codeql-analysis.yml)
+[![CodeQL](https://github.com/Modern-Realm/discord_btns_menus/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/Modern-Realm/discord_btns_menus/actions/workflows/codeql-analysis.yml)
 [![Generic badge](https://img.shields.io/badge/Python-3.8-blue.svg)](https://shields.io/)
 [![GitHub license](https://badgen.net/github/license/Naereen/Strapdown.js)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 [![Windows](https://svgshare.com/i/ZhY.svg)](https://svgshare.com/i/ZhY.svg)
+[![Linux](https://svgshare.com/i/Zhy.svg)](https://svgshare.com/i/Zhy.svg)
 
-### Join [Support Server](https://discord.gg/GVMWx5EaAN) for more guidance !
+### Join [Official Discord Server](https://discord.gg/GVMWx5EaAN) for more guidance !
 
 <hr/>
 
@@ -45,9 +46,9 @@ Python 3.8 or higher is required !
 
 # Using GIT for ALPHA or BETA Versions
   # Method-1:
-    pip install git+https://github.com/Modern-Realm/pycord_btns_menus.git
+    pip install git+https://github.com/Modern-Realm/discord_btns_menus.git
   # Method-2:
-    pip install -U git+https://github.com/Modern-Realm/pycord_btns_menus
+    pip install -U git+https://github.com/Modern-Realm/discord_btns_menus
 ```
 
 <hr/>
@@ -56,9 +57,9 @@ Python 3.8 or higher is required !
 
 > #### You can use ANY ONE of the below Package
 
-- ## [py-cord]()
-- ## [nextcord]()
-- ## [disnake]()
+- ## [py-cord](https://github.com/Pycord-Development/pycord)
+- ## [nextcord](https://github.com/nextcord/nextcord)
+- ## [disnake](https://github.com/DisnakeDev/disnake)
   `For disnake you should Refactor/ Shim all discord terms to disnake terms to make Package work`
 
 > <b>Note:</b> Don't install more than one **DEPENDENCY !**
@@ -140,9 +141,8 @@ if __name__ == "__main__":
 # Example for <u>Buttons</u>:
 
 Button type
-<a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
-**DuoButton** </a> , for more samples go
-to <a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/Examples/buttons.py">
+**[DuoButton](https://github.com/Modern-Realm/discord_btns_menus/blob/main/package/btns_menus/Buttons.py)**, for more
+samples go to <a href="https://github.com/Modern-Realm/discord_btns_menus/blob/main/Examples/buttons.py">
 Examples/Buttons</a>
 
 ```python
@@ -159,7 +159,7 @@ async def test(ctx):
 ### Preview:
 
 <p align="center">
-    <img src="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/media/bin/sample_buttons.gif" 
+    <img src="https://github.com/Modern-Realm/discord_btns_menus/blob/main/media/bin/sample_buttons.gif" 
     alt="Button-Samples.gif" height="400" width="300">
 </p>
 
@@ -168,10 +168,9 @@ async def test(ctx):
 # Examples for <u>DropMenus</u>:
 
 DropMenu type
-<a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/btns_menus/DropMenu.py">
-**DuoDropMenu** </a>, for more samples go
-to <a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/Examples/drop_menus.py">
-Examples/DropMenus</a>
+**[DuoDropMenu](https://github.com/Modern-Realm/discord_btns_menus/blob/main/package/btns_menus/DropMenus.py)**, for
+more samples go to <a href="https://github.com/Modern-Realm/discord_btns_menus/blob/main/Examples/drop_menus.py">
+Examples/DropMenuss</a>
 
 ```python
 @client.command()
@@ -198,7 +197,7 @@ async def test(ctx):
 ### Preview:
 
 <p align="center">
-    <img src="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/media/bin/sample_dropmenus.gif"
+    <img src="https://github.com/Modern-Realm/discord_btns_menus/blob/main/media/bin/sample_dropmenus.gif"
     alt="DropMenu-Samples.gif" height="400" width="300">
 </p>
 
@@ -208,7 +207,7 @@ async def test(ctx):
 
 ##### • In this feature you can make & send Buttons and DropMenus together
 
-##### • For more examples for mixture of btns & menus go to <u><a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/Examples/combinations.py">Examples/combinations</a></u>
+##### • For more examples for mixture of btns & menus go to <u><a href="https://github.com/Modern-Realm/discord_btns_menus/blob/main/Examples/combinations.py">Examples/combinations</a></u>
 
 <br/>
 
@@ -237,7 +236,7 @@ async def test(ctx):
 ### Preview:
 
 <p align="center">
-    <img src="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/media/bin/sample_combinations.gif"
+    <img src="https://github.com/Modern-Realm/discord_btns_menus/blob/main/media/bin/sample_combinations.gif"
     alt="Sample-Combinations.gif" height="400" width="300">
 </p>
 
@@ -246,13 +245,13 @@ async def test(ctx):
 # Example for <u>MultiButtons</u>
 
 Button type
-<a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
-**MultiButton** </a> , for more samples go
-to <a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/btns_menus/Buttons.py">
+**[MultiButton](https://github.com/Modern-Realm/discord_btns_menus/blob/main/package/btns_menus/Buttons.py#L190)**, for
+more samples go to <a href="https://github.com/Modern-Realm/discord_btns_menus/blob/main/btns_menus/Buttons.py">
 Examples/Buttons</a>
 
-The Process for <a href="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/btns_menus/DropMenu.py">
-**MultiDropMenu**</a> will be the same ...
+The Process
+for **[MultiDropMenu](https://github.com/Modern-Realm/discord_btns_menus/blob/main/package/btns_menus/DropMenus.py#L194)**
+will be the same ...
 
 ```python
 @client.command()
@@ -277,7 +276,7 @@ async def test(ctx):
 ### Preview:
 
 <p align="center">
-    <img src="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/media/bin/sample_multibuttons.gif"
+    <img src="https://github.com/Modern-Realm/discord_btns_menus/blob/main/media/bin/sample_multibuttons.gif"
     alt="Sample-Combinations.gif" height="400" width="300">
 </p>
 
@@ -295,7 +294,7 @@ from datetime import datetime
 import discord
 
 
-# This function is for sample purposes
+# This function is for sample purposes, use discord.Embed instead [RECOMMENDED]
 def embed(context: str, color=0xffff00, timestamp: bool = False) -> discord.Embed:
     present_time = datetime.utcnow() if timestamp else None
     em = discord.Embed(description=context, color=discord.Color(color), timestamp=present_time)
@@ -319,7 +318,7 @@ async def help(ctx):
 ```
 
 <p align="center">
-    <img src="https://github.com/Modern-Realm/pycord_btns_menus/blob/main/media/bin/sample_paginator.gif"
+    <img src="https://github.com/Modern-Realm/discord_btns_menus/blob/main/media/bin/sample_paginator.gif"
     alt="Sample-Combinations.gif" height="400" width="300">
 </p>
 
