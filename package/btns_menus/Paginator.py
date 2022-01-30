@@ -41,7 +41,7 @@ class Paginator:
         :param commands_list: The list of options which are shown as options in a Drop Menu
         :param buttons: List of buttons used to navigate of interact with the pages/embeds
         :param menus: List of Menus used to make a user select options from it
-        :param footer: Used to add into text in footer of discord.Embed
+        :param footer: Used to add content into text in footer of discord.Embed
         :param timeout: Timeout of the interaction
 
         :returns: view: discord.ui.View
