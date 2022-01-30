@@ -59,7 +59,7 @@ Python 3.8 or higher is required !
 - ## [py-cord]()
 - ## [nextcord]()
 - ## [disnake]()
-  `For disnake you should Refactor/ Shim all discord to disnake terms to make Package work`
+  `For disnake you should Refactor/ Shim all discord terms to disnake terms to make Package work`
 
 > <b>Note:</b> Don't install more than one **DEPENDENCY !**
 
