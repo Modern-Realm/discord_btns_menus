@@ -50,10 +50,18 @@ Python 3.8 or higher is required !
     pip install -U git+https://github.com/Modern-Realm/pycord_btns_menus
 ```
 
-<p style="font-weight: bold;"><span style="color: red;">Note: </span>
-Make sure to install <a href="https://pypi.org/project/py-cord/">
-<u>py-cord</u></a> or <a href="https://github.com/Rapptz/discord.py"><u>discord.pyV2.0</u></a> package
-</p>
+<hr/>
+
+# REQUIRED DEPENDENCIES
+
+> #### You can use ANY ONE of the below Package
+
+- ## [py-cord]()
+- ## [nextcord]()
+- ## [disnake]()
+  `For disnake you should Refactor/ Shim all discord to disnake terms to make Package work`
+
+> <b>Note:</b> Don't install more than one **DEPENDENCY !**
 
 <hr/>
 
