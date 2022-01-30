@@ -59,6 +59,7 @@ Python 3.8 or higher is required !
 
 - ## [py-cord](https://github.com/Pycord-Development/pycord)
 - ## [nextcord](https://github.com/nextcord/nextcord)
+- ## [discord.pyV2.0](https://github.com/Rapptz/discord.py)
 - ## [disnake](https://github.com/DisnakeDev/disnake)
   `For disnake you should Refactor/ Shim all discord terms to disnake terms to make Package work`
 

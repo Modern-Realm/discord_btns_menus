@@ -9,11 +9,12 @@
 |  0.1.5  | :white_check_mark: | Pre-Release |
 | < 0.1.2 |        :x:         |  Out Dated  |
 
-Note: Requires  **[py-cord](https://github.com/Pycord-Development/pycord)** or **[discord.pyV2.0](https://github.com/Rapptz/discord.py)** module
+Note: Requires one of the 
+**[dependencies](https://github.com/Modern-Realm/discord_btns_menus#required-dependencies)**
 
 ## Reporting a <u>Vulnerability</u>
 
 If you find a vulnerability you have two ways to report it:
 
 - Contact Us through **[Official Discord Server](https://discord.gg/GVMWx5EaAN)**
-- Open an **[issue](https://github.com/skrphenix/pycord_btns_menus/issues/new/choose)**
+- Open an **[issue](https://github.com/Modern-Realm/discord_btns_menus/issues/new/choose)**
