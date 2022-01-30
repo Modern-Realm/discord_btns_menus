@@ -9,7 +9,7 @@ def SOption(*, name: str, embed_: discord.Embed, description: str = None,
             ) -> Dict:
     """It's a decorator used to overwrite options in discord.ui.Select
 
-    :param name : label for option
+    :param name: label for option
     :param embed_: If option is selected, the embed will be sent !
     :param description: Description for the option
     :param emoji: Emoji for the option
@@ -30,6 +30,7 @@ class Paginator:
                  commands_list: List[SOption] = None,
                  buttons: List[SButton] = None,
                  menus: List[SDropMenu] = None,
+                 footer: str = None,
                  timeout: Optional[float] = DEFAULT_TIMEOUT
                  ):
         """
@@ -40,6 +41,7 @@ class Paginator:
         :param commands_list: The list of options which are shown as options in a Drop Menu
         :param buttons: List of buttons used to navigate of interact with the pages/embeds
         :param menus: List of Menus used to make a user select options from it
+        :param footer: Used to add into text in footer of discord.Embed
         :param timeout: Timeout of the interaction
 
         :returns: view: discord.ui.View
@@ -53,6 +55,21 @@ class Paginator:
         self.timeout = timeout
 
         self.pages: int = 0
+
+        def footer_for_PG(content: str = None) -> Optional[str]:
+            if content is not None:
+                conv_content = content.replace("{user}", str(self.author))
+                conv_content = conv_content.replace("{username}", self.author.display_name)
+                conv_content = conv_content.replace("{pg}", str(self.pages + 1))
+                conv_content = conv_content.replace("{total_pgs}", str(len(self.embeds)))
+                conv_content = conv_content.replace("{guild}", self.author.guild.name)
+
+                return conv_content
+            else:
+                return None
+
+        self.footer_for_PG = footer_for_PG
+        self.footer = footer
 
         self.index_for_home = 0
         self.index_for_forward = 1
@@ -111,7 +128,10 @@ class Paginator:
                                    rewrite=True) if self.cmds_menu is None else self.cmds_menu
 
         if self.home_btn.kwargs['response'] is None:
-            self.home_btn.update(response=self.embeds[0], rewrite=True)
+            em = self.embeds[0]
+            if len(em.footer.text) == 0 and self.footer is not None:
+                em.set_footer(text=self.footer_for_PG(self.footer))
+            self.home_btn.update(response=em, rewrite=True)
 
         self.build_pages()
 
@@ -131,7 +151,11 @@ class Paginator:
 
             self.backward_btn.update(disabled=False)
             self.home_btn.update(disabled=False)
-            self.forward_btn.update_one(self.embeds[self.pages], "response")
+
+            em = self.embeds[self.pages]
+            if len(em.footer.text) == 0 and self.footer is not None:
+                em.set_footer(text=self.footer_for_PG(self.footer))
+            self.forward_btn.update_one(em, "response")
 
         def backward_pages():
             self.pages -= 1
@@ -145,7 +169,11 @@ class Paginator:
                 self.home_btn.update(disabled=False)
 
             self.forward_btn.update(disabled=False)
-            self.backward_btn.update_one(self.embeds[self.pages], "response")
+
+            em = self.embeds[self.pages]
+            if len(em.footer.text) == 0 and self.footer is not None:
+                em.set_footer(text=self.footer_for_PG(self.footer))
+            self.backward_btn.update_one(em, "response")
 
         if self.cmds_list is not None:
             options = []
