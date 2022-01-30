@@ -323,3 +323,14 @@ async def help(ctx):
 </p>
 
 <hr/>
+
+# Project Links
+
+You can get support/help/guidance from below social-media links
+
+- [Home Page](https://github.com/Modern-Realm)
+- [Official Discord Server](https://discord.gg/GVMWx5EaAN)
+- [PyPi Package](https://pypi.org/project/discord-btns-menus/)
+- [Documentation](https://modern-realm.github.io/discord_btns_menus/)
+
+<hr/>
