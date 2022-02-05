@@ -34,15 +34,15 @@ Python 3.8 or higher is required !
 
 ```shell
 # Linux/macOS
-  python3 -m pip install pycord-btns-menus
+  python3 -m pip install discord-btns-menus
 
 # Windows
   # Method-1:
-    py -3 -m pip install pycord-btns-menus
+    py -3 -m pip install discord-btns-menus
     # or
-    python -m pip install pycord-btns-menus
+    python -m pip install discord-btns-menus
   # Method-2:
-    pip install pycord-btns-menus
+    pip install discord-btns-menus
 
 # Using GIT for ALPHA or BETA Versions
   # Method-1:
@@ -71,15 +71,15 @@ Python 3.8 or higher is required !
 
 ```shell
 # Linux/macOS
-  python3 -m pip install pycord-btns-menus --upgrade
+  python3 -m pip install discord-btns-menus --upgrade
 
 # Windows
   # Method-1:
-    py -3 -m pip install -U pycord-btns-menus
+    py -3 -m pip install -U discord-btns-menus
     # or
-    python -m pip install -U pycord-btns-menus
+    python -m pip install -U discord-btns-menus
   # Method-2:
-    pip install -U pycord-btns-menus
+    pip install -U discord-btns-menus
 ```
 
 <hr/>
