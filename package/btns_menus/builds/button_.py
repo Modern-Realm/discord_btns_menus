@@ -21,7 +21,7 @@ class SButton:
                  delete_msg: bool = False,
                  hidden: bool = False,
                  author: discord.Member = None,
-                 verify_: bool = True):
+                 verify: bool = True):
         """
         It is a decorator used to create a **Button** overwriting ui.Button
 
@@ -38,7 +38,7 @@ class SButton:
         :param delete_msg: Deletes the original message
         :param hidden: It hides the Button from View
         :param author: Interaction User
-        :param verify_: It is used to make the func to check for author parameter or not
+        :param verify: It is used to make the func to check for author parameter or not
 
         :returns: Button
         """
@@ -57,9 +57,10 @@ class SButton:
             "ephemeral": ephemeral,
             "delete_msg": delete_msg,
             "hidden": hidden,
-            "verify": verify_,
+            "verify": verify,
             "func": None,
-            "coro_func": None
+            "coro_func": None,
+            "predicate": None
         }
 
         self.after_: Optional[dict] = None
@@ -210,6 +211,73 @@ class SButton:
 
         return self.after_
 
+    def pred_decorator(self, method: str, cache: Any, /, error_msg: Any = None):
+        self.kwargs["predicate"] = {"method": method, "cache": cache, "error_msg": error_msg}
+
+    def is_owner(self, error_msg: Union[str, discord.Embed] = None):
+        """
+        It's used to check whether the interaction user is the owner of interaction guild
+
+        :param error_msg: Sends a message to the user (Interaction.User) if the condition not satisfies
+        :return: None
+        """
+
+        self.pred_decorator("is_owner", None, error_msg=error_msg)
+
+    def has_any_role(self, *roles: Union[int, str], error_msg: Union[str, discord.Embed] = None):
+        """
+        It's used to check whether the interaction user has any one of the mentioned roles of interaction guild
+
+        :param roles: Takes either ID's or Name's of the roles of interaction guild
+        :param error_msg: Sends a message to the user (Interaction.User) if the condition not satisfies
+        :return: None
+        """
+
+        self.pred_decorator("has_any_role", roles, error_msg=error_msg)
+
+    def has_roles(self, *roles: Union[int, str], error_msg: Union[str, discord.Embed] = None):
+        """
+        It's used to check whether the interaction user has the mentioned roles of interaction guild
+
+        :param roles: Takes either ID's or Name's of the roles of interaction guild
+        :param error_msg: Sends a message to the user (Interaction.User) if the condition not satisfies
+        :return: None
+        """
+
+        self.pred_decorator("has_roles", roles, error_msg=error_msg)
+
+    def has_permissions(self, *, error_msg: Union[str, discord.Embed] = None, **perms: bool):
+        """
+        It's used to check whether the interaction user has the mentioned permissions of the interaction guild/ channel
+
+        :param error_msg: Sends a message to the interaction user if the condition not satisfies
+        :param perms: Takes the perms flags (discord.Permissions.VALID_FLAGS)
+        :return: None
+        """
+
+        self.pred_decorator("has_permissions", perms, error_msg=error_msg)
+
+    def is_author(self, /, error_msg: Union[str, discord.Embed] = None):
+        """
+        It's used to check whether the interaction user and SButton.author are same or not
+
+        :param error_msg: Sends a message to the interaction user if the condition not satisfies
+        :return: None
+        """
+
+        self.pred_decorator("is_author", self.author, error_msg=error_msg)
+
+    def is_any_user(self, *users: Union[str, int], error_msg: Union[str, discord.Embed] = None):
+        """
+        It's used to check whether the interaction user is in mentioned users or not
+
+        :param users: Takes either ID's or Name's of the members of interaction guild
+        :param error_msg: Sends a message to the interaction user if the condition not satisfies
+        :return: None
+        """
+
+        self.pred_decorator("is_any_user", users, error_msg=error_msg)
+
 
 class Btn(ui.Button):
     def __init__(self, root: ClassVar, button: SButton):
@@ -227,6 +295,10 @@ class Btn(ui.Button):
     async def callback(self, interaction: discord.Interaction):
         self.btn.interaction = interaction
         checked = check_for_Invoker(self.btn, interaction)
+        if self.btn_args["predicate"] is not None:
+            predicate_cache = self.btn_args["predicate"]
+            checked = await predicate_permsChecker(interaction, predicate_cache["method"], predicate_cache["cache"],
+                                                   predicate_cache['error_msg'])
         if checked:
             if self.btn_args['coro_func'] is not None:
                 func = self.btn_args['coro_func']
