@@ -20,7 +20,7 @@ class SDropMenu:
                  ephemeral: bool = False,
                  hidden: bool = False,
                  author: discord.Member = None,
-                 verify_: bool = True
+                 verify: bool = True
                  ):
         """
         It is a decorator used to create a **DropMenu** overwriting ui.Select
@@ -37,7 +37,7 @@ class SDropMenu:
         :param ephemeral: It is used to send the message where it's only visible to interacted user or to all
         :param hidden:  It hides the Button from View
         :param author: Interaction User
-        :param verify_: It is used to make the func to check for author parameter or not
+        :param verify: It is used to make the func to check for author parameter or not
 
         :returns: DropMenu
         """
@@ -55,7 +55,7 @@ class SDropMenu:
             "rewrite": rewrite,
             "ephemeral": ephemeral,
             "hidden": hidden,
-            "verify": verify_,
+            "verify": verify,
             "queries": [],
             "func": None,
             "coro_func": None,
