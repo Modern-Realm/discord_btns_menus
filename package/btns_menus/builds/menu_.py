@@ -8,7 +8,7 @@ from discord.components import SelectOption
 
 class SDropMenu:
     def __init__(self, *,
-                 custom_id: str = MISSING,
+                 custom_id: str = None,
                  placeholder: Optional[str] = None,
                  min_values: int = 1,
                  max_values: int = 1,
@@ -247,24 +247,30 @@ class SDropMenu:
                 try:
                     content = content.replace("{values}", ", ".join(values))
                 except ValueError:
-                    raise ValueError("Format key not Found\nTry this formatters: `{values}`, `{{values[index]}}`")
+                    raise ValueError(
+                        "Format key not Found\nTry this formatters: `{values}`, `{{values[index]}}`")
             elif "{{values[" in content:
                 try:
                     x = content.index("{{")
                     y = content.index("}}")
 
-                    index: int = int(content[content.index("[") + 1: content.index("]")])
-                    content = content.replace(f"{content[x: y + 2]}", values[index])
+                    index: int = int(
+                        content[content.index("[") + 1: content.index("]")])
+                    content = content.replace(
+                        f"{content[x: y + 2]}", values[index])
                 except ValueError:
-                    raise ValueError("Format key not Found\nTry this formatters: `{values}`, `{{values[index]}}`")
+                    raise ValueError(
+                        "Format key not Found\nTry this formatters: `{values}`, `{{values[index]}}`")
                 except IndexError:
-                    raise IndexError(f"list index out of range (len(values) = {len(values)})")
+                    raise IndexError(
+                        f"list index out of range (len(values) = {len(values)})")
             count += 1
 
         return content
 
     def pred_decorator(self, method: str, cache: Any, /, error_msg: Any = None):
-        self.kwargs["predicate"] = {"method": method, "cache": cache, "error_msg": error_msg}
+        self.kwargs["predicate"] = {"method": method,
+                                    "cache": cache, "error_msg": error_msg}
 
     def is_owner(self, error_msg: Union[str, discord.Embed] = None):
         """
@@ -374,7 +380,8 @@ class Menu(ui.Select):
                 func()
 
             if self.menu_args['response'] is None:
-                resp = SDropMenu.convert_resp("Options: ' {values} ' has been selected !", self.values)
+                resp = SDropMenu.convert_resp(
+                    "Options: ' {values} ' has been selected !", self.values)
             else:
                 resp = self.menu_args['response']
 
@@ -400,14 +407,16 @@ class Menu(ui.Select):
             if self.menu_args['rewrite']:
                 if resp_ is not None:
                     if is_embed(resp_):
-                        resp_.description = SDropMenu.convert_resp(resp_.description, self.values)
+                        resp_.description = SDropMenu.convert_resp(
+                            resp_.description, self.values)
                         await interaction.message.edit(content=' ', embed=resp_, view=view_)
                     else:
                         resp_ = SDropMenu.convert_resp(resp_, self.values)
                         await interaction.message.edit(content=resp_, embed=None, view=view_)
                 else:
                     if is_embed(resp):
-                        resp.description = SDropMenu.convert_resp(resp.description, self.values)
+                        resp.description = SDropMenu.convert_resp(
+                            resp.description, self.values)
                         await interaction.message.edit(content=' ', embed=resp, view=view_)
                     else:
                         resp = SDropMenu.convert_resp(resp, self.values)
@@ -416,14 +425,16 @@ class Menu(ui.Select):
                 await interaction.message.edit(view=view_)
                 if resp_ is not None:
                     if is_embed(resp_):
-                        resp_.description = SDropMenu.convert_resp(resp_.description, self.values)
+                        resp_.description = SDropMenu.convert_resp(
+                            resp_.description, self.values)
                         await interaction.response.send_message(embed=resp_, ephemeral=emph_)
                     else:
                         resp_ = SDropMenu.convert_resp(resp_, self.values)
                         await interaction.response.send_message(content=resp_, ephemeral=emph_)
                 else:
                     if is_embed(resp):
-                        resp.description = SDropMenu.convert_resp(resp.description, self.values)
+                        resp.description = SDropMenu.convert_resp(
+                            resp.description, self.values)
                         await interaction.response.send_message(content=' ', embed=resp, ephemeral=emph_)
                     else:
                         resp = SDropMenu.convert_resp(resp, self.values)

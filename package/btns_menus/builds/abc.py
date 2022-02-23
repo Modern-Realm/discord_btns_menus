@@ -5,7 +5,6 @@ import discord
 from typing import *
 from discord import utils
 
-MISSING = utils.MISSING
 DEFAULT_TIMEOUT: Union[int, float] = 180.0
 
 
