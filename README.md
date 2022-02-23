@@ -333,6 +333,6 @@ You can get support/help/guidance from below social-media links
 - [Home Page](https://github.com/Modern-Realm)
 - [Official Discord Server](https://discord.gg/GVMWx5EaAN)
 - [PyPi Package](https://pypi.org/project/discord-btns-menus/)
-- [Documentation]()
+- [Documentation](https://github.com/Modern-Realm)
 
 <hr/>
