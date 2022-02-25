@@ -6,7 +6,7 @@
 Welcome to discord-btns-menus's documentation!
 ==============================================
 
-.. include:: btns_menus.rst
+.. include:: package.btns_menus.rst
 
 
 Indices and tables
