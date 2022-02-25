@@ -67,23 +67,6 @@ Python 3.8 or higher is required !
 
 <hr/>
 
-# Upgrading Package/ Module
-
-```shell
-# Linux/macOS
-  python3 -m pip install discord-btns-menus --upgrade
-
-# Windows
-  # Method-1:
-    py -3 -m pip install -U discord-btns-menus
-    # or
-    python -m pip install -U discord-btns-menus
-  # Method-2:
-    pip install -U discord-btns-menus
-```
-
-<hr/>
-
 # How to import module ?
 
 ```python
