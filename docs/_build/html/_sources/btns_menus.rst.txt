@@ -7,7 +7,7 @@ Subpackages
 .. toctree::
    :maxdepth: 4
 
-   package.btns_menus.builds
+   btns_menus.builds
 
 Submodules
 ----------
@@ -15,7 +15,7 @@ Submodules
 btns\_menus.Buttons module
 --------------------------
 
-.. automodule:: package.btns_menus.Buttons
+.. automodule:: btns_menus.Buttons
    :members:
    :undoc-members:
    :show-inheritance:
@@ -23,7 +23,7 @@ btns\_menus.Buttons module
 btns\_menus.Combinations module
 -------------------------------
 
-.. automodule:: package.btns_menus.Combinations
+.. automodule:: btns_menus.Combinations
    :members:
    :undoc-members:
    :show-inheritance:
@@ -31,7 +31,7 @@ btns\_menus.Combinations module
 btns\_menus.DropMenus module
 ----------------------------
 
-.. automodule:: package.btns_menus.DropMenus
+.. automodule:: btns_menus.DropMenus
    :members:
    :undoc-members:
    :show-inheritance:
@@ -39,7 +39,7 @@ btns\_menus.DropMenus module
 btns\_menus.Paginator module
 ----------------------------
 
-.. automodule:: package.btns_menus.Paginator
+.. automodule:: btns_menus.Paginator
    :members:
    :undoc-members:
    :show-inheritance:
@@ -47,7 +47,7 @@ btns\_menus.Paginator module
 btns\_menus.errors module
 -------------------------
 
-.. automodule:: package.btns_menus.errors
+.. automodule:: btns_menus.errors
    :members:
    :undoc-members:
    :show-inheritance:
@@ -55,7 +55,7 @@ btns\_menus.errors module
 Module contents
 ---------------
 
-.. automodule:: package.btns_menus
+.. automodule:: btns_menus
    :members:
    :undoc-members:
    :show-inheritance:
