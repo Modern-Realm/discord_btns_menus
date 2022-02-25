@@ -1,4 +1,5 @@
 from btns_menus.builds.abc import *
+from btns_menus.errors import ButtonException
 
 import discord
 from typing import *
@@ -68,14 +69,14 @@ class SDropMenu:
 
     def update_one(self, details, option: str):
         if option not in self.kwargs.keys():
-            raise ValueError(f"Invalid option `--{option}`")
+            raise ButtonException(f"Invalid option `--{option}`")
         else:
             self.kwargs[option] = details
 
     def update(self, **options):
         for key in options:
             if key not in self.kwargs.keys():
-                raise ValueError(f"Invalid option `--{key}`")
+                raise ButtonException(f"Invalid option `--{key}`")
             else:
                 self.kwargs[key] = options[key]
 
@@ -162,7 +163,7 @@ class SDropMenu:
         if len(options) >= 1:
             for key in options:
                 if key not in self.kwargs.keys():
-                    raise ValueError(f"Invalid option `--{key}`")
+                    raise ButtonException(f"Invalid option `--{key}`")
                 else:
                     kwargs.update({key: options[key]})
 
@@ -246,8 +247,8 @@ class SDropMenu:
             if "{values}" in content:
                 try:
                     content = content.replace("{values}", ", ".join(values))
-                except ValueError:
-                    raise ValueError(
+                except ButtonException:
+                    raise ButtonException(
                         "Format key not Found\nTry this formatters: `{values}`, `{{values[index]}}`")
             elif "{{values[" in content:
                 try:
@@ -258,8 +259,8 @@ class SDropMenu:
                         content[content.index("[") + 1: content.index("]")])
                     content = content.replace(
                         f"{content[x: y + 2]}", values[index])
-                except ValueError:
-                    raise ValueError(
+                except ButtonException:
+                    raise ButtonException(
                         "Format key not Found\nTry this formatters: `{values}`, `{{values[index]}}`")
                 except IndexError:
                     raise IndexError(
@@ -309,7 +310,7 @@ class SDropMenu:
         It's used to check whether the interaction user has the mentioned permissions of the interaction guild/ channel
 
         :param error_msg: Sends a message to the interaction user if the condition not satisfies
-        :param perms: Takes the perms flags (discord.Permissions.VALID_FLAGS)
+        :param perms: Takes the permissions flags (discord.Permissions.VALID_FLAGS)
         :return: None
         """
 

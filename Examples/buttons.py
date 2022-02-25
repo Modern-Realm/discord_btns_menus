@@ -157,4 +157,4 @@ async def reaction_role_button(ctx):
 
 
 if __name__ == '__main__':
-    client.run(TOKEN)
+    client.run(TOKEN)  # Pass the token here

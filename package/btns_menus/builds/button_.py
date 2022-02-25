@@ -1,4 +1,5 @@
 from btns_menus.builds.abc import *
+from btns_menus.errors import ButtonException
 
 import discord
 from typing import *
@@ -77,7 +78,7 @@ class SButton:
         """
 
         if option not in self.kwargs.keys():
-            raise ValueError(f"Invalid option `--{option}`")
+            raise ButtonException(f"Invalid option `--{option}`")
         else:
             self.kwargs[option] = details
 
@@ -92,7 +93,7 @@ class SButton:
 
         for key in options:
             if key not in self.kwargs.keys():
-                raise ValueError(f"Invalid option `--{key}`")
+                raise ButtonException(f"Invalid option `--{key}`")
             else:
                 self.kwargs[key] = options[key]
 
@@ -170,7 +171,7 @@ class SButton:
         if len(options) >= 1:
             for key in options:
                 if key not in self.kwargs.keys():
-                    raise ValueError(f"Invalid option `--{key}`")
+                    raise ButtonException(f"Invalid option `--{key}`")
                 else:
                     kwargs.update({key: options[key]})
 
@@ -251,7 +252,7 @@ class SButton:
         It's used to check whether the interaction user has the mentioned permissions of the interaction guild/ channel
 
         :param error_msg: Sends a message to the interaction user if the condition not satisfies
-        :param perms: Takes the perms flags (discord.Permissions.VALID_FLAGS)
+        :param perms: Takes the permissions flags (discord.Permissions.VALID_FLAGS)
         :return: None
         """
 
