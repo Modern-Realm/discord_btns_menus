@@ -4,7 +4,7 @@ import discord
 from discord import ButtonStyle, SelectOption
 
 
-def SOption(*, name: str, embed_: discord.Embed, description: str = None,
+def SOption(*, name: str, embed: discord.Embed, description: str = None,
             emoji: Union[str, discord.Emoji, discord.PartialEmoji] = None
             ) -> Dict:
     """It's a decorator used to overwrite options in discord.ui.Select
@@ -17,7 +17,7 @@ def SOption(*, name: str, embed_: discord.Embed, description: str = None,
     :returns: Dict
     """
     decorator_ = {
-        "name": name, "description": description, "embed": embed_, "emoji": emoji
+        "name": name, "description": description, "embed": embed, "emoji": emoji
     }
     return decorator_
 
