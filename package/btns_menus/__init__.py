@@ -1,19 +1,15 @@
 """
-Name: pycord-btns-menus
+Name: discord-btns-menus
 
-Version: 0.1.7
+Version: 0.2.3
 
 Summary: A responsive package for Buttons, DropMenus and Combinations
 
-Home-page: https://github.com/skrphenix/pycord_btns_menus
+Home-page: https://github.com/Modern-Realm/discord_btns_menus
 
 Author: P. Sai Keerthan Reddy
 
 Author-email: saikeerthan.keerthan.9@gmail.com
 
 License: MIT
-
-Location: c:/users/sai keerthan/appdata/local/programs/python/python39/lib/site-packages
-
-Requires: py-cord
 """
