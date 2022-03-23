@@ -1,5 +1,5 @@
 """
-Name: pycord-btns-menus
+Name: discord-btns-menus
 
 Version: 0.2.3
 

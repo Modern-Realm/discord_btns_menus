@@ -48,8 +48,10 @@ class Paginator:
         :param author: User who will interact with the Paginator
         :param embeds: The list of embeds that acts as Pages
         :param commands_list: The list of options which are shown as options in a Drop Menu
+        :param pg_type: Takes the PgTypes
         :param buttons: List of buttons used to navigate of interact with the pages/embeds
         :param menus: List of Menus used to make a user select options from it
+        :param append_before: If true, buttons & menus will be added before default buttons & menus in Paginator and vice-versa
         :param footer: Used to add content into text in footer of discord.Embed
         :param timeout: Timeout of the interaction
 
