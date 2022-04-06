@@ -4,7 +4,7 @@ from btns_menus.Combinations import MultiBtnAndMenu
 
 import discord
 from discord import ui
-from discord import ButtonStyle, SelectOption
+from discord import ui, ButtonStyle, SelectOption
 from typing import Union, Optional, Dict, List
 
 
