@@ -5,26 +5,28 @@ from discord import ButtonStyle, SelectOption
 
 
 class PgTypes:
-    one = 1
-    two = 2
     first = 1
     second = 2
 
+    # Aliases
+    one = 1
+    two = 2
 
-def SOption(*, name: str, embed_: discord.Embed, description: str = None,
+
+def SOption(*, name: str, embed: discord.Embed, description: str = None,
             emoji: Union[str, discord.Emoji, discord.PartialEmoji] = None
             ) -> Dict:
     """It's a decorator used to overwrite options in discord.ui.Select
 
     :param name: label for option
-    :param embed_: If option is selected, the embed will be sent !
+    :param embed: If option is selected, the embed will be sent !
     :param description: Description for the option
     :param emoji: Emoji for the option
 
     :returns: Dict
     """
     decorator_ = {
-        "name": name, "description": description, "embed": embed_, "emoji": emoji
+        "name": name, "description": description, "embed": embed, "emoji": emoji
     }
     return decorator_
 
@@ -235,8 +237,6 @@ class Paginator:
 
                 self.cmds_menu.add_func(reset_view)
 
-            self.menus.insert(self.index_for_cmds, self.cmds_menu)
-
         if self.home_btn.kwargs['func'] is None and self.home_btn.kwargs['coro_func'] is None:
             self.home_btn.add_func(home_page)
         if self.forward_btn.kwargs['func'] is None and self.forward_btn.kwargs['coro_func'] is None:
@@ -252,8 +252,10 @@ class Paginator:
             created_btns = [self.home_btn, self.backward_btn, self.forward_btn, self.delete_menu]
             if self.append_before:
                 self.buttons += created_btns
+                self.menus += [self.cmds_menu]
             else:
                 self.buttons = created_btns + self.buttons
+                self.menus = [self.cmds_menu] + self.menus
         elif self.pg_type == 2:
             self.skip_Tofirst.update(hidden=False)
             self.skip_Tolast.update(hidden=False)
@@ -261,8 +263,10 @@ class Paginator:
                             self.forward_btn, self.skip_Tolast, self.delete_menu]
             if self.append_before:
                 self.buttons += created_btns
+                self.menus += [self.cmds_menu]
             else:
                 self.buttons = created_btns + self.buttons
+                self.menus = [self.cmds_menu] + self.menus
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
