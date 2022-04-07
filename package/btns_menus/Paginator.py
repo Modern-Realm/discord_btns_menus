@@ -3,7 +3,8 @@ from btns_menus.DropMenus import SDropMenu
 from btns_menus.Combinations import MultiBtnAndMenu
 
 import discord
-from discord import ui, ButtonStyle, SelectOption
+from discord import ui
+from discord import ButtonStyle, SelectOption
 from typing import Union, Optional, Dict, List
 
 
@@ -266,10 +267,12 @@ class Paginator:
                             self.forward_btn, self.skip_Tolast, self.delete_menu]
             if self.append_before:
                 self.buttons += created_btns
-                self.menus += [self.cmds_menu]
+                if self.cmds_list is not None:
+                    self.menus += [self.cmds_menu]
             else:
                 self.buttons = created_btns + self.buttons
-                self.menus = [self.cmds_menu] + self.menus
+                if self.cmds_list is not None:
+                    self.menus = [self.cmds_menu] + self.menus
 
     def view(self) -> ui.View:
         """:returns: discord.ui.View"""
