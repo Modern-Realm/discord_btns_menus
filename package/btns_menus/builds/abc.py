@@ -2,6 +2,8 @@ from btns_menus.errors import MissingPerms, MissingRoles, MissingAdminPerms, Mis
 from btns_menus.errors import InvalidInteractionUser, NotInUsers
 
 import discord
+import threading
+import asyncio
 from typing import *
 from discord import utils
 
@@ -156,3 +158,21 @@ async def predicate_permsChecker(interaction: discord.Interaction, method: str, 
                 await send_error_msg(interaction, error_msg)
 
     return False
+
+
+def run_async(target: Callable, *args, **kwargs):
+    class RunThread(threading.Thread):
+        def __init__(self, func: Callable):
+            self.func = func
+            self.args = args
+            self.kwargs = kwargs
+            self.result = None
+            super().__init__()
+
+        def run(self):
+            self.result = asyncio.run(self.func(*self.args, **self.kwargs))
+
+    thread = RunThread(target)
+    thread.start()
+    thread.join()
+    return thread.result

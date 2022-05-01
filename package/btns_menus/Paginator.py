@@ -1,3 +1,4 @@
+from btns_menus.builds.abc import run_async
 from btns_menus.Buttons import SButton, DEFAULT_TIMEOUT
 from btns_menus.DropMenus import SDropMenu
 from btns_menus.Combinations import MultiBtnAndMenu
@@ -98,9 +99,9 @@ class Paginator:
         self.skip_Tolast: Optional[SButton] = None
         self.cmds_menu: Optional[SDropMenu] = None
 
-        self.create_pages()
+        run_async(self.create_pages)
 
-    def create_pages(self):
+    async def create_pages(self):
         buttons_ = []
         for button_ in self.buttons:
             if button_.id is not None:
@@ -157,17 +158,20 @@ class Paginator:
         if self.skip_Tolast.kwargs['response'] is None:
             self.skip_Tolast.update(response=self.embeds[-1])
 
-        self.build_pages()
+        run_async(self.build_pages)
 
-    def build_pages(self):
-        def home_page():
+    async def build_pages(self):
+        async def home_page():
+            await self.home_btn.interaction.response.defer()
+
             self.pages = 0
-
             self.home_btn.update(disabled=True)
             self.forward_btn.update(disabled=False)
             self.backward_btn.update(disabled=False)
 
-        def forward_pages():
+        async def forward_pages():
+            await self.forward_btn.interaction.response.defer()
+
             self.pages += 1
             if self.pages >= len(self.embeds) - 1:
                 self.pages = len(self.embeds) - 1
@@ -183,7 +187,9 @@ class Paginator:
                 em.set_footer(text=self.footer_for_PG(self.footer))
             self.forward_btn.update_one(em, "response")
 
-        def backward_pages():
+        async def backward_pages():
+            await self.backward_btn.interaction.response.defer()
+
             self.pages -= 1
             if self.pages <= 0:
                 self.pages = 0
@@ -204,7 +210,9 @@ class Paginator:
                 em.set_footer(text=self.footer_for_PG(self.footer))
             self.backward_btn.update_one(em, "response")
 
-        def skip_to_first_pg():
+        async def skip_to_first_pg():
+            await self.skip_Tofirst.interaction.response.defer()
+
             self.pages = 0
             self.skip_Tofirst.update(disabled=True)
             self.backward_btn.update(disabled=True)
@@ -213,7 +221,9 @@ class Paginator:
             self.forward_btn.update(disabled=False)
             self.home_btn.update(disabled=True)
 
-        def skip_to_last_pg():
+        async def skip_to_last_pg():
+            await self.skip_Tolast.interaction.response.defer()
+
             self.pages = 0
             self.skip_Tofirst.update(disabled=False)
             self.backward_btn.update(disabled=False)
@@ -234,23 +244,25 @@ class Paginator:
                 self.cmds_menu.add_query((option['name'], option['embed']))
 
             if self.cmds_menu.kwargs['func'] is None and self.cmds_menu.kwargs['coro_func'] is None:
-                def reset_view():
+                async def reset_view():
+                    await self.cmds_menu.interaction.response.defer()
+
                     self.home_btn.update(disabled=False)
                     self.forward_btn.update(disabled=True)
                     self.backward_btn.update(disabled=True)
 
-                self.cmds_menu.add_func(reset_view)
+                await self.cmds_menu.add_coro_func(reset_view)
 
         if self.home_btn.kwargs['func'] is None and self.home_btn.kwargs['coro_func'] is None:
-            self.home_btn.add_func(home_page)
+            await self.home_btn.add_coro_func(home_page)
         if self.forward_btn.kwargs['func'] is None and self.forward_btn.kwargs['coro_func'] is None:
-            self.forward_btn.add_func(forward_pages)
+            await self.forward_btn.add_coro_func(forward_pages)
         if self.backward_btn.kwargs['func'] is None and self.backward_btn.kwargs['coro_func'] is None:
-            self.backward_btn.add_func(backward_pages)
+            await self.backward_btn.add_coro_func(backward_pages)
         if self.skip_Tolast.kwargs['func'] is None and self.skip_Tolast.kwargs['coro_func'] is None:
-            self.skip_Tolast.add_func(skip_to_last_pg)
+            await self.skip_Tolast.add_coro_func(skip_to_last_pg)
         if self.skip_Tofirst.kwargs['func'] is None and self.skip_Tofirst.kwargs['coro_func'] is None:
-            self.skip_Tofirst.add_func(skip_to_first_pg)
+            await self.skip_Tofirst.add_coro_func(skip_to_first_pg)
 
         if self.pg_type == 1:
             created_btns = [self.home_btn, self.backward_btn, self.forward_btn, self.delete_menu]
