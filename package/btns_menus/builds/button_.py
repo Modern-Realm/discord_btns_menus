@@ -9,7 +9,7 @@ from discord import ui, ButtonStyle
 class SButton:
     def __init__(self,
                  *,
-                 label: str,
+                 label: str = None,
                  custom_id: Optional[str] = None,
                  disabled: bool = False,
                  style: ButtonStyle = ButtonStyle.secondary,
@@ -120,14 +120,14 @@ class SButton:
         return self.kwargs['author']
 
     @property
-    def name(self) -> str:
+    def name(self) -> Optional[str]:
         """
         It's a property used to get label of the button
 
         :returns: name: str
         """
 
-        return self.kwargs['label']
+        return self.kwargs['label'] or self.kwargs['emoji']
 
     @property
     def id(self) -> Optional[str]:

@@ -52,6 +52,13 @@ class Paginator:
         """
         Paginator is used to show users the given embeds in pages format using **navigation Buttons and DropMenus**
 
+        Custom ids for Buttons:
+            home, forward, backward, skip_Tofirst, skip_Tolast & delete
+        Custom id for Menu:
+            commands-list, cmds-list
+
+        These ID's are can be used to modify the buttons/menus in the Paginator
+
         :param author: User who will interact with the Paginator
         :param embeds: The list of embeds that acts as Pages
         :param commands_list: The list of options which are shown as options in a Drop Menu
@@ -134,18 +141,19 @@ class Paginator:
                     self.menus.remove(menu_)
 
         self.home_btn = SButton(label="Home", emoji="🏠", response=self.embeds[0], style=ButtonStyle.green,
-                                rewrite=True, disabled=True) if self.home_btn is None else self.home_btn
-        self.forward_btn = SButton(label='', emoji="➡",
+                                custom_id="home", rewrite=True,
+                                disabled=True) if self.home_btn is None else self.home_btn
+        self.forward_btn = SButton(emoji="➡", custom_id="forward",
                                    rewrite=True, ) if self.forward_btn is None else self.forward_btn
-        self.backward_btn = SButton(label='', emoji="⬅",
+        self.backward_btn = SButton(emoji="⬅", custom_id="backward",
                                     rewrite=True) if self.backward_btn is None else self.backward_btn
-        self.skip_Tofirst = SButton(label='', emoji="⏪", rewrite=True,
+        self.skip_Tofirst = SButton(emoji="⏪", rewrite=True, custom_id="skip_Tofirst",
                                     hidden=True) if self.skip_Tofirst is None else self.skip_Tofirst
-        self.skip_Tolast = SButton(label='', emoji="⏩", rewrite=True,
+        self.skip_Tolast = SButton(emoji="⏩", rewrite=True, custom_id="skip_Tolast",
                                    hidden=True) if self.skip_Tolast is None else self.skip_Tolast
-        self.delete_menu = SButton(label='Delete Menu', emoji="🗑️", style=ButtonStyle.danger,
+        self.delete_menu = SButton(label='Delete Menu', emoji="🗑️", style=ButtonStyle.danger, custom_id="delete",
                                    delete_msg=True) if self.delete_menu is None else self.delete_menu
-        self.cmds_menu = SDropMenu(placeholder="Select any one Module",
+        self.cmds_menu = SDropMenu(placeholder="Select any one Module", custom_id="cmds-list",
                                    rewrite=True) if self.cmds_menu is None else self.cmds_menu
 
         em = self.embeds[0]
@@ -168,6 +176,10 @@ class Paginator:
             self.home_btn.update(disabled=True)
             self.forward_btn.update(disabled=False)
             self.backward_btn.update(disabled=False)
+
+            if self.pg_type != 1:
+                self.skip_Tofirst.update(disabled=False)
+                self.skip_Tolast.update(disabled=False)
 
         async def forward_pages():
             await self.forward_btn.interaction.response.defer()
@@ -224,7 +236,7 @@ class Paginator:
         async def skip_to_last_pg():
             await self.skip_Tolast.interaction.response.defer()
 
-            self.pages = 0
+            self.pages = len(self.embeds) - 1
             self.skip_Tofirst.update(disabled=False)
             self.backward_btn.update(disabled=False)
 
@@ -268,10 +280,12 @@ class Paginator:
             created_btns = [self.home_btn, self.backward_btn, self.forward_btn, self.delete_menu]
             if self.append_before:
                 self.buttons += created_btns
-                self.menus += [self.cmds_menu]
+                if self.cmds_list is not None:
+                    self.menus += [self.cmds_menu]
             else:
                 self.buttons = created_btns + self.buttons
-                self.menus = [self.cmds_menu] + self.menus
+                if self.cmds_list is not None:
+                    self.menus = [self.cmds_menu] + self.menus
         elif self.pg_type == 2:
             self.skip_Tofirst.update(hidden=False)
             self.skip_Tolast.update(hidden=False)
