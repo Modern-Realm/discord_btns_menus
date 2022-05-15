@@ -4,7 +4,9 @@ from btns_menus.errors import InvalidInteractionUser, NotInUsers
 import discord
 import threading
 import asyncio
-from typing import *
+
+from asyncio.coroutines import iscoroutinefunction
+from typing import Any, Union, Callable, Optional
 from discord import utils
 
 DEFAULT_TIMEOUT: Union[int, float] = 180.0
@@ -138,7 +140,6 @@ async def predicate_permsChecker(interaction: discord.Interaction, method: str, 
                 raise MissingPerms(missing_)
             else:
                 await send_error_msg(interaction, error_msg)
-
     if method == "is_author":
         if user == context:
             return True
@@ -167,10 +168,14 @@ def run_async(target: Callable, *args, **kwargs):
             self.args = args
             self.kwargs = kwargs
             self.result = None
+
             super().__init__()
 
         def run(self):
-            self.result = asyncio.run(self.func(*self.args, **self.kwargs))
+            if iscoroutinefunction(self.func):
+                self.result = asyncio.run(self.func(*self.args, **self.kwargs))
+            else:
+                self.result = self.func(*self.args, **self.kwargs)
 
     thread = RunThread(target)
     thread.start()

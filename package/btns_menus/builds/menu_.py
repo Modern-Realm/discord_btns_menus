@@ -16,6 +16,7 @@ class SDropMenu:
                  options: List[SelectOption] = None,
                  disabled: bool = False,
                  row: Optional[int] = None,
+                 content: Optional[str] = None,
                  response: Optional[Union[str, discord.Embed]] = None,
                  rewrite: bool = False,
                  ephemeral: bool = False,
@@ -33,6 +34,7 @@ class SDropMenu:
         :param options: Options which are shown in DropMenu and can be selected by interacted user
         :param disabled: It is used to enable/disable the DropMenu, i.e. Preventing user from using it
         :param row: Places the DropMenu in given Row
+        :param content: content of the message
         :param response: Sends the message (str, embed) in user channel
         :param rewrite: It is used to send the message by editing the original message rather than sending a new one
         :param ephemeral: It is used to send the message where it's only visible to interacted user or to all
@@ -43,6 +45,11 @@ class SDropMenu:
         :returns: DropMenu
         """
 
+        if response is None:
+            if content is not None:
+                response = content
+                content = None
+
         self.kwargs = {
             "author": author,
             "custom_id": custom_id,
@@ -52,6 +59,7 @@ class SDropMenu:
             "options": options,
             "disabled": disabled,
             "row": row,
+            "content": content,
             "response": response,
             "rewrite": rewrite,
             "ephemeral": ephemeral,
@@ -64,7 +72,7 @@ class SDropMenu:
         }
 
         self.after_: Optional[dict] = None
-        self.selected_values: Optional[str, List] = None
+        self.selected_values: Optional[Union[str, List]] = None
         self.interaction: Optional[discord.Interaction] = None
 
     def update_one(self, details, option: str):
@@ -339,7 +347,7 @@ class SDropMenu:
 
 
 class Menu(ui.Select):
-    def __init__(self, root: ClassVar, menu: SDropMenu):
+    def __init__(self, root: Callable, menu: SDropMenu):
         self.root = root
         self.menu = menu
         self.menu_args = menu.args
@@ -410,7 +418,7 @@ class Menu(ui.Select):
                     if is_embed(resp_):
                         resp_.description = SDropMenu.convert_resp(
                             resp_.description, self.values)
-                        await interaction.message.edit(content=' ', embed=resp_, view=view_)
+                        await interaction.message.edit(content=self.menu_args['content'] or '', embed=resp_, view=view_)
                     else:
                         resp_ = SDropMenu.convert_resp(resp_, self.values)
                         await interaction.message.edit(content=resp_, embed=None, view=view_)
@@ -418,7 +426,7 @@ class Menu(ui.Select):
                     if is_embed(resp):
                         resp.description = SDropMenu.convert_resp(
                             resp.description, self.values)
-                        await interaction.message.edit(content=' ', embed=resp, view=view_)
+                        await interaction.message.edit(content=self.menu_args['content'] or '', embed=resp, view=view_)
                     else:
                         resp = SDropMenu.convert_resp(resp, self.values)
                         await interaction.message.edit(content=resp, embed=None, view=view_)
@@ -428,7 +436,8 @@ class Menu(ui.Select):
                     if is_embed(resp_):
                         resp_.description = SDropMenu.convert_resp(
                             resp_.description, self.values)
-                        await interaction.response.send_message(embed=resp_, ephemeral=emph_)
+                        await interaction.response.send_message(content=self.menu_args['content'], embed=resp_,
+                                                                ephemeral=emph_)
                     else:
                         resp_ = SDropMenu.convert_resp(resp_, self.values)
                         await interaction.response.send_message(content=resp_, ephemeral=emph_)
@@ -436,7 +445,8 @@ class Menu(ui.Select):
                     if is_embed(resp):
                         resp.description = SDropMenu.convert_resp(
                             resp.description, self.values)
-                        await interaction.response.send_message(content=' ', embed=resp, ephemeral=emph_)
+                        await interaction.response.send_message(content=self.menu_args['content'] or '',
+                                                                embed=resp, ephemeral=emph_)
                     else:
                         resp = SDropMenu.convert_resp(resp, self.values)
                         await interaction.response.send_message(content=resp, ephemeral=emph_)

@@ -1,11 +1,21 @@
+import re
 import setuptools
 
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
+with open("package/btns_menus/__init__.py") as f:
+    search_v = re.search(r'^__version__\s*=\s*[\'"]([^\'"]*)[\'"]', f.read(), re.MULTILINE)
+
+    if search_v is not None:
+        version = search_v.group(1)
+    else:
+        raise RuntimeError("Error occurred while installing !\n"
+                           "go to https://github.com/Modern-Realm/discord_btns_menus for more info ...")
+
 setuptools.setup(
     name="discord-btns-menus",
-    version="0.2.3",
+    version=version,
     author="P. Sai Keerthan Reddy",
     author_email="saikeerthan.keerthan.9@gmail.com",
     description="A responsive package for Buttons, DropMenus, Combinations and Paginator",

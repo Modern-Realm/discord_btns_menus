@@ -16,6 +16,7 @@ class SButton:
                  url: Optional[str] = None,
                  emoji: Optional[Union[str, discord.Emoji, discord.PartialEmoji]] = None,
                  row: Optional[int] = None,
+                 content: Optional[str] = None,
                  response: Optional[Union[str, discord.Embed]] = None,
                  rewrite: bool = False,
                  ephemeral: bool = False,
@@ -33,7 +34,8 @@ class SButton:
         :param url: Onclick Redirects to the given url
         :param emoji: Emoji for the Button
         :param row: Places the Button in given Row
-        :param response: Sends the message (str, embed) in user channel
+        :param content: content of the message
+        :param response: Sends the message (str/ embed) in user channel
         :param rewrite: It is used to send the message by editing the original message rather than sending a new one
         :param ephemeral: It is used to send the message where it's only visible to interacted user or to all
         :param delete_msg: Deletes the original message
@@ -44,6 +46,11 @@ class SButton:
         :returns: Button
         """
 
+        if response is None:
+            if content is not None:
+                response = content
+                content = None
+
         self.kwargs = {
             "author": author,
             "label": label,
@@ -53,6 +60,7 @@ class SButton:
             "url": url,
             "emoji": emoji,
             "row": row,
+            "content": content,
             "response": response,
             "rewrite": rewrite,
             "ephemeral": ephemeral,
@@ -281,7 +289,7 @@ class SButton:
 
 
 class Btn(ui.Button):
-    def __init__(self, root: ClassVar, button: SButton):
+    def __init__(self, root: Callable, button: SButton):
         self.root = root
         self.btn = button
         self.btn_args = self.btn.args
@@ -326,12 +334,13 @@ class Btn(ui.Button):
             view_ = btn_.view()
             if self.btn_args['rewrite']:
                 if is_embed(resp):
-                    await interaction.message.edit(content="", embed=resp, view=view_)
+                    await interaction.message.edit(content=self.btn_args['content'] or "", embed=resp, view=view_)
                 else:
                     await interaction.message.edit(content=resp, embed=None, view=view_)
             else:
                 await interaction.message.edit(view=view_)
                 if is_embed(resp):
-                    await interaction.response.send_message(content="", embed=resp, ephemeral=emph_)
+                    await interaction.response.send_message(content=self.btn_args['content'] or "",
+                                                            embed=resp, ephemeral=emph_)
                 else:
                     await interaction.response.send_message(content=resp, ephemeral=emph_)
